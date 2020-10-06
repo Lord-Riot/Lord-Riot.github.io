@@ -1,3 +1,7 @@
+body {
+  background: url("https://raw.githubusercontent.com/Lord-Riot/Lord-Riot.github.io/master/images/backround.jpg");
+  background-attachment: fixed;
+}
 :root {
   --body-bg-color: #f5f7f9;
   --content-bg-color: #fff;
@@ -1196,7 +1200,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #995396;
+  background: #3d7d4a;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
