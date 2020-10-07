@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"lord-riot.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"lord-riot.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="此篇博客主要记录一下一些题的做题想法（各种rz心路历程orz，持续更新...">
@@ -28,7 +28,8 @@
 <meta property="og:description" content="此篇博客主要记录一下一些题的做题想法（各种rz心路历程orz，持续更新...">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200827101436166.png">
-<meta property="og:image" content="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200918180348094.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20201007140519927.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20201007140537646.png">
 <meta property="og:image" content="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200918180437622.png">
 <meta property="og:image" content="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200918181621345.png">
 <meta property="og:image" content="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200927223628490.png">
@@ -38,9 +39,9 @@
 <meta property="og:image" content="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20201004175046117.png">
 <meta property="og:image" content="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20201005231113072.png">
 <meta property="article:published_time" content="2020-10-06T07:35:59.000Z">
-<meta property="article:modified_time" content="2020-10-06T13:16:00.289Z">
+<meta property="article:modified_time" content="2020-10-07T06:24:26.705Z">
 <meta property="article:author" content="Lord Riot">
-<meta property="article:tag" content="Crypto">
+<meta property="article:tag" content="Crypto in CTF">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200827101436166.png">
 
@@ -115,6 +116,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -126,19 +128,61 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -165,7 +209,7 @@
     <link itemprop="mainEntityOfPage" href="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Lord-Riot/Lord-Riot.github.io/master/images/avatar.jpg">
       <meta itemprop="name" content="Lord Riot">
       <meta itemprop="description" content="">
     </span>
@@ -184,9 +228,24 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-10-06 15:35:59 / 修改时间：21:16:00" itemprop="dateCreated datePublished" datetime="2020-10-06T15:35:59+08:00">2020-10-06</time>
+              <time title="创建时间：2020-10-06 15:35:59" itemprop="dateCreated datePublished" datetime="2020-10-06T15:35:59+08:00">2020-10-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-07 14:24:26" itemprop="dateModified" datetime="2020-10-07T14:24:26+08:00">2020-10-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Crypto-in-CTF/" itemprop="url" rel="index"><span itemprop="name">Crypto in CTF</span></a>
+                </span>
             </span>
 
           
@@ -211,7 +270,7 @@
 <p>对于模数为1或2的情况，并不存在一定的一一对应的解区间，但对于相同的n，1/2对应的区间是一定的，下面给出第二区间的证明（第三区间类似）：</p>
 <p>$m (n, n), (3 *m -n) x ,  x = 1  or  2 $</p>
 <p>使用反证法，不妨设</p>
-<p><span class="math inline">\(\exists \ m_1, m_2, \\ (3 * m_1 -n) \equiv x_1 \mod 3 , \quad (3 *m_2 -n) \equiv x_2 \mod 3 \\ x_1 \neq x_2\)</span></p>
+<p><span class="math inline">\(\exists \ m_1, m_2 ,\\\  (3 * m_1 -n) \equiv x_1 \mod 3 , \quad (3 *m_2 -n) \equiv x_2 \mod 3 ,\\\  x_1 \neq x_2\)</span></p>
 <p>两式相减得到</p>
 <p><span class="math inline">\(\Rightarrow 3 * (m_1 - m_2) \equiv x_3 \mod 3, x_3 \neq 0\)</span></p>
 <p>又因为</p>
@@ -225,9 +284,9 @@
 <h6 id="计算通项公式"><del>计算通项公式</del>：</h6>
 <p>待定系数x，y，z，则有<span class="math inline">\(k_i - x * k_{i-1} + z * c \equiv y*(k_{i-1} - x * k_{i-2} + z * c) \mod n\)</span></p>
 <p>可知：</p>
-<p><span class="math inline">\(x + y = a+1 \\ -x * y = a \\ (y-1)* z = 1\)</span></p>
+<p><span class="math inline">\(x + y = a+1 ,\\\  -x * y = a ,\\\  (y-1)* z = 1\)</span></p>
 <p>得到：</p>
-<p><span class="math inline">\(x = \frac {a + 1 + \sqrt {a^2 + 6a + 1} }{2} \\ y = \frac {a + 1 - \sqrt {a^2 + 6a + 1} }{2} \\ z = \frac {2 }{a - 1 - \sqrt {a^2 + 6a + 1} }\)</span></p>
+<p><span class="math inline">\(x = \frac {a + 1 + \sqrt {a^2 + 6a + 1} }{2} ,\\\  y = \frac {a + 1 - \sqrt {a^2 + 6a + 1} }{2} ,\\\  z = \frac {2 }{a - 1 - \sqrt {a^2 + 6a + 1} }\)</span></p>
 <p>设<span class="math inline">\(s_i = k_i - x * k_{i-1} + z * c \mod n\)</span>，则可知<span class="math inline">\(s_i\)</span>为<span class="math inline">\(GF(n)\)</span>上的等比数列，</p>
 <p>有 <span class="math inline">\(s_{i+2} = y ^ i(k_2 -x * k_1 + z *c) \mod n\)</span>，<span class="math inline">\(k_1, k_2\)</span>即为初始生成的随机种子</p>
 <p>有<span class="math inline">\(k_{i+2} = x^i*k_2 + (k_2 -x * k_1 + z *c)*\sum_{j=0}^{i}x^jy^{i-j} - z*c*\sum_{j = 0}^{i-1}x^j\)</span></p>
@@ -241,9 +300,7 @@
 <p>设<span class="math inline">\(fini_{i} = k_{i+2}-k_{i}, init_i = k_i + k_{i+1}\)</span></p>
 <p>则有$fini_i = a * init_i + c + T_i * n $</p>
 <p>于是我构造了如下格子：</p>
-<figure>
-<img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200827101436166.png" alt="image-20200827101436166"><figcaption aria-hidden="true">image-20200827101436166</figcaption>
-</figure>
+<p><img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200827101436166.png"></p>
 <p>但前四行的最后一列并无法平衡，因为需要找到<span class="math inline">\(B_0, B_1, B_2, B_3\)</span> 使得<span class="math inline">\(\sum_{i=0}^{4}B_i*(fini_i-a*init_i-c) &lt;&lt; min{B_i}\)</span>， 而我们并不知道<span class="math inline">\(a,c\)</span>，构造出这样的<span class="math inline">\(B_i\)</span>，显然是不可能的，但如果我们能求出n，那么只需将对角线上的1替换为n，即可解决问题。</p>
 <p>然后在求解n的过程中，我意识到完全不用格子ojz，直接推就能推出来。。。而且将n代入也未能求解。。。</p>
 <h6 id="推导求解">推导求解</h6>
@@ -251,7 +308,8 @@
 <p>则有 <span class="math inline">\((k_i - k_{i-1}) - (k_{i-1} - k_{i-2}) \equiv a *(k_{i-1} - k_{i-3}) \mod n\)</span></p>
 <p>由此，只要知道了n，则可以计算出a，c</p>
 <p>根据同模，利用最大公因数来求n</p>
-<p>利用<span class="math inline">\((k_{i-2} - k_{i-4}) * (a *(k_{i-1} - k_{i-3}) \mod n) \\ \equiv (k_{i-1} - k_{i-3}) * (a *(k_{i-2} - k_{i-4}) \mod n) \mod n\)</span></p>
+<p>利用$(k_{i-2} - k_{i-4}) * (a *(k_{i-1} - k_{i-3}) n) $</p>
+<p>$ (k_{i-1} - k_{i-3}) * (a *(k_{i-2} - k_{i-4}) n) n$</p>
 <p>此部分exp如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_f</span>(<span class="params">k, i</span>):</span></span><br><span class="line">    <span class="keyword">assert</span> len(k) &gt; i<span class="number">-4</span> &gt;= <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> abs((k[i] - <span class="number">2</span> * k[i<span class="number">-1</span>] + k[i<span class="number">-2</span>]) * (k[i<span class="number">-2</span>] - k[i<span class="number">-4</span>]) - (k[i<span class="number">-1</span>] - k[i<span class="number">-3</span>]) * (k[i<span class="number">-1</span>] - <span class="number">2</span> * k[i<span class="number">-2</span>] + k[i<span class="number">-3</span>]))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f_1 = get_f(k, <span class="number">4</span>)</span><br><span class="line">f_2 = get_f(k, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">n = gcd(f_1, f_2)</span><br><span class="line">print(<span class="string">&#x27;n = &#x27;</span> + str(n))</span><br><span class="line"><span class="keyword">assert</span> isPrime(n)</span><br><span class="line"></span><br><span class="line">a = ((k[<span class="number">3</span>] - <span class="number">2</span> * k[<span class="number">2</span>] + k[<span class="number">1</span>]) * inverse(k[<span class="number">2</span>] - k[<span class="number">0</span>], n)) % n</span><br><span class="line">print(<span class="string">&#x27;a = &#x27;</span> + str(a))</span><br><span class="line"></span><br><span class="line">c = ((k[<span class="number">2</span>] - k[<span class="number">1</span>]) - a * (k[<span class="number">0</span>] + k[<span class="number">1</span>])) % n</span><br><span class="line">print(<span class="string">&#x27;c = &#x27;</span> + str(c))</span><br></pre></td></tr></table></figure>
 <p>这里我起初是想使用最早的通项公式，但是发现，那个方程在模n下无解。。于是只能使用矩阵快速幂来做计算</p>
@@ -265,9 +323,9 @@
 <p>抽象问题为寻找到整数A，使得<span class="math inline">\(a * 11^{2020} p^2 + a*45^{2020}q^2 \equiv b_1p^2 + b_2q^2 \mod N\)</span></p>
 <p>且<span class="math inline">\(b_1, b_2\)</span> 较小，此处不难想到可以构造格子，使<span class="math inline">\(b_1, b_2\)</span> 为格子上SVP即可。</p>
 <p>我尝试过构造：</p>
-<p><span class="math inline">\(11^{2020} \quad 45^{2020} \\ N \quad \quad \ \ N\)</span></p>
+<p><img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20201007140519927.png"></p>
 <p>但由于<span class="math inline">\(11^{2020}\)</span>本身的位数过大，LLL后的GapSVP会直接返回<span class="math inline">\((N, N)\)</span>向量，故需要做一些转换（此处的<span class="math inline">\(11^{-2020}\)</span>为<span class="math inline">\(11^{2020}\)</span>在N上的模逆）：</p>
-<p><span class="math inline">\(1 \quad \quad \quad 11^{-2020} * 45^{2020} \\ 0 \quad \quad \ \ N\)</span></p>
+<p><img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20201007140537646.png"></p>
 <p>由此即可得到向量<span class="math inline">\((a_1, a_2)\)</span>，有<span class="math inline">\(a * 11^{2020} p^2 + a*45^{2020}q^2 \equiv a_1p^2 + a_2q^2 \mod N\)</span></p>
 <p>且 <span class="math inline">\(a = a_1 * 11^{-2020},\quad a_2 \equiv a1 * 11^{-2020}*45^{2020} \mod N\)</span></p>
 <p>分析一下p，q的位数，都是512位，故而<span class="math inline">\(p^2 \ or \ q^2\)</span> 的位数也不会超过1024，而求得的<span class="math inline">\(a_1, a_2\)</span>中最大的为1023位，可知<span class="math inline">\(a_1p^2 + a_2q^2\)</span> 最大位数为<span class="math inline">\(1024 + 1 + 1023 = 2048\)</span>，而N的位数为2048，故而只需让k遍历-1到1，必然存在<span class="math inline">\(a_1p^2 + a_2q^2 = k *m + (a_1p^2 + a_2q^2) \% N\)</span></p>
@@ -277,12 +335,12 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> sage.all <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">r = </span><br><span class="line">n,h,N = </span><br><span class="line">c = </span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line">h = (h-pow(<span class="number">14</span>, <span class="number">2020</span>, N) * (r**<span class="number">2</span>))%N</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Reduce</span>(<span class="params">n,m,h</span>):</span></span><br><span class="line">    inv = (<span class="number">45</span>**<span class="number">2020</span>)*inverse(<span class="number">11</span>**<span class="number">2020</span>,m)</span><br><span class="line">    lattice = Matrix([</span><br><span class="line">        [<span class="number">1</span>,inv],</span><br><span class="line">        [<span class="number">0</span>,m]</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">    res = lattice.LLL()</span><br><span class="line">    a1 = int(res[<span class="number">0</span>,<span class="number">0</span>])</span><br><span class="line">    a2 = int(res[<span class="number">0</span>,<span class="number">1</span>])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> a1&lt;<span class="number">0</span>:</span><br><span class="line">        a1,a2 = -a1,-a2%m</span><br><span class="line">    print(<span class="string">&#x27;a1 = &#x27;</span> + str(a1))</span><br><span class="line">    print(<span class="string">&#x27;a2 = &#x27;</span> + str(a2))</span><br><span class="line">    </span><br><span class="line">    tmp = int(a1*inverse(<span class="number">11</span>**<span class="number">2020</span>,m)*h)%m</span><br><span class="line">    x = var(<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">    y = var(<span class="string">&#x27;y&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">-1</span>,<span class="number">2</span>):</span><br><span class="line">        cur = tmp + i*m</span><br><span class="line">        eq1 = x*y==n</span><br><span class="line">        eq2 = a2*x**<span class="number">2</span> + a1*y**<span class="number">2</span> - cur == <span class="number">0</span></span><br><span class="line">        res = solve([eq1,eq2],x,y, solution_dict=<span class="literal">True</span>)</span><br><span class="line">        <span class="keyword">if</span> len(res) &gt; <span class="number">2</span>:</span><br><span class="line">            print(<span class="string">&quot;Got the solution&quot;</span>)</span><br><span class="line">            print(res[<span class="number">-1</span>])</span><br><span class="line">            <span class="keyword">return</span> int(abs(res[<span class="number">-1</span>][x])), int(abs(res[<span class="number">-1</span>][y]))</span><br><span class="line">        print(<span class="string">&quot;No solution for %d&quot;</span>%i)</span><br><span class="line"></span><br><span class="line">p, q = Reduce(n//r, N ,h)</span><br><span class="line"></span><br><span class="line">phi = (p<span class="number">-1</span>)*(q<span class="number">-1</span>)*(r<span class="number">-1</span>)</span><br><span class="line">d = inverse(e, phi)</span><br><span class="line">c = bytes_to_long(c)</span><br><span class="line">m = pow(c,d,n)</span><br><span class="line">print(long_to_bytes(m))</span><br></pre></td></tr></table></figure>
 <h5 id="copper_smith_e_d">Copper_smith_e_d</h5>
 <p>已知：</p>
-<p><span class="math inline">\(n = p * q * r \\ r \\ e * d \equiv 1 \mod ((p-1)*(q-1)*(r-1))\\ d^e \equiv t \mod n \\ e = 3\)</span></p>
+<p><span class="math inline">\(n = p * q * r ,\\\  r ,\\\  e * d \equiv 1 \mod ((p-1)*(q-1)*(r-1)) ,\\\  d^e \equiv t \mod n ,\\\  e = 3\)</span></p>
 <p>可以看到e非常的小为3，故可知<span class="math inline">\(e *d = 1 + k * (p-1)(q-1)(r-1)\)</span> 中k小于3，使k遍历1，2，即可得到等式<span class="math inline">\(e *d = 1 + k * (p-1)(q-1)(r-1)\)</span>， 再将<span class="math inline">\(d^3 \equiv t \mod n\)</span> 变为<span class="math inline">\((e * d )^3 \equiv 27 t \mod n\)</span></p>
 <p>从而得到方程：<span class="math inline">\((1 + k * (p-1)(q-1)(r-1))^3 \equiv 27t \mod n\)</span></p>
 <p>可化简为<span class="math inline">\((1 + k*(r-1)*(p*q -(p+1) +1))^3 \mod 27 t \mod n\)</span></p>
 <p>有单变量<span class="math inline">\(p+q\)</span>，分析<span class="math inline">\(p+q\)</span> 的位数最大为1025位，而n的位数为3344， 代入Copper_smith参数</p>
-<p>即为：$= 1, = 3, p+q n^{ - } $</p>
+<p>即为：<span class="math display">\[\beta = 1, \delta =  3, p+q \leq \frac{1}{2}n^{\frac{1}{3} - \epsilon} \]</span></p>
 <p>可近似为<span class="math inline">\(2 ^ {1025} - 1 \leq \frac{1}{2}n^{\frac{1}{3} - \epsilon}\)</span></p>
 <p>此处也可以随机取两个位数为1024的素数之和近似p+q，将<span class="math inline">\(\frac{1}{3} - \epsilon\)</span> 看作<span class="math inline">\(\frac{a}{b}\)</span>，找到满足满足<span class="math inline">\((2 * (p+q))^b &lt; n ^a\)</span>中<span class="math inline">\(\frac{a}{b}\)</span>最小的，则<span class="math inline">\(\epsilon = \frac{1}{3} - \frac{a}{b}\)</span>， 寻找代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    p = getPrime(<span class="number">1024</span>)</span><br><span class="line">    q = getPrime(<span class="number">1024</span>)</span><br><span class="line">    base = <span class="number">2</span> * (p+q)</span><br><span class="line">    tmp = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">100</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">100</span>):</span><br><span class="line">            <span class="keyword">if</span> base ** i &lt; n ** j:</span><br><span class="line">                tmp.append(j/i)</span><br><span class="line">    print(<span class="number">1</span>/<span class="number">3</span> - min(tmp))</span><br></pre></td></tr></table></figure>
@@ -295,10 +353,17 @@
 <p>一开始直接把key给了。。。不过本身Elgamal部分本身就很简单，其实并无所谓</p>
 <p>先求解Elgamal，计算出secret:</p>
 <p>已知：</p>
-<p><span class="math inline">\(c_1 = g^r \\ c_2 = m * g^{dr} \\ c_{11} = g^{B*r + A} \\ c_{12} = m * g^{B*r + A} \\ h = g ^ d\)</span></p>
+<p>$c_1 = g^r $</p>
+<p>$ c_2 = m * g^{dr} $</p>
+<p>$ c_{11} = g^{B*r + A} $</p>
+<p>$ c_{12} = m * g^{B*r + A} $</p>
+<p>$ h = g ^ d$</p>
 <p>推导：</p>
-<p><span class="math inline">\(c_2 ^{-B} = m^{-B} * (g^d)^{-Br} \\ c_{12} * c_2^{-B} = m^{1-B} * (g^d)^A \\ (c_{12} * c_2^{-B})^{\frac{1}{1-B}} = m * (g^d)^{\frac{A}{1-B}} \\ (c_{12} * c_2^{-B})^{\frac{1}{1-B}} * h^{\frac{1-B}{A}} = m\)</span></p>
-<p>从而得到secret，之后计算<span class="math inline">\(\phi(n)\)</span>，发现有 <span class="math inline">\(e|\phi(n)\)</span>，但<span class="math inline">\(n\)</span>有6个素因子，都不大，故对每个素因数<span class="math inline">\(p_i\)</span>，先在$ p_i^{l_i}<span class="math inline">\(下decrypt，即把e当作\)</span>$ ，得到<span class="math inline">\(m_i\)</span>，之后求模$ p_i^{l_i}<span class="math inline">\(下\)</span>m_i<span class="math inline">\(的\)</span>gcd(e, (p_i^{l_i}))$次根，然后CRT即可，完整exp如下：</p>
+<p><span class="math display">\[ c_2 ^{-B} = m^{-B} * (g^d)^{-Br} \]</span></p>
+<p><span class="math display">\[   c_{12} * c_2^{-B} = m^{1-B} * (g^d)^A \]</span></p>
+<p><span class="math display">\[   (c_{12} * c_2^{-B})^{\frac{1}{1-B}} = m * (g^d)^{\frac{A}{1-B}} \]</span></p>
+<p><span class="math display">\[   (c_{12} * c_2^{-B})^{\frac{1}{1-B}} * h^{\frac{1-B}{A}} = m\]</span></p>
+<p>从而得到secret，之后计算<span class="math inline">\(\phi(n)\)</span>，发现有 <span class="math inline">\(e|\phi(n)\)</span>，但<span class="math inline">\(n\)</span>有6个素因子，都不大，故对每个素因数<span class="math inline">\(p_i\)</span>，先在$ p_i^{l_i}<span class="math inline">\(下decrypt，即把e当作\)</span>$  $$ ，得到<span class="math inline">\(m_i\)</span>，之后求模$ p_i^{l_i}<span class="math inline">\(下\)</span>m_i<span class="math inline">\(的\)</span>gcd(e, (p_i^{l_i}))$次根，然后CRT即可，完整exp如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto_tools <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">g, h, A, B, p, q = </span><br><span class="line">c1, c2 = </span><br><span class="line">c11, c12 = </span><br><span class="line"></span><br><span class="line"><span class="comment"># calculate the secret</span></span><br><span class="line">g_br = (inverse(pow(g, A, p), p) * c11) % p</span><br><span class="line">tmp = pow(c12 * inverse(pow(c2, B, p), p), inverse(<span class="number">1</span>-B, q), p)</span><br><span class="line">m = tmp * inverse(pow(h, A * inverse(<span class="number">1</span>-B, q), p), p)</span><br><span class="line"></span><br><span class="line">c = </span><br><span class="line">n = m % p</span><br><span class="line">e = <span class="number">0x1296</span></span><br><span class="line">primes = [<span class="number">232087313537</span>, <span class="number">104280142799213</span>, <span class="number">28079229001363</span>, <span class="number">653551912583</span>, <span class="number">42044128297</span>, <span class="number">802576647765917</span>]</span><br><span class="line">index = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># check the primes</span></span><br><span class="line">base = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(primes)):</span><br><span class="line">    base = base * (primes[i]**index[i])</span><br><span class="line">print(base == n)</span><br><span class="line"></span><br><span class="line">phi = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(primes)):</span><br><span class="line">    phi.append(primes[i] ** (index[i]<span class="number">-1</span>) * (primes[i]<span class="number">-1</span>))</span><br><span class="line"></span><br><span class="line">low_e = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> phi:</span><br><span class="line">    low_e.append(int(gcd(i, e)))</span><br><span class="line"></span><br><span class="line">low_n = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(primes)):</span><br><span class="line">    low_n.append(primes[i] ** index[i])</span><br><span class="line"></span><br><span class="line">low_c = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(primes)):</span><br><span class="line">    low_c.append(pow(c, inverse(e//low_e[i], phi[i]), low_n[i]))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(low_n)):</span><br><span class="line">    print(<span class="string">&#x27;\n%d primes&#x27;</span>%(i+<span class="number">1</span>))</span><br><span class="line">    print(<span class="string">&#x27;n = &#x27;</span> + str(low_n[i]))</span><br><span class="line">    print(<span class="string">&#x27;root = &#x27;</span> + str(low_e[i]))</span><br><span class="line">    print(<span class="string">&#x27;c = &#x27;</span> + str(low_c[i]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># use sage&#x27;s &#x27;Mod(c,n).nth_root(root)&#x27;</span></span><br><span class="line">candidate = [<span class="number">353407247512303965045365245273514113979254413155723038594</span>, <span class="number">118406996121335867872417220406950412663021908207429086460086709649567668592818842789</span>, <span class="number">40838194187011975196269228876765908865444944296745005849695833986972327289154552784299932702051642970620861282724383667531261441125357573017325620944049102688903343462724551047586535304480</span>, <span class="number">1695123516800295425246681257666516560158663239197207672350847711896311171077931594423061655507605147792730816972030575396344034948137641207075718430653779535756721008018915068547</span>, <span class="number">4723044149650256515091565811539899787013565528592340044059397238</span>, <span class="number">214489300896472271161382790695870756301586580281999239401045130054091244899629639375835223662794331991713</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># check</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(candidate)):</span><br><span class="line">    <span class="keyword">assert</span> pow(candidate[i], e, low_n[i]) == c % low_n[i]</span><br><span class="line"></span><br><span class="line"><span class="comment"># find all roots</span></span><br><span class="line">roots = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(candidate)):</span><br><span class="line">    roots.append(all_roots_mod(low_n[i], candidate[i], low_e[i], phi[i]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># check again</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(candidate)):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> roots[i]:</span><br><span class="line">        <span class="keyword">assert</span> pow(j, e, low_n[i]) == c % low_n[i]</span><br><span class="line"></span><br><span class="line"><span class="comment"># solve</span></span><br><span class="line"><span class="keyword">for</span> i_1 <span class="keyword">in</span> range(<span class="number">6</span>):</span><br><span class="line">    <span class="keyword">for</span> i_2 <span class="keyword">in</span> range(<span class="number">6</span>):</span><br><span class="line">        <span class="keyword">if</span> i_1 == i_2:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> roots[i_1]:</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> roots[i_2]:</span><br><span class="line">                possible = long_to_bytes(GCRT([low_n[i_1], low_n[i_2]], [i, j])[<span class="number">0</span>])</span><br><span class="line">                <span class="keyword">if</span> all_ascii(possible):</span><br><span class="line">                    print(possible)</span><br><span class="line">                    sys.exit()</span><br></pre></td></tr></table></figure>
 <h5 id="square">Square</h5>
 <p>这题本质是要求出二元二次方程的整数通解，即求出解之间的递推式。使用这个<a target="_blank" rel="noopener" href="https://www.alpertron.com.ar/QUAD.HTM">工具</a>可以轻松解决，此处探讨一种特殊情况的<a target="_blank" rel="noopener" href="http://mathforum.org/library/drmath/view/55988.html">原理</a>（太久不看分析，感觉完全不会构造了orz），一般性情况的原理可见<a target="_blank" rel="noopener" href="https://www.alpertron.com.ar/METHODS.HTM">这里</a>。</p>
@@ -306,14 +371,19 @@
 <p>且 <span class="math inline">\(\exists k \in Z_+, \ let \ B^2 -4AC = k^2\)</span> （此处即为特殊条件）</p>
 <p>之后进行构造求解，根本思想是降低次数，即通过构造简化为二元一次方程求解</p>
 <p>一般需要降次时，容易想到需要构造平方来，于是先使用一个系数产生可配项</p>
-<p><span class="math inline">\((1) * 4A \\ \Rightarrow 4A^2x^2 + 4ABxy + 4ACy^2 +4ADx +4AEy + 4AF = 0 \quad (2)\)</span></p>
+<p>$(1) * 4A $</p>
+<p><span class="math display">\[   \Rightarrow 4A^2x^2 + 4ABxy + 4ACy^2 +4ADx +4AEy + 4AF = 0 \quad (2)\]</span></p>
 <p>之后2式加减<span class="math inline">\((B^2y^2 + 2BDy +D^2)\)</span> （通过这个构造trick来化简)</p>
-<p>$  A^2 x^2 + 4 A B+x y + B^2 y^2 + 4 A D x + 2 B D y + D^2 + \ 4 A C y^2 - B^2 y^2 + 4 A E y - 2 B D y + 4 A F - D^2 = 0$</p>
+<p><span class="math display">\[ \Rightarrow 
+4 A^2 x^2 + 4 A B+x y + B^2 y^2 + 4 A D x + 2 B D y + D^2 + \]</span></p>
+<p><span class="math display">\[   4 A C y^2 - B^2 y^2 + 4 A E y - 2 B D y + 4 A F - D^2 = 0 \]</span></p>
 <p>由此构造平方和，化简得<span class="math inline">\((2Ax+By+D)^2 - (ky)^2 +(4AE-2BD)*y = D^2 - 4AF \quad (3)\)</span></p>
 <p>再将左边构造成两个平方差</p>
-<p><span class="math inline">\((3) * k^2 + (2AE-BD)^2 \\ \Rightarrow (2Akx + Bky +Dk)^2 - (k^2y + (2AE-BD))^2 = D^2k^2 - 4AFk^2 + (2AE-BD)^2\)</span></p>
+<p>$(3) * k^2 + (2AE-BD)^2 $</p>
+<p><span class="math display">\[   \Rightarrow (2Akx + Bky +Dk)^2 - (k^2y + (2AE-BD))^2 = D^2k^2 - 4AFk^2 + (2AE-BD)^2 \]</span></p>
 <p>由此利用平方差公式，得到：</p>
-<p><span class="math inline">\(\Rightarrow [(2Akx + Bky +Dk) + (k^2y + 2AE-BD)][(2Akx + Bky +Dk) - (k^2y + 2AE-BD)] \\ = D^2k^2 - 4AFk^2 + (2AE-BD)^2\)</span></p>
+<p><span class="math display">\[ \Rightarrow [(2Akx + Bky +Dk) + (k^2y + 2AE-BD)][(2Akx + Bky +Dk) - (k^2y + 2AE-BD)] \]</span></p>
+<p><span class="math display">\[   = D^2k^2 - 4AFk^2 + (2AE-BD)^2\]</span></p>
 <p>此时分两种情况讨论：</p>
 <p>设<span class="math inline">\(C = D^2k^2 - 4AFk^2 + (2AE-BD)^2\)</span></p>
 <ol type="1">
@@ -363,13 +433,8 @@
 <p>已知：n组<span class="math inline">\(e_i\)</span>，满足<span class="math inline">\(e_i * d_i = 1 + ki * \phi(N), d &lt; N^{\delta}\)</span></p>
 <p>本题使用了<span class="math inline">\(lcm(N)\)</span>，相当于<span class="math inline">\(e_i * d_i = 1 + ki * \frac{\phi(N)}{g}\)</span>，并无无太大影响</p>
 <p>依据四个等式可以列出矩阵：</p>
-<figure>
-<img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200918180348094.png" alt="image-20200918180348094"><figcaption aria-hidden="true">image-20200918180348094</figcaption>
-</figure>
 <p>之后为了能够正确格基约化，需要将各分量放缩到数量级相近，通过简单计算使用如下放缩矩阵即可：</p>
-<figure>
-<img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200918180437622.png" alt="image-20200918180437622"><figcaption aria-hidden="true">image-20200918180437622</figcaption>
-</figure>
+<p><img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200918180437622.png"></p>
 <p>之后直接求解方程组，得到向量<span class="math inline">\(x_2\)</span>，然后利用如下推导，即可求出<span class="math inline">\(\phi(N)\)</span> <span class="math display">\[
 e_i * d_i = 1 + k_i * \frac{\phi(N)}{g}\\
 \Rightarrow \phi(N) = \frac{e_id_ig-g}{k_i}\\
@@ -380,9 +445,7 @@ e_i * d_i = 1 + k_i * \frac{\phi(N)}{g}\\
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto_tools <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> sage.all <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> sage.all_cmdline <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">N = </span><br><span class="line">e1 = </span><br><span class="line">e2 = </span><br><span class="line">c = </span><br><span class="line">E = [e1, e2]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2048</span>//<span class="number">3</span>,  <span class="number">2048</span>//<span class="number">3</span> + <span class="number">50</span>):</span><br><span class="line">    x = Integer(i) / Integer(<span class="number">2048</span>)</span><br><span class="line">    print(i)</span><br><span class="line">    N_1 = round(N**(Integer(<span class="number">1</span>)/Integer(<span class="number">2</span>)))</span><br><span class="line">    N_2 = round(N**(<span class="number">1</span>+x))</span><br><span class="line"></span><br><span class="line">    N_3 = round(N**(Integer(i) / Integer(<span class="number">100</span>)))</span><br><span class="line">    A = Matrix(ZZ, [[N,   -N_1 * N,   <span class="number">0</span>,            N**<span class="number">2</span>],</span><br><span class="line">                    [<span class="number">0</span>,   N_1 * e2,  -N_2 * e2,     -e2*N],</span><br><span class="line">                    [<span class="number">0</span>,    <span class="number">0</span>,         N_2 * e1,     -e1*N],</span><br><span class="line">                    [<span class="number">0</span>,    <span class="number">0</span>,         <span class="number">0</span>,            e1*e2]])</span><br><span class="line"></span><br><span class="line">    AL = A.LLL()</span><br><span class="line">    C = Matrix(ZZ, AL[<span class="number">0</span>])</span><br><span class="line">    B = A.solve_left(C)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    phi_base = floor(e2 * (B[<span class="number">1</span>] // B[<span class="number">0</span>]))</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">-1</span>, <span class="number">2</span>):</span><br><span class="line">        phi = phi_base + j</span><br><span class="line">        <span class="keyword">for</span> e <span class="keyword">in</span> E:</span><br><span class="line">            d = inverse(e, phi)</span><br><span class="line">            m = long_to_bytes(pow(c, d, N))</span><br><span class="line">            <span class="keyword">if</span> all_ascii(m):</span><br><span class="line">                print(m)</span><br><span class="line">                sys.exit(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 <p><del>奇怪的想法</del></p>
 <p>emmm我在复现的时候看paper，就觉得很奇怪，为什么构造的等式一定是这四个呢：</p>
-<figure>
-<img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200918181621345.png" alt="image-20200918181621345"><figcaption aria-hidden="true">image-20200918181621345</figcaption>
-</figure>
+<p><img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200918181621345.png"></p>
 <p>从理论上来说，将<span class="math inline">\(G_{1,2}\)</span> 替换成<span class="math inline">\(k_1W_2\)</span>，似乎也无伤大雅，但我尝试这样构造之后，并没有成功，即便爆破了放缩的系数，仍然无法求解，而且误差相当的大，想来可能是第一行多的N改变了bound，大概作者写的时候可能也经历了这种尝试吧233</p>
 <p>不过这题也帮我梳理了一些构造Latiice时的步骤：</p>
 <ol type="1">
@@ -402,9 +465,7 @@ e_i * d_i = 1 + k_i * \frac{\phi(N)}{g}\\
 <li>对于p上的任意椭圆曲线E，E的阶很大</li>
 <li>对于p上的超椭圆曲线，其Jacobi行列式的阶很大</li>
 </ol>
-<figure>
-<img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200927223628490.png" alt="image-20200927223628490"><figcaption aria-hidden="true">image-20200927223628490</figcaption>
-</figure>
+<p><img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200927223628490.png"></p>
 <p>如上所述，GF上的乘法群并不符合DDH假设，因为其可以通过计算Lengendre符号区分<span class="math inline">\(g^ab\)</span>和一般随机序列。故直接根据所给公钥，区分两组明文，但存在一定概率性（两组明文的Lengendre符号可能相同）。</p>
 <p>测试exp如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.PublicKey <span class="keyword">import</span> ElGamal</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> bytes_to_long</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> SystemRandom</span><br><span class="line"><span class="keyword">from</span> Crypto_tools <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p = </span><br><span class="line">g = </span><br><span class="line">y = </span><br><span class="line">pubkey = ElGamal.construct((p, g, y))</span><br><span class="line">base = jacobi(y, p)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> tqdm(range(<span class="number">2</span>**<span class="number">10</span>)):</span><br><span class="line">    rnd = SystemRandom()</span><br><span class="line">    msg1 = bytes_to_long(<span class="string">b&quot;Head&quot;</span> + os.urandom(<span class="number">124</span>))</span><br><span class="line">    msg2 = bytes_to_long(<span class="string">b&quot;Tail&quot;</span> + os.urandom(<span class="number">124</span>))</span><br><span class="line"></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        coin = rnd.randrange(<span class="number">2</span>)</span><br><span class="line">        gift = pubkey._encrypt([msg1, msg2][coin], rnd.randrange(<span class="number">1</span>, p - <span class="number">1</span>))</span><br><span class="line">        check_1 = jacobi(gift[<span class="number">0</span>], p)</span><br><span class="line">        check_2 = jacobi(gift[<span class="number">1</span>], p)</span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> check_1 == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> check_2 == <span class="number">1</span>:</span><br><span class="line">                ans = <span class="number">0</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                ans = <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> check_1 == <span class="number">-1</span> <span class="keyword">and</span> base == <span class="number">-1</span>:</span><br><span class="line">            <span class="keyword">if</span> check_2 == <span class="number">1</span>:</span><br><span class="line">                ans = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> ans == coin:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> count == <span class="number">50</span>:</span><br><span class="line">                print(<span class="string">&#x27;try %d times&#x27;</span> % i)</span><br><span class="line">                print(<span class="string">&#x27;flag&#123;LordRiot\&#x27;s test flag&#125;&#x27;</span>)</span><br><span class="line">                exit()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
@@ -424,16 +485,12 @@ e_i * d_i = 1 + k_i * \frac{\phi(N)}{g}\\
 <p>这里的曲线是基于<span class="math inline">\(F_{q^n}, q = 2, n = 256\)</span> 的</p>
 <p>这里使用的超椭圆曲线即为：<span class="math inline">\(v^2 +h(u)v = f(u)\)</span>，此处<span class="math inline">\(h(u) = u^2 + u, f(u) = u^5 + u^3 + 1\)</span></p>
 <p>之前的paper中提供了一种计算Jacobian阶的算法（看到Balsn是用的<a target="_blank" rel="noopener" href="http://magma.maths.usyd.edu.au/calc/">Magma</a>，可以直接算）</p>
-<figure>
-<img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200930154458064.png" alt="image-20200930154458064"><figcaption aria-hidden="true">image-20200930154458064</figcaption>
-</figure>
+<p><img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200930154458064.png"></p>
 <p><em>Magma代码：</em></p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">P&lt;x&gt; := PolynomialRing(GF(<span class="number">2</span>^<span class="number">256</span>));</span><br><span class="line">C := HyperellipticCurve(x^<span class="number">5</span> + x^<span class="number">3</span> + <span class="number">1</span>, x^<span class="number">2</span> + x);</span><br><span class="line">C;</span><br><span class="line">J := Jacobian(C);</span><br><span class="line">O := #J;</span><br><span class="line">O;</span><br></pre></td></tr></table></figure>
 <p>具体算法步骤可以参见Way to Crypto中的描述和exp中的代码</p>
 <p>这里的F.fetch_int(n) 函数的意思是将整数n转为二进制序列，然后将其作为域F上多项式<span class="math inline">\(\sum_{i=1}^r a_ix_i\)</span>的系数，即<span class="math inline">\(a_i\)</span>，实例如下：</p>
-<figure>
-<img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200929170701091.png" alt="image-20200929170701091"><figcaption aria-hidden="true">image-20200929170701091</figcaption>
-</figure>
+<p><img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200929170701091.png"></p>
 <p>而decode时的这个操作:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = [i.integer_representation() <span class="keyword">for</span> i <span class="keyword">in</span> x]</span><br></pre></td></tr></table></figure>
 <p>其中于integer_representation()函数为fetch_int()的逆函数，即是将多项式转为了一个整数。</p>
@@ -451,9 +508,7 @@ e_i * d_i = 1 + k_i * \frac{\phi(N)}{g}\\
 <p>exp如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> winpwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto_tools <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_num</span>(<span class="params">until</span>):</span></span><br><span class="line">    p.recvuntil(until)</span><br><span class="line">    <span class="keyword">return</span> int(p.recvuntil(<span class="string">&#x27;\n&#x27;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">BITS = <span class="number">2048</span></span><br><span class="line">flag_len = BITS // <span class="number">8</span></span><br><span class="line">p = remote(<span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="number">10002</span>)</span><br><span class="line">n = get_num(<span class="string">&#x27;n = &#x27;</span>)</span><br><span class="line">e = get_num(<span class="string">&#x27;e = &#x27;</span>)</span><br><span class="line"></span><br><span class="line">x0 = get_num(<span class="string">&#x27;x0 = &#x27;</span>)</span><br><span class="line">x1 = get_num(<span class="string">&#x27;x1 = &#x27;</span>)</span><br><span class="line"></span><br><span class="line">p.sendline(str(x0))</span><br><span class="line">m0 = get_num(<span class="string">&#x27;m0p = &#x27;</span>)</span><br><span class="line">m1 = get_num(<span class="string">&#x27;m1p = &#x27;</span>)</span><br><span class="line"></span><br><span class="line">m0r = (((m0 &amp; <span class="number">1</span>) &lt;&lt; (BITS - <span class="number">1</span>)) | (m0 &gt;&gt; <span class="number">1</span>))</span><br><span class="line">k1_flag = m1 ^ m0 ^ m0r</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># partial oracle attack</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">oracle</span>(<span class="params">enc</span>):</span></span><br><span class="line">    cnt = <span class="number">0</span></span><br><span class="line">    loop = <span class="number">40</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(loop):</span><br><span class="line">        _x0 = get_num(<span class="string">&#x27;x0 = &#x27;</span>)</span><br><span class="line">        _x1 = get_num(<span class="string">&#x27;x1 = &#x27;</span>)</span><br><span class="line">        p.sendline(str(_x0 ^ enc))</span><br><span class="line">        low_bit = get_num(<span class="string">&#x27;m0p = &#x27;</span>) &amp; <span class="number">1</span></span><br><span class="line">        high_bit = get_num(<span class="string">&#x27;m1p = &#x27;</span>) &gt;&gt; (BITS - <span class="number">1</span>)</span><br><span class="line">        cnt += low_bit ^ high_bit</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> <span class="keyword">if</span> cnt / loop &gt; <span class="number">0.5</span> <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partial_oracle_attack</span>(<span class="params">c, e, n, enc</span>):</span></span><br><span class="line">    nbits = n.bit_length()</span><br><span class="line">    decimal.getcontext().prec = nbits</span><br><span class="line">    low = decimal.Decimal(<span class="number">0</span>)</span><br><span class="line">    high = decimal.Decimal(n)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> tqdm(range(nbits)):</span><br><span class="line">        c = (c * pow(<span class="number">2</span>, e, n)) % n</span><br><span class="line">        <span class="keyword">if</span> oracle(c) == <span class="number">0</span>:</span><br><span class="line">            high = (low + high) / <span class="number">2</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            low = (low + high) / <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> i % <span class="number">8</span> == <span class="number">0</span>:</span><br><span class="line">            flag = enc ^ int(high)</span><br><span class="line">            print(long_to_bytes(flag)[:i // <span class="number">8</span>])</span><br><span class="line">    <span class="keyword">return</span> int(high)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">k1 = partial_oracle_attack(x0 ^ x1, e, n, k1_flag)</span><br></pre></td></tr></table></figure>
 <p>由于其是有概率的，所以可能需要多试几次，成功时效果如下：</p>
-<figure>
-<img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20201004150712900.png" alt="image-20201004150712900"><figcaption aria-hidden="true">image-20201004150712900</figcaption>
-</figure>
+<p><img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20201004150712900.png"></p>
 <p>本地大概需要25秒左右可以跑出一字节flag。</p>
 <h4 id="cryptoctf-2020">CryptoCTF 2020</h4>
 <h5 id="decent-rsa">Decent RSA</h5>
@@ -461,9 +516,7 @@ e_i * d_i = 1 + k_i * \frac{\phi(N)}{g}\\
 <p>此题中，n在<span class="math inline">\(GF(11)\)</span> 上表示为如下</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x^<span class="number">592</span> + x^<span class="number">589</span> + <span class="number">2</span>*x^<span class="number">559</span> + x^<span class="number">547</span> + <span class="number">2</span>*x^<span class="number">501</span> + <span class="number">2</span>*x^<span class="number">498</span> + <span class="number">2</span>*x^<span class="number">492</span> + <span class="number">2</span>*x^<span class="number">475</span> + <span class="number">2</span>*x^<span class="number">472</span> + <span class="number">4</span>*x^<span class="number">468</span> + <span class="number">2</span>*x^<span class="number">456</span> + <span class="number">4</span>*x^<span class="number">444</span> + <span class="number">4</span>*x^<span class="number">442</span> + <span class="number">2</span>*x^<span class="number">430</span> + <span class="number">2</span>*x^<span class="number">420</span> + <span class="number">4</span>*x^<span class="number">401</span> + <span class="number">4</span>*x^<span class="number">375</span> + <span class="number">8</span>*x^<span class="number">353</span> + <span class="number">4</span>*x^<span class="number">329</span> + <span class="number">8</span>*x^<span class="number">327</span> + <span class="number">2</span>*x^<span class="number">311</span> + <span class="number">4</span>*x^<span class="number">303</span> + <span class="number">6</span>*x^<span class="number">296</span> + <span class="number">2</span>*x^<span class="number">293</span> + <span class="number">4</span>*x^<span class="number">263</span> + <span class="number">2</span>*x^<span class="number">251</span> + <span class="number">4</span>*x^<span class="number">220</span> + <span class="number">8</span>*x^<span class="number">205</span> + <span class="number">4</span>*x^<span class="number">196</span> + <span class="number">4</span>*x^<span class="number">194</span> + <span class="number">8</span>*x^<span class="number">179</span> + <span class="number">8</span>*x^<span class="number">148</span> + <span class="number">4</span>*x^<span class="number">124</span> + <span class="number">4</span>*x^<span class="number">15</span> + <span class="number">8</span></span><br></pre></td></tr></table></figure>
 <p>分解得p，q：</p>
-<figure>
-<img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20201004175046117.png" alt="image-20201004175046117"><figcaption aria-hidden="true">image-20201004175046117</figcaption>
-</figure>
+<p><img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20201004175046117.png"></p>
 <p>之后分解即可。</p>
 <p>test demo：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">bits = <span class="number">256</span></span><br><span class="line">p = getPrime(bits)</span><br><span class="line">q = getPrime(bits)</span><br><span class="line">index = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    p = next_prime(p)</span><br><span class="line">    q = next_prime(q)</span><br><span class="line">    n = p * q</span><br><span class="line">    <span class="keyword">for</span> prime <span class="keyword">in</span> primes:</span><br><span class="line">        tmp = sys_convert(n, prime, max=primes[<span class="number">-1</span>]).count(<span class="string">&#x27;0&#x27;</span>)/len(sys_convert(n, prime, max=primes[<span class="number">-1</span>]))</span><br><span class="line">        <span class="keyword">if</span> tmp &gt; <span class="number">0.8</span>:</span><br><span class="line">            print(<span class="string">&#x27;p =&#x27;</span>, p)</span><br><span class="line">            print(<span class="string">&#x27;q =&#x27;</span>, q)</span><br><span class="line">            print(<span class="string">&#x27;n =&#x27;</span>, n)</span><br><span class="line">            print(<span class="string">&#x27;density =&#x27;</span>, tmp)</span><br><span class="line">            print(<span class="string">&#x27;n base on %d = %s&#x27;</span> % (prime, sys_convert(n, prime, max=primes[<span class="number">-1</span>])))</span><br><span class="line">            exit()</span><br><span class="line"></span><br><span class="line">    index += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> index % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">        print(<span class="string">&#x27;%d rounds&#x27;</span> % (index//<span class="number">100</span>))</span><br><span class="line">        p = getPrime(bits)</span><br><span class="line">        q = getPrime(bits)</span><br></pre></td></tr></table></figure>
@@ -493,9 +546,7 @@ a_n = \frac{6*a_{n-1}^2}{a_{n-1}} - \frac{8a_{n-1}a_{n-2}}{a_{n-3}} \\
 <p>然后思路有两种，一种是直接找到足够大的index，另一种是找两个大点的素数然后CRT，遗憾的是index到200的时候仍然无法获得flag，于是改为第二种：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">factors_list = list(get_phi_a(<span class="number">606</span>, <span class="literal">True</span>))</span><br><span class="line">print(len(factors_list))</span><br><span class="line">e = <span class="number">0x10001</span> + <span class="number">2</span></span><br><span class="line"><span class="keyword">for</span> prime <span class="keyword">in</span> itertools.combinations(factors_list, <span class="number">2</span>):</span><br><span class="line">    p = prime[<span class="number">0</span>]</span><br><span class="line">    q = prime[<span class="number">1</span>]</span><br><span class="line">    n = p * q</span><br><span class="line">    phi = (p<span class="number">-1</span>) * (q<span class="number">-1</span>)</span><br><span class="line">    m = pow(enc, inverse(e, phi), n)</span><br><span class="line">    flag = long_to_bytes(m)</span><br><span class="line">    <span class="keyword">if</span> <span class="string">b&#x27;CCTF&#x27;</span> <span class="keyword">in</span> flag:</span><br><span class="line">        print(flag)</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 <p>得到所有prime大概需要7，8分钟，最终得到flag：</p>
-<figure>
-<img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20201005231113072.png" alt="image-20201005231113072"><figcaption aria-hidden="true">image-20201005231113072</figcaption>
-</figure>
+<p><img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20201005231113072.png"></p>
 
     </div>
 
@@ -505,7 +556,7 @@ a_n = \frac{6*a_{n-1}^2}{a_{n-1}} - \frac{8a_{n-1}a_{n-2}}{a_{n-3}} \\
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Crypto/" rel="tag"># Crypto</a>
+              <a href="/tags/Crypto-in-CTF/" rel="tag"># Crypto in CTF</a>
           </div>
 
         
@@ -575,6 +626,8 @@ a_n = \frac{6*a_{n-1}^2}{a_{n-1}} - \frac{8a_{n-1}a_{n-2}}{a_{n-3}} \\
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lord Riot"
+      src="https://raw.githubusercontent.com/Lord-Riot/Lord-Riot.github.io/master/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">Lord Riot</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -586,6 +639,10 @@ a_n = \frac{6*a_{n-1}^2}{a_{n-1}} - \frac{8a_{n-1}a_{n-2}}{a_{n-3}} \\
           <span class="site-state-item-count">1</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
         <span class="site-state-item-count">1</span>
@@ -623,8 +680,6 @@ a_n = \frac{6*a_{n-1}^2}{a_{n-1}} - \frac{8a_{n-1}a_{n-2}}{a_{n-3}} \\
   </span>
   <span class="author" itemprop="copyrightHolder">Lord Riot</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
 
         
 
@@ -660,6 +715,10 @@ a_n = \frac{6*a_{n-1}^2}{a_{n-1}} - \frac{8a_{n-1}a_{n-2}}{a_{n-3}} \\
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
