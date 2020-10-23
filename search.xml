@@ -316,7 +316,7 @@ a_n = \frac{6*a_{n-1}^2}{a_{n-1}} - \frac{8a_{n-1}a_{n-2}}{a_{n-3}} \\
 <p><img src="/2020/10/23/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0-3/image-20201005231113072.png"></p>
 <h4 id="n1ctf-2020">N1CTF 2020</h4>
 <h5 id="easy-rsa">easy RSA</h5>
-<p>本题有两层，一层是分解n，一层是恢复LWE，恢复LWE相对简单，与攻击GGH差不多，直接LLL后svp即可，难点在于利用p，q生成弱点分解n。</p>
+<p>本题有两层，一层是分解n，一层是恢复LWE，恢复LWE相对简单，与攻击GGH差不多，直接LLL后CVP即可，难点在于利用p，q生成弱点分解n。</p>
 <p><span class="math inline">\(f(x) = a_4x^4 + a_3x^3 + a_2x^2 + a_1 x + a_0\)</span></p>
 <p><span class="math inline">\(g(x) = b_4x^4 + b_3x^3 + b_2x^2 + b_1 x + b_0\)</span></p>
 <p><span class="math inline">\(x_0= 3^{66}\)</span>， p为<span class="math inline">\(f(x_0)\)</span>最大的根，q为<span class="math inline">\(g(x_0)\)</span>最大的根</p>
@@ -325,7 +325,7 @@ a_n = \frac{6*a_{n-1}^2}{a_{n-1}} - \frac{8a_{n-1}a_{n-2}}{a_{n-3}} \\
 <p><span class="math display">\[\begin{bmatrix} 1 &amp; 0  &amp; \ldots &amp; 0 &amp; 0 &amp; x^8 \\ 0 &amp; 1  &amp; \ldots &amp; 0 &amp; 0 &amp; x^7 \\ \vdots  &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots  &amp; \vdots \\ 0 &amp; 0 &amp;  \ldots &amp; 1 &amp;  0 &amp; x \\ 0 &amp; 0  &amp; \ldots &amp; 0 &amp;  1 &amp; 1 \\ 0 &amp;  0 &amp; \ldots &amp; 0 &amp;  0 &amp;  N \end{bmatrix}\]</span></p>
 <p>目标向量为<span class="math inline">\((t_8, t_7, \dots, t_0, 0)\)</span>，由于<span class="math inline">\(t_r = \sum_{i+j=r}a_i*b_j\)</span>，故<span class="math inline">\(t_i &lt; 2^{64} * (5 - |i-4|)\)</span></p>
 <p>则其范数上界为<span class="math inline">\(\sqrt{\sum_{i=0}^8 (2^{64} * (5 - |i-4|))^2 } &lt; 2 ^ {68}\)</span></p>
-<p>则由Minkowski定理得$2 ^ {68}&lt; n^{} det(L)^{} =  N^{} <span class="math inline">\(， 而\)</span> N^{} &gt; 2^{71}$</p>
+<p>则由Minkowski定理得 $ 2 ^ {68} &lt; n^{} det(L)^{} =  N^{} <span class="math inline">\(， 而\)</span>  N^{} &gt; 2^{71} $</p>
 <p>故知Minkowski上界满足，但仍需要满足格内各基向量均大于目标向量范数，即需要在原有矩阵上乘均衡系数T，可知$ 2 ^ {68} T$</p>
 <p>构造代码如下：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">M = matrix(ZZ, <span class="number">10</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">x = <span class="number">3</span> ** <span class="number">66</span></span><br><span class="line">balance = <span class="number">2</span> ** <span class="number">68</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):</span><br><span class="line">    M[i, i] = <span class="number">1</span></span><br><span class="line">    M[i, <span class="number">9</span>] = (x ** (<span class="number">8</span>-i)) * balance</span><br><span class="line"></span><br><span class="line">M[<span class="number">9</span>, <span class="number">9</span>] = n * balance</span><br><span class="line">L = M.LLL()</span><br><span class="line">print(L[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
