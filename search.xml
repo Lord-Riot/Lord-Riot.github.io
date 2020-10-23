@@ -3,7 +3,8 @@
   <entry>
     <title>杂题闲记</title>
     <url>/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="强网杯">强网杯</h4>
+    <content><![CDATA[<p><em>此系列博客主要记录一下一些题的做题想法（各种rz心路历程orz</em></p>
+<h4 id="强网杯">强网杯</h4>
 <h5 id="proof-for-dice2cry">proof for dice2cry</h5>
 <p>本质上即是partial oracle mod 3</p>
 <p>根本问题在于对于<span class="math inline">\((3 *m \mod n) \mod 3\)</span>，是否可以根据模数判断m所在区间，即属于<span class="math inline">\((0, \frac{1}{3}n), (\frac{1}{3}n, \frac{2}{3}n), ( \frac{2}{3}n,n)\)</span> 中的哪一个。</p>
@@ -327,7 +328,7 @@ a_n = \frac{6*a_{n-1}^2}{a_{n-1}} - \frac{8a_{n-1}a_{n-2}}{a_{n-3}} \\
 <p>则其范数上界为<span class="math inline">\(\sqrt{\sum_{i=0}^8 (2^{64} * (5 - |i-4|))^2 } &lt; 2 ^ {68}\)</span></p>
 <p>则由Minkowski定理得 <span class="math display">\[ 2 ^ {68} &lt; n^{\frac{1}{2}} det(L)^{\frac{1}{n}} = \sqrt{10} N^{\frac{1}{10}} \]</span></p>
 <p>而<span class="math display">\[ \sqrt{10} N^{\frac{1}{10}} &gt; 2^{71} \]</span></p>
-<p>故知Minkowski上界满足，但仍需要满足格内各基向量均大于目标向量范数，即需要在原有矩阵上乘均衡系数T，可知$ 2 ^ {68} T$</p>
+<p>故知Minkowski上界满足，但仍需要满足格内各基向量均大于目标向量范数，即需要在原有矩阵上乘均衡系数T，可知$ 2 ^ {68} &lt; T$</p>
 <p>构造代码如下：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">M = matrix(ZZ, <span class="number">10</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">x = <span class="number">3</span> ** <span class="number">66</span></span><br><span class="line">balance = <span class="number">2</span> ** <span class="number">68</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):</span><br><span class="line">    M[i, i] = <span class="number">1</span></span><br><span class="line">    M[i, <span class="number">9</span>] = (x ** (<span class="number">8</span>-i)) * balance</span><br><span class="line"></span><br><span class="line">M[<span class="number">9</span>, <span class="number">9</span>] = n * balance</span><br><span class="line">L = M.LLL()</span><br><span class="line">print(L[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
 <p>得到解向量后，直接多项式分解即可得到<span class="math inline">\(a_i, b_i\)</span>，则可分解n，分解部分完整代码如下：</p>
