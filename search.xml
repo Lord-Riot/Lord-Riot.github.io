@@ -27,9 +27,7 @@
 <p>这一题有个很大的非预期，就是由于x，y坐标给的较小，可以完全通过hackergame2020中OT的方法来获得完整的一对<span class="math inline">\(x, y\)</span>，由于p-1非常光滑，可以直接在其曲线上使用Pohlig Hellman算法来得到e，从而得到flag。</p>
 <p>这里谈下预期解法，是通过一个映射来讲曲线的点映射到GF上，然后构造OT，再在GF上使用Pohlig Hellman求解的，具体得到这个映射的方法很多，我这里讲一种比较简单的求通项得到的方法。</p>
 <p>稍作分析可以发现题给曲线其实是一个<span class="math inline">\(GF(p)\)</span> 上的pell方程，即<span class="math inline">\(x^2 \equiv Dy^2 + u^2\)</span>，而pell方程的解可以通过以下方法得到（这里的<span class="math inline">\(x_n\)</span> 即对应<span class="math inline">\((nG)x\)</span>，即n倍点的坐标）</p>
-<figure>
-<img src="/2021/03/10/%E6%91%B8%E9%B1%BCWriteup-2/image-20210310232854416.png" alt="image-20210310232854416"><figcaption aria-hidden="true">image-20210310232854416</figcaption>
-</figure>
+<p><img src="/2021/03/10/%E6%91%B8%E9%B1%BCWriteup-2/image-20210310232854416.png"></p>
 <p>对矩阵<span class="math inline">\(\begin{bmatrix} x_1 &amp; Dy_1 \\ y_1 &amp; x_1\end{bmatrix}\)</span>，进行对角化，可以得到其特征值为$ D y + x$，之后求得 <span class="math display">\[
 x_n = \frac{(y_1\sqrt D + x_1)^n + (-y_1\sqrt D + x_1)^n}{2 u^{n-1}}\\
 y_n = \frac{(y_1\sqrt D + x_1)^n - (-y_1\sqrt D + x_1)^n}{2 \sqrt Du^{n-1}}
