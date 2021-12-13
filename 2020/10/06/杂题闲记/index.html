@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lord-riot.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="强网杯\安恒八月赛">
+<meta property="og:type" content="article">
+<meta property="og:title" content="杂题闲记">
+<meta property="og:url" content="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Lord Riot&#39;s Blog">
+<meta property="og:description" content="强网杯\安恒八月赛">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200827101436166.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20201007140519927.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20201007140537646.png">
+<meta property="article:published_time" content="2020-10-06T07:35:59.000Z">
+<meta property="article:modified_time" content="2021-05-16T08:34:22.888Z">
+<meta property="article:author" content="Lord Riot">
+<meta property="article:tag" content="Crypto in CTF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200827101436166.png">
+
+<link rel="canonical" href="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>杂题闲记 | Lord Riot's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lord Riot's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lord-riot.github.io/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Lord-Riot/Lord-Riot.github.io/master/images/avatar.jpg">
+      <meta itemprop="name" content="Lord Riot">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lord Riot's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          杂题闲记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-06 15:35:59" itemprop="dateCreated datePublished" datetime="2020-10-06T15:35:59+08:00">2020-10-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-16 16:34:22" itemprop="dateModified" datetime="2021-05-16T16:34:22+08:00">2021-05-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Crypto-in-CTF/" itemprop="url" rel="index"><span itemprop="name">Crypto in CTF</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">强网杯\安恒八月赛</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><em>此系列博客主要记录一下一些题的做题想法（各种rz心路历程orz</em></p>
+<h4 id="强网杯">强网杯</h4>
+<h5 id="proof-for-dice2cry">proof for dice2cry</h5>
+<p>本质上即是partial oracle mod 3</p>
+<p>根本问题在于对于<span class="math inline">\((3 *m \mod n) \mod 3\)</span>，是否可以根据模数判断m所在区间，即属于<span class="math inline">\((0, \frac{1}{3}n), (\frac{1}{3}n, \frac{2}{3}n), ( \frac{2}{3}n,n)\)</span> 中的哪一个。</p>
+<p>case 0：</p>
+<p>如果模3的结果为0，那么其实可以很容易的知道<span class="math inline">\(3*m\)</span>并没有被截断，故而属于$ (0, n)$ 区间</p>
+<p>case 1/2：</p>
+<p>对于模数为1或2的情况，并不存在一定的一一对应的解区间，但对于相同的n，1/2对应的区间是一定的，下面给出第二区间的证明（第三区间类似）：</p>
+<p>$m (n, n), (3 *m -n) x ,  x = 1  or  2 $</p>
+<p>使用反证法，不妨设</p>
+<p><span class="math inline">\(\exists \ m_1, m_2 ,\\\  (3 * m_1 -n) \equiv x_1 \mod 3 , \quad (3 *m_2 -n) \equiv x_2 \mod 3 ,\\\  x_1 \neq x_2\)</span></p>
+<p>两式相减得到</p>
+<p><span class="math inline">\(\Rightarrow 3 * (m_1 - m_2) \equiv x_3 \mod 3, x_3 \neq 0\)</span></p>
+<p>又因为</p>
+<p><span class="math inline">\(3 | 3 *(m_1-m_2)\)</span></p>
+<p>故<span class="math inline">\(3 * (m_1-m_2) \equiv 0 \mod 3\)</span>，假设错误，命题得证。</p>
+<h4 id="安恒8月赛">安恒8月赛</h4>
+<p>这次的crypto貌似是shallow，tb还有coin出的。。。确实有水平，比赛的时候只有LCG那个比较有思路，另外俩个有点懵。。感觉这几个题出到月赛有点浪费hh，时间太短，做出来的人并不多</p>
+<h5 id="math-stream">math stream</h5>
+<p>观察得到LCG的迭代关系为<span class="math inline">\(k_i \equiv a * k_{i-2} + (a + 1) * k_{i-1} + c \mod n\)</span></p>
+<p>然而相关参数<span class="math inline">\(n, c, a\)</span> 一个都没给，只给出了301到307这6个生成数据，需要我们预测最后一个数据，发现数列长度<span class="math inline">\(2^{1024}\)</span>，于是考虑可以使用矩阵快速幂（复杂度<span class="math inline">\(O(logn)\)</span>）。</p>
+<h6 id="计算通项公式"><del>计算通项公式</del>：</h6>
+<p>待定系数x，y，z，则有<span class="math inline">\(k_i - x * k_{i-1} + z * c \equiv y*(k_{i-1} - x * k_{i-2} + z * c) \mod n\)</span></p>
+<p>可知：</p>
+<p><span class="math inline">\(x + y = a+1 ,\\\  -x * y = a ,\\\  (y-1)* z = 1\)</span></p>
+<p>得到：</p>
+<p><span class="math inline">\(x = \frac {a + 1 + \sqrt {a^2 + 6a + 1} }{2} ,\\\  y = \frac {a + 1 - \sqrt {a^2 + 6a + 1} }{2} ,\\\  z = \frac {2 }{a - 1 - \sqrt {a^2 + 6a + 1} }\)</span></p>
+<p>设<span class="math inline">\(s_i = k_i - x * k_{i-1} + z * c \mod n\)</span>，则可知<span class="math inline">\(s_i\)</span>为<span class="math inline">\(GF(n)\)</span>上的等比数列，</p>
+<p>有 <span class="math inline">\(s_{i+2} = y ^ i(k_2 -x * k_1 + z *c) \mod n\)</span>，<span class="math inline">\(k_1, k_2\)</span>即为初始生成的随机种子</p>
+<p>有<span class="math inline">\(k_{i+2} = x^i*k_2 + (k_2 -x * k_1 + z *c)*\sum_{j=0}^{i}x^jy^{i-j} - z*c*\sum_{j = 0}^{i-1}x^j\)</span></p>
+<p><em>上面是我做题时的错误路线，我一开始以为是纯数列题orz</em></p>
+<h6 id="构造格子"><del>构造格子</del></h6>
+<p>通过上面的通项公式可以发现，想要将数列的二阶公式降到一阶需要让参数变的异常复杂，故直接使用二阶公式作为来构造格子</p>
+<p><span class="math inline">\(k_i \equiv a * k_{i-2} + (a + 1) * k_{i-1} + c \mod n\)</span></p>
+<p><span class="math inline">\(\Rightarrow k_i - k_{i-1} \equiv a * (k_{i-2} + k_{i-1}) + c \mod n\)</span></p>
+<p><span class="math inline">\(\Rightarrow k_i - k_{i-1} = a * (k_{i-2} + k_{i-1}) + c +T *n, \quad T \in Z\)</span></p>
+<p>由于对<span class="math inline">\(a,c, n\)</span> 一无所知，故只能使用四组<span class="math inline">\(k_i - k_{i+1}, k_{i-2} + k_{i-1}\)</span> 构造格子</p>
+<p>设<span class="math inline">\(fini_{i} = k_{i+2}-k_{i}, init_i = k_i + k_{i+1}\)</span></p>
+<p>则有$fini_i = a * init_i + c + T_i * n $</p>
+<p>于是我构造了如下格子：</p>
+<p><img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20200827101436166.png"></p>
+<p>但前四行的最后一列并无法平衡，因为需要找到<span class="math inline">\(B_0, B_1, B_2, B_3\)</span> 使得<span class="math inline">\(\sum_{i=0}^{4}B_i*(fini_i-a*init_i-c) &lt;&lt; min{B_i}\)</span>， 而我们并不知道<span class="math inline">\(a,c\)</span>，构造出这样的<span class="math inline">\(B_i\)</span>，显然是不可能的，但如果我们能求出n，那么只需将对角线上的1替换为n，即可解决问题。</p>
+<p>然后在求解n的过程中，我意识到完全不用格子ojz，直接推就能推出来。。。而且将n代入也未能求解。。。</p>
+<h6 id="推导求解">推导求解</h6>
+<p>由之前推导的<span class="math inline">\(k_i - k_{i-1} \equiv a * (k_{i-2} + k_{i-1}) + c \mod n\)</span></p>
+<p>则有 <span class="math inline">\((k_i - k_{i-1}) - (k_{i-1} - k_{i-2}) \equiv a *(k_{i-1} - k_{i-3}) \mod n\)</span></p>
+<p>由此，只要知道了n，则可以计算出a，c</p>
+<p>根据同模，利用最大公因数来求n</p>
+<p>利用$(k_{i-2} - k_{i-4}) * (a *(k_{i-1} - k_{i-3}) n) $</p>
+<p>$ (k_{i-1} - k_{i-3}) * (a *(k_{i-2} - k_{i-4}) n) n$</p>
+<p>此部分exp如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_f</span>(<span class="params">k, i</span>):</span></span><br><span class="line">    <span class="keyword">assert</span> len(k) &gt; i<span class="number">-4</span> &gt;= <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> abs((k[i] - <span class="number">2</span> * k[i<span class="number">-1</span>] + k[i<span class="number">-2</span>]) * (k[i<span class="number">-2</span>] - k[i<span class="number">-4</span>]) - (k[i<span class="number">-1</span>] - k[i<span class="number">-3</span>]) * (k[i<span class="number">-1</span>] - <span class="number">2</span> * k[i<span class="number">-2</span>] + k[i<span class="number">-3</span>]))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f_1 = get_f(k, <span class="number">4</span>)</span><br><span class="line">f_2 = get_f(k, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">n = gcd(f_1, f_2)</span><br><span class="line">print(<span class="string">&#x27;n = &#x27;</span> + str(n))</span><br><span class="line"><span class="keyword">assert</span> isPrime(n)</span><br><span class="line"></span><br><span class="line">a = ((k[<span class="number">3</span>] - <span class="number">2</span> * k[<span class="number">2</span>] + k[<span class="number">1</span>]) * inverse(k[<span class="number">2</span>] - k[<span class="number">0</span>], n)) % n</span><br><span class="line">print(<span class="string">&#x27;a = &#x27;</span> + str(a))</span><br><span class="line"></span><br><span class="line">c = ((k[<span class="number">2</span>] - k[<span class="number">1</span>]) - a * (k[<span class="number">0</span>] + k[<span class="number">1</span>])) % n</span><br><span class="line">print(<span class="string">&#x27;c = &#x27;</span> + str(c))</span><br></pre></td></tr></table></figure>
+<p>这里我起初是想使用最早的通项公式，但是发现，那个方程在模n下无解。。于是只能使用矩阵快速幂来做计算</p>
+<p>完整exp如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto_tools <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">target = <span class="number">2</span> ** <span class="number">1024</span></span><br><span class="line">k = </span><br><span class="line"></span><br><span class="line">cipher = </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_f</span>(<span class="params">k, i</span>):</span></span><br><span class="line">    <span class="keyword">assert</span> len(k) &gt; i<span class="number">-4</span> &gt;= <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> abs((k[i] - <span class="number">2</span> * k[i<span class="number">-1</span>] + k[i<span class="number">-2</span>]) * (k[i<span class="number">-2</span>] - k[i<span class="number">-4</span>]) - (k[i<span class="number">-1</span>] - k[i<span class="number">-3</span>]) * (k[i<span class="number">-1</span>] - <span class="number">2</span> * k[i<span class="number">-2</span>] + k[i<span class="number">-3</span>]))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f_1 = get_f(k, <span class="number">4</span>)</span><br><span class="line">f_2 = get_f(k, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">n = gcd(f_1, f_2)</span><br><span class="line">print(<span class="string">&#x27;n = &#x27;</span> + str(n))</span><br><span class="line"><span class="keyword">assert</span> isPrime(n)</span><br><span class="line"></span><br><span class="line">a = ((k[<span class="number">3</span>] - <span class="number">2</span> * k[<span class="number">2</span>] + k[<span class="number">1</span>]) * inverse(k[<span class="number">2</span>] - k[<span class="number">0</span>], n)) % n</span><br><span class="line">print(<span class="string">&#x27;a = &#x27;</span> + str(a))</span><br><span class="line"></span><br><span class="line">c = ((k[<span class="number">2</span>] - k[<span class="number">1</span>]) - a * (k[<span class="number">0</span>] + k[<span class="number">1</span>])) % n</span><br><span class="line">print(<span class="string">&#x27;c = &#x27;</span> + str(c))</span><br><span class="line"></span><br><span class="line">initial_stream = [[k[<span class="number">5</span>], k[<span class="number">4</span>], <span class="number">1</span>],</span><br><span class="line">                  [<span class="number">0</span>,    <span class="number">0</span>,    <span class="number">0</span>],</span><br><span class="line">                  [<span class="number">0</span>,    <span class="number">0</span>,    <span class="number">0</span>]]</span><br><span class="line">initial_coefficient = [[a+<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">                       [a,   <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                       [c,   <span class="number">0</span>, <span class="number">1</span>]]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">final_coefficient = matrix_pow(initial_coefficient, <span class="number">3</span>, target<span class="number">-305</span>, n)</span><br><span class="line">final_stream = matrix_mul(initial_stream, final_coefficient, <span class="number">3</span>, n)</span><br><span class="line">key = int(final_stream[<span class="number">0</span>][<span class="number">1</span>]) % n</span><br><span class="line">flag = cipher ^ key</span><br><span class="line">print(long_to_bytes(flag))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="lattice_trick">Lattice_trick</h5>
+<p>本题考查的是利用格来辅助解方程的技巧，题给了两个等式：</p>
+<p><span class="math inline">\(p * q = n\)</span></p>
+<p><span class="math inline">\(11^{2020} p^2 + 45^{2020}q^2 \equiv m \mod N\)</span></p>
+<p>根本的困难在于第二个式子中的因子太大，利用sage无法直接求解模方程，我起初是想通过化简式子或是直接将等式搬到格上，但都没有成功，最终看了badmonkey师傅的exp才意识到可以只利用格子来降低参数，将有限域转化为整数域，再使用sage等工具解方程。</p>
+<p>抽象问题为寻找到整数A，使得<span class="math inline">\(a * 11^{2020} p^2 + a*45^{2020}q^2 \equiv b_1p^2 + b_2q^2 \mod N\)</span></p>
+<p>且<span class="math inline">\(b_1, b_2\)</span> 较小，此处不难想到可以构造格子，使<span class="math inline">\(b_1, b_2\)</span> 为格子上SVP即可。</p>
+<p>我尝试过构造：</p>
+<p><img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20201007140519927.png"></p>
+<p>但由于<span class="math inline">\(11^{2020}\)</span>本身的位数过大，LLL后的GapSVP会直接返回<span class="math inline">\((N, N)\)</span>向量，故需要做一些转换（此处的<span class="math inline">\(11^{-2020}\)</span>为<span class="math inline">\(11^{2020}\)</span>在N上的模逆）：</p>
+<p><img src="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/image-20201007140537646.png"></p>
+<p>由此即可得到向量<span class="math inline">\((a_1, a_2)\)</span>，有<span class="math inline">\(a * 11^{2020} p^2 + a*45^{2020}q^2 \equiv a_1p^2 + a_2q^2 \mod N\)</span></p>
+<p>且 <span class="math inline">\(a = a_1 * 11^{-2020},\quad a_2 \equiv a1 * 11^{-2020}*45^{2020} \mod N\)</span></p>
+<p>分析一下p，q的位数，都是512位，故而<span class="math inline">\(p^2 \ or \ q^2\)</span> 的位数也不会超过1024，而求得的<span class="math inline">\(a_1, a_2\)</span>中最大的为1023位，可知<span class="math inline">\(a_1p^2 + a_2q^2\)</span> 最大位数为<span class="math inline">\(1024 + 1 + 1023 = 2048\)</span>，而N的位数为2048，故而只需让k遍历-1到1，必然存在<span class="math inline">\(a_1p^2 + a_2q^2 = k *m + (a_1p^2 + a_2q^2) \% N\)</span></p>
+<p>又有：</p>
+<p><span class="math inline">\((a_1p^2 + a_2q^2) \% N = ((a_1 * 11^{-2020}) * (11^{2020} p^2 + 45^{2020}q^2) \% N) \% N\)</span></p>
+<p>即可与<span class="math inline">\(p * q = n\)</span> 联立求解，完整exp如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> sage.all <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">r = </span><br><span class="line">n,h,N = </span><br><span class="line">c = </span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line">h = (h-pow(<span class="number">14</span>, <span class="number">2020</span>, N) * (r**<span class="number">2</span>))%N</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Reduce</span>(<span class="params">n,m,h</span>):</span></span><br><span class="line">    inv = (<span class="number">45</span>**<span class="number">2020</span>)*inverse(<span class="number">11</span>**<span class="number">2020</span>,m)</span><br><span class="line">    lattice = Matrix([</span><br><span class="line">        [<span class="number">1</span>,inv],</span><br><span class="line">        [<span class="number">0</span>,m]</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">    res = lattice.LLL()</span><br><span class="line">    a1 = int(res[<span class="number">0</span>,<span class="number">0</span>])</span><br><span class="line">    a2 = int(res[<span class="number">0</span>,<span class="number">1</span>])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> a1&lt;<span class="number">0</span>:</span><br><span class="line">        a1,a2 = -a1,-a2%m</span><br><span class="line">    print(<span class="string">&#x27;a1 = &#x27;</span> + str(a1))</span><br><span class="line">    print(<span class="string">&#x27;a2 = &#x27;</span> + str(a2))</span><br><span class="line">    </span><br><span class="line">    tmp = int(a1*inverse(<span class="number">11</span>**<span class="number">2020</span>,m)*h)%m</span><br><span class="line">    x = var(<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">    y = var(<span class="string">&#x27;y&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">-1</span>,<span class="number">2</span>):</span><br><span class="line">        cur = tmp + i*m</span><br><span class="line">        eq1 = x*y==n</span><br><span class="line">        eq2 = a2*x**<span class="number">2</span> + a1*y**<span class="number">2</span> - cur == <span class="number">0</span></span><br><span class="line">        res = solve([eq1,eq2],x,y, solution_dict=<span class="literal">True</span>)</span><br><span class="line">        <span class="keyword">if</span> len(res) &gt; <span class="number">2</span>:</span><br><span class="line">            print(<span class="string">&quot;Got the solution&quot;</span>)</span><br><span class="line">            print(res[<span class="number">-1</span>])</span><br><span class="line">            <span class="keyword">return</span> int(abs(res[<span class="number">-1</span>][x])), int(abs(res[<span class="number">-1</span>][y]))</span><br><span class="line">        print(<span class="string">&quot;No solution for %d&quot;</span>%i)</span><br><span class="line"></span><br><span class="line">p, q = Reduce(n//r, N ,h)</span><br><span class="line"></span><br><span class="line">phi = (p<span class="number">-1</span>)*(q<span class="number">-1</span>)*(r<span class="number">-1</span>)</span><br><span class="line">d = inverse(e, phi)</span><br><span class="line">c = bytes_to_long(c)</span><br><span class="line">m = pow(c,d,n)</span><br><span class="line">print(long_to_bytes(m))</span><br></pre></td></tr></table></figure>
+<h5 id="copper_smith_e_d">Copper_smith_e_d</h5>
+<p>已知：</p>
+<p><span class="math inline">\(n = p * q * r ,\\\  r ,\\\  e * d \equiv 1 \mod ((p-1)*(q-1)*(r-1)) ,\\\  d^e \equiv t \mod n ,\\\  e = 3\)</span></p>
+<p>可以看到e非常的小为3，故可知<span class="math inline">\(e *d = 1 + k * (p-1)(q-1)(r-1)\)</span> 中k小于3，使k遍历1，2，即可得到等式<span class="math inline">\(e *d = 1 + k * (p-1)(q-1)(r-1)\)</span>， 再将<span class="math inline">\(d^3 \equiv t \mod n\)</span> 变为<span class="math inline">\((e * d )^3 \equiv 27 t \mod n\)</span></p>
+<p>从而得到方程：<span class="math inline">\((1 + k * (p-1)(q-1)(r-1))^3 \equiv 27t \mod n\)</span></p>
+<p>可化简为<span class="math inline">\((1 + k*(r-1)*(p*q -(p+1) +1))^3 \mod 27 t \mod n\)</span></p>
+<p>有单变量<span class="math inline">\(p+q\)</span>，分析<span class="math inline">\(p+q\)</span> 的位数最大为1025位，而n的位数为3344， 代入Copper_smith参数</p>
+<p>即为：<span class="math display">\[\beta = 1, \delta =  3, p+q \leq \frac{1}{2}n^{\frac{1}{3} - \epsilon} \]</span></p>
+<p>可近似为<span class="math inline">\(2 ^ {1025} - 1 \leq \frac{1}{2}n^{\frac{1}{3} - \epsilon}\)</span></p>
+<p>此处也可以随机取两个位数为1024的素数之和近似p+q，将<span class="math inline">\(\frac{1}{3} - \epsilon\)</span> 看作<span class="math inline">\(\frac{a}{b}\)</span>，找到满足满足<span class="math inline">\((2 * (p+q))^b &lt; n ^a\)</span>中<span class="math inline">\(\frac{a}{b}\)</span>最小的，则<span class="math inline">\(\epsilon = \frac{1}{3} - \frac{a}{b}\)</span>， 寻找代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    p = getPrime(<span class="number">1024</span>)</span><br><span class="line">    q = getPrime(<span class="number">1024</span>)</span><br><span class="line">    base = <span class="number">2</span> * (p+q)</span><br><span class="line">    tmp = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">100</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">100</span>):</span><br><span class="line">            <span class="keyword">if</span> base ** i &lt; n ** j:</span><br><span class="line">                tmp.append(j/i)</span><br><span class="line">    print(<span class="number">1</span>/<span class="number">3</span> - min(tmp))</span><br></pre></td></tr></table></figure>
+<p><span class="math inline">\(2^{1025}\)</span>的寻找结果为0.025</p>
+<p>随机<span class="math inline">\(p, q\)</span>寻找的结果约为0.026，（最终求解后验证得<span class="math inline">\(\epsilon\)</span> 约为0.0265）</p>
+<p>可知<span class="math inline">\(\epsilon &gt; 0.026\)</span>，取0.03，将参数代入smallroots求解方程即可得到<span class="math inline">\(p+q\)</span>， 从而得到phi，得到flag，完整exp如下（取0.03时计算时间过长。。。改成0.035或0.04之后很快就出了。。似乎越大越快（迷惑？））：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n = </span><br><span class="line">c = </span><br><span class="line">r = </span><br><span class="line">t = </span><br><span class="line"></span><br><span class="line">PR.&lt;x&gt; = PolynomialRing(Zmod(n))</span><br><span class="line">e_d_3 = (<span class="number">27</span> * t) % n</span><br><span class="line">p_q = n//r</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">3</span>):</span><br><span class="line">	f = (<span class="number">1</span>+k*(r<span class="number">-1</span>) * (p_q-x+<span class="number">1</span>))^<span class="number">3</span> - e_d_3</span><br><span class="line">	solve_1 = f.monic().small_roots(X=<span class="number">2</span>^<span class="number">1025</span>, beta=<span class="number">1</span>, epsilon=<span class="number">0.04</span>)</span><br><span class="line">	<span class="keyword">if</span> len(solve_1) &gt; <span class="number">0</span>:</span><br><span class="line">		p_add_q = solve_1[<span class="number">0</span>]</span><br><span class="line">		phi = (r<span class="number">-1</span>) * (p_q-p_add_q+<span class="number">1</span>)</span><br><span class="line">		d = inverse(<span class="number">3</span>, phi)</span><br><span class="line">		flag = long_to_bytes(pow(c, d, n))</span><br><span class="line">		print(flag)</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Crypto-in-CTF/" rel="tag"># Crypto in CTF</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/06/Way-to-Crypto/" rel="prev" title="Way to Crypto">
+      <i class="fa fa-chevron-left"></i> Way to Crypto
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/23/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0-2/" rel="next" title="杂题闲记-2">
+      杂题闲记-2 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%BA%E7%BD%91%E6%9D%AF"><span class="nav-number">1.</span> <span class="nav-text">强网杯</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#proof-for-dice2cry"><span class="nav-number">1.1.</span> <span class="nav-text">proof for dice2cry</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E6%81%928%E6%9C%88%E8%B5%9B"><span class="nav-number">2.</span> <span class="nav-text">安恒8月赛</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#math-stream"><span class="nav-number">2.1.</span> <span class="nav-text">math stream</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E9%80%9A%E9%A1%B9%E5%85%AC%E5%BC%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">计算通项公式：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%A0%BC%E5%AD%90"><span class="nav-number">2.1.2.</span> <span class="nav-text">构造格子</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%8E%A8%E5%AF%BC%E6%B1%82%E8%A7%A3"><span class="nav-number">2.1.3.</span> <span class="nav-text">推导求解</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lattice_trick"><span class="nav-number">2.2.</span> <span class="nav-text">Lattice_trick</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#copper_smith_e_d"><span class="nav-number">2.3.</span> <span class="nav-text">Copper_smith_e_d</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lord Riot"
+      src="https://raw.githubusercontent.com/Lord-Riot/Lord-Riot.github.io/master/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Lord Riot</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Lord-Riot" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Lord-Riot" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lordriotglacier@gmail.com" title="E-Mail → mailto:lordriotglacier@gmail.com" rel="noopener" target="_blank"><i class="fab fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=2079541692&site=qq&menu=yes" title="QQ → http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;2079541692&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+    
+
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lord Riot</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lord-riot.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="算是初期总的学习框架吧，不过是注释式的，一些条目并不完整，应先阅读推荐的相关资料，有不理解的地方再看相关条目，如果有发现出错的地方可以联系笔者。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Way to Crypto">
+<meta property="og:url" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/index.html">
+<meta property="og:site_name" content="Lord Riot&#39;s Blog">
+<meta property="og:description" content="算是初期总的学习框架吧，不过是注释式的，一些条目并不完整，应先阅读推荐的相关资料，有不理解的地方再看相关条目，如果有发现出错的地方可以联系笔者。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/way_to_crypto_3.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200721114137102.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/way_to_crypto_2.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200916164008236.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200916162844698.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200916200255569.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200914160137408.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200914170840728.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200916163818846.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200916163818846.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200916193419716.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/way_to_crypto_1.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/way_to_crypto_4.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200712120740513.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200712174936772.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200719221158307.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200715203211389.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200715212418259.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200719220641020.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200719220911438.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200719221419061.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200720135121300.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20201030005553374.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20201030211900778.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20201030224528430.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20201103221217410.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20201030005553374.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200930140124578.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200930170010402.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200930185253258.png">
+<meta property="og:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/image-20200728185617021.png">
+<meta property="article:published_time" content="2020-07-06T08:31:33.000Z">
+<meta property="article:modified_time" content="2021-05-16T08:58:04.809Z">
+<meta property="article:author" content="Lord Riot">
+<meta property="article:tag" content="Way to Crypto">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/way_to_crypto_3.png">
+
+<link rel="canonical" href="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Way to Crypto | Lord Riot's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lord Riot's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lord-riot.github.io/2020/07/06/Way-to-Crypto/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Lord-Riot/Lord-Riot.github.io/master/images/avatar.jpg">
+      <meta itemprop="name" content="Lord Riot">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lord Riot's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Way to Crypto
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-06 16:31:33" itemprop="dateCreated datePublished" datetime="2020-07-06T16:31:33+08:00">2020-07-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-16 16:58:04" itemprop="dateModified" datetime="2021-05-16T16:58:04+08:00">2021-05-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning-Notes/" itemprop="url" rel="index"><span itemprop="name">Learning Notes</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">算是初期总的学习框架吧，不过是注释式的，一些条目并不完整，应先阅读推荐的相关资料，有不理解的地方再看相关条目，如果有发现出错的地方可以联系笔者。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="pre-algorithm">Pre Algorithm</h3>
+<p><a target="_blank" rel="noopener" href="https://introspelliam.github.io/2018/03/26/crypto/常用于密码学中的算法/">link1</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jcchan/p/8426731.html">link2</a></p>
+<p>tips1:注意BSGS算法的局限性，即<span class="math inline">\(gcd(a,p) = 1\)</span> ，条件不成立时，需使用<a target="_blank" rel="noopener" href="http://kmanong.top/kmn/qxw/form/article?id=24946&amp;cate=136">扩展BSGS</a>或其他算法。</p>
+<p>tips2:Linux下分解工具 <a target="_blank" rel="noopener" href="https://pypi.org/project/primefac/">primefac</a></p>
+<p>tips3:推荐使用工具sage，需在linux下配置，其包含了很多库和函数，如cypari2等，<a target="_blank" rel="noopener" href="https://doc.sagemath.org/html/en/reference/search.html">sage官方文档</a>，<a target="_blank" rel="noopener" href="https://cypari2.readthedocs.io/en/latest/pari_instance.html">cypari2官方文档</a></p>
+<h3 id="rsa">RSA</h3>
+<p><a target="_blank" rel="noopener" href="https://0xdktb.top/2020/02/28/Summary-of-Crypto-in-CTF-RSA/">淘宝师傅博客</a>，总结的很好，可以当作索引来学习。</p>
+<p>虽然说是RSA，但其实涵盖了有限域上的离散对数密码体系和大整数分解密码体系的知识，只是这些知识可以较好的通过RSA这个模板呈现出来。</p>
+<h5 id="givenedn">Given(e,d,n)</h5>
+<p><img src="/2020/07/06/Way-to-Crypto/way_to_crypto_3.png"></p>
+<p>tips：博客内给出的NCTF2019 babyRSA其实并不是这种情况，而是利用p，q接近，开根phi求解的。</p>
+<h5 id="given-p-q-dp-dq">Given (p, q, dp, dq)</h5>
+<p>tips:博客给出的证明其实就是CRT的证明</p>
+<h5 id="wiener-attack">Wiener Attack</h5>
+<p>tips1：博客中给的证明开始的一步有问题，可以结合<a href="%5Bhttps://muzibing.github.io/2019/05/07/2019.05.07%EF%BC%8852%EF%BC%89/%5D(https://muzibing.github.io/2019/05/07/2019.05.07（52）/)">此篇文章</a>一起看，本质上其实就是利用了连分数的最佳逼近性质和的d较小的漏洞。</p>
+<p>tips2：题中的rational_to_quotients函数即是计算连分数中的数列，原理比较简单，自行推导即可。convergents_from_quotients函数是用来计算每一级连分数的，即最佳逼近。</p>
+<h5 id="coppersmith-常见相关攻击">Coppersmith 常见相关攻击</h5>
+<p>tips1：此部分推荐先把wiki部分内容看过一遍再做扩展，可以配合github上的这个<a target="_blank" rel="noopener" href="https://github.com/mimoo/RSA-and-LLL-attacks">项目理解</a>，此处方法不理解的地方，建议多打打草稿，画一画就懂了，每种情况都可以切实code一下，至于根本原理，个人觉得不一定非要十分清楚，会意即可，感兴趣的可以参见<a target="_blank" rel="noopener" href="https://paper.seebug.org/727/#41-coppersmith">此篇文章</a>。</p>
+<p>一定要搞清楚small_roots函数（sage的small_root传参X不能过大，如果X过大，即使存在X内的解，也无法求出）：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200721114137102.png"></p>
+<p>下面贴出测试代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">base = <span class="number">512</span></span><br><span class="line">p = random_prime(<span class="number">2</span>^base, <span class="number">2</span>^(base<span class="number">-1</span>))</span><br><span class="line">q = random_prime(<span class="number">2</span>^base, <span class="number">2</span>^(base<span class="number">-1</span>))</span><br><span class="line"></span><br><span class="line">e = random_prime(<span class="number">2</span>^<span class="number">6</span>, <span class="number">2</span>^<span class="number">4</span>)				<span class="comment"># for test partial d</span></span><br><span class="line"><span class="comment"># e = random_prime(2^25, 2^23)  			# for test partial p </span></span><br><span class="line"><span class="comment"># e = 7							# for test partial m </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span>(gcd(e, p<span class="number">-1</span>) ==<span class="number">1</span> <span class="keyword">and</span> gcd(e, q<span class="number">-1</span>) == <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">n = p * q</span><br><span class="line">m = bytes_to_long(<span class="string">b&#x27;flag&#123;Test_flag_for_LordRiot&#125;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">c = pow(m, e, n)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;p = &#x27;</span> + str(p))</span><br><span class="line">print(<span class="string">&#x27;q = &#x27;</span> + str(q))</span><br><span class="line">print(<span class="string">&#x27;n = &#x27;</span> + str(n))</span><br><span class="line">print(<span class="string">&#x27;e = &#x27;</span> + str(e))</span><br><span class="line">print(<span class="string">&#x27;c = &#x27;</span> + str(c))</span><br><span class="line"></span><br><span class="line">R.&lt;x&gt; = PolynomialRing(Zmod(n))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># this situation should use with a small e</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partial_m</span>(<span class="params">k1, k2</span>):</span></span><br><span class="line">	m_high = (m &gt;&gt; (k1+k2)) &lt;&lt; (k1+k2)</span><br><span class="line">	m_low = m &amp; (<span class="number">2</span> ^ (k2+<span class="number">1</span>) - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">	wait = (m - m_high - m_low) &gt;&gt; k1</span><br><span class="line">	<span class="keyword">assert</span>(m_high + wait  * <span class="number">2</span> ^ k1 + m_low == m)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">assert</span>(wait &lt; n ^ (<span class="number">1</span>/e))</span><br><span class="line"></span><br><span class="line">	f = (m_high + m_low + x * <span class="number">2</span> ^ k1) ^ e - c</span><br><span class="line">	solve = f.monic().small_roots(X=<span class="number">2</span>^k1, beta=<span class="number">1</span>)</span><br><span class="line">	x0 = solve[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">	print(long_to_bytes(m_high + x0 * <span class="number">2</span> ^ k1 + m_low))</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partial_p</span>(<span class="params">low_bit, leak_bits, phar=<span class="number">0</span>, _beta=<span class="number">0.4</span>, test=False</span>):</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> low_bit:		</span><br><span class="line">		<span class="keyword">if</span> test:</span><br><span class="line">			phar = p &amp; (<span class="number">2</span> ^ (leak_bits+<span class="number">1</span>) - <span class="number">1</span>)	</span><br><span class="line">		<span class="keyword">assert</span>((p - phar) &gt;&gt; leak_bits &lt;= <span class="number">2</span> * n ^(<span class="number">1</span>/<span class="number">4</span>))					</span><br><span class="line">		f = x * <span class="number">2</span> ^ leak_bits + phar		</span><br><span class="line">		solve = f.monic().small_roots(X=<span class="number">2</span>^(base - leak_bits), beta=_beta)</span><br><span class="line">	<span class="keyword">else</span>:	</span><br><span class="line">		<span class="keyword">if</span> test:					</span><br><span class="line">			phar = (p &lt;&lt; leak_bits) &gt;&gt; leak_bits						</span><br><span class="line">		<span class="keyword">assert</span>(p - phar &lt;= <span class="number">2</span> * n ^(<span class="number">1</span>/<span class="number">4</span>))</span><br><span class="line">		f = x + phar</span><br><span class="line">		solve = f.monic().small_roots(X=<span class="number">2</span>^leak_bits, beta=_beta)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	x0 = solve[<span class="number">0</span>]</span><br><span class="line">	p_solve = int(x0 * <span class="number">2</span> ^ leak_bits + phar)</span><br><span class="line">	q_solve = n//p_solve</span><br><span class="line">	print(p_solve * q_solve == n)</span><br><span class="line"></span><br><span class="line">	d = inverse(e, (p_solve<span class="number">-1</span>) * (q_solve<span class="number">-1</span>))</span><br><span class="line">	print(long_to_bytes(pow(c, d, n)))</span><br><span class="line">	<span class="keyword">return</span> p_solve</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># cause the partial_p function need little k, so we may need to reduce the p0</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partial_d</span>(<span class="params">k, second_bits = (<span class="params">base * <span class="number">2</span></span>) // <span class="number">6</span> </span>):</span></span><br><span class="line">	<span class="keyword">assert</span>(k&gt;<span class="number">0</span>)</span><br><span class="line">	kbits = k + int(n).bit_length()//<span class="number">4</span></span><br><span class="line">	d = inverse(e, (p<span class="number">-1</span>) * (q<span class="number">-1</span>))</span><br><span class="line">	dhar = d &amp; (<span class="number">2</span> ^ (kbits + <span class="number">1</span>) - <span class="number">1</span>)</span><br><span class="line">	solved = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">	X = var(<span class="string">&#x27;X&#x27;</span>)</span><br><span class="line">	<span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">1</span>, e+<span class="number">1</span>):</span><br><span class="line">		results = solve_mod([e*dhar*X - k*X*(n-X+<span class="number">1</span>) + k*n == X], <span class="number">2</span>^kbits)</span><br><span class="line">		<span class="keyword">for</span> x <span class="keyword">in</span> results:</span><br><span class="line">			p0 = int(x[<span class="number">0</span>])</span><br><span class="line">			leak_bits = p0.bit_length()</span><br><span class="line">			<span class="keyword">if</span> p0 == p &amp; (<span class="number">2</span> ^ (leak_bits+<span class="number">1</span>) - <span class="number">1</span>):</span><br><span class="line">				print(<span class="string">&quot;leak p bits: &quot;</span> + str(p0.bit_length()))</span><br><span class="line"></span><br><span class="line">				<span class="keyword">try</span>:		</span><br><span class="line">					p_solve = partial_p(true, p0.bit_length(), phar = p0)</span><br><span class="line">					<span class="keyword">if</span> p == p_solve:</span><br><span class="line">						print(<span class="string">&#x27;Got the solution!&#x27;</span>)</span><br><span class="line">						solved = <span class="literal">True</span></span><br><span class="line">						<span class="keyword">break</span></span><br><span class="line">				<span class="keyword">except</span>:</span><br><span class="line">					<span class="keyword">continue</span></span><br><span class="line">		<span class="keyword">if</span> solved:</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> solved:</span><br><span class="line">		print(<span class="string">&quot;No solution found&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># partial_p(true, 300, test=True)</span></span><br><span class="line"><span class="comment"># partial_m(50, 50)</span></span><br><span class="line"><span class="comment"># partial_d(50)</span></span><br></pre></td></tr></table></figure>
+<p>tips2：使用的sage脚本中的small_roots其实即是集成了LLL算法的函数。</p>
+<h5 id="e与phi不互素">e与phi不互素</h5>
+<p>NCTF 2019 easy-RSA，<a target="_blank" rel="noopener" href="http://www.soreatu.com/posts/intended-solution-to-crypto-problems-in-nctf-2019/#easyrsa909pt-2solvers">writeup</a></p>
+<p>涉及有限域开高次根问题，值得细看。</p>
+<p>（其实RSA算法即可以看作是在求<span class="math inline">\(GF(n)\)</span>下的<span class="math inline">\(e \ th\)</span> root，但<span class="math inline">\(gcd(e, phi) = 1\)</span>。）</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jcbx_/article/details/105303760">这篇文章</a>讲的挺好，算是汉化并解释了一波论文</p>
+<p><strong>AMM（Adleman-Manders-Miller）算法</strong>： （论文中关于推导方面有将q写为p的笔误，需注意）</p>
+<p>$for  s * r^t = q-1,  $ 为<span class="math inline">\(\delta \mod q\)</span> 的一个<span class="math inline">\(r\)</span>次非剩余，则有</p>
+<p>​ <span class="math inline">\(\delta^\alpha (\rho^s)^{\sum_{i=1}^{t-1}j_i*r^{t-1-i}}\)</span></p>
+<p>为<span class="math inline">\(\delta\)</span>的r次剩余。</p>
+<p>算法流程：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/way_to_crypto_2.png"></p>
+<p>至于如何生成所有的r次剩余（即r个r次剩余），则可以通过以下公式：</p>
+<p>​ <span class="math inline">\((x^{\frac{q-1}{r}}) ^ r \equiv 1 \pmod q\)</span></p>
+<p>在q的剩余系内，取r个不相同的x，则得到r个r次剩余，即全部解：<span class="math inline">\(m_0 * x_i^{\frac{q-1}{r}}, \ i \in (1, 2, \dots, r)\)</span></p>
+<h5 id="gcdp-1-q-1过大">gcd(p-1, q-1)过大</h5>
+<p>此处关于<span class="math inline">\(x^{N-1} \pmod p\)</span> 最多有a个值，可以从ord考虑将<span class="math inline">\(x^b\)</span>看成一个整体，考虑其阶数为<span class="math inline">\(ord//g\)</span>，可知为原根时，可取到a，非原根时小于a。（本质是判断r次剩余的解有<span class="math inline">\(gcd(n, \phi(n))\)</span>个）</p>
+<h5 id="rsa-crt体系攻击">RSA-CRT体系攻击</h5>
+<p><a target="_blank" rel="noopener" href="http://jianiau.blogspot.com/2014/05/rsa-decrypt-with-crt.html">RSA-CRT介绍</a></p>
+<p>使用的LLL掌握矩阵构造即可，具体可以看这篇<a target="_blank" rel="noopener" href="https://www.iacr.org/archive/pkc2006/39580001/39580001.pdf">paper</a></p>
+<h5 id="copper-smith原理">Copper Smith原理</h5>
+<p><em>soreatu师傅总结了一篇Copper Smith的编年的<a target="_blank" rel="noopener" href="https://blog.soreatu.com/posts/case-study-coppersmith-related-attack-an-academical-approach/">paper索引</a>， 可以当作paper目录使用</em></p>
+<p>Copper Smith 根本思想：</p>
+<p>构造某个多项式商环（需要将<span class="math inline">\(GF(n)\)</span>上的多项式转换到<span class="math inline">\(Z\)</span> （实际上可能先是<span class="math inline">\(n^m\)</span>上）上），取其上所有的多项式的系数构造Lattice，之后进行某种初等变换，之后通过对其中某个block matrix（也可能是整体）的规约，得到一组性质好的等价的多项式的系数，从而求解。</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200916164008236.png"></p>
+<p>推荐看<a target="_blank" rel="noopener" href="https://github.com/mimoo/RSA-and-LLL-attacks/blob/master/survey_final.pdf">这篇survey</a>，对一些概念讲的比较详细，相对于Copper Smith最初的论文更容易理解。</p>
+<h6 id="copper-smith基础">Copper Smith基础</h6>
+<p>理论基础：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200916162844698.png"></p>
+<p>此即Howgrave-Graham定理，证明了构造符合规则的多项式<span class="math inline">\(g(x X)\)</span>后，最终欲求的性质较好的解向量可以通过格基约化找到。</p>
+<p>在利用单元变量构造Lattice时，构造规则为：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200916200255569.png"></p>
+<p>对于<span class="math inline">\(x^i*p(x)^j\)</span>中的<span class="math inline">\(i, j\)</span>，使用 $(i, j) = h<em>k + i + (j-1) </em> k <span class="math inline">\(， 来计算对应的列坐标，即对于\)</span>p(x), i = 0, j = 1<span class="math inline">\(，此多项式各个参数即在矩阵的第\)</span>(i, j) = h*k$ 列作为矩阵元素，具体的行坐标即为多项式内<span class="math inline">\(x\)</span> 不同指数相对应。</p>
+<p>以原论文中第6列为例：</p>
+<p><span class="math inline">\(p(x) = x^2 + ax + b\)</span> 对应<span class="math inline">\(h*k = 6\)</span>，观察可发现第六列的元素即为<span class="math inline">\(b, a, 1, 0, 0, 0, 0\)</span>， 即对应<span class="math inline">\(x^0, x^1, x^2, x^3, x^4, x^5\)</span> 的系数。</p>
+<p>之后构造向量r，使得<span class="math inline">\(s = r M\)</span>，向量s的右部分全为0。</p>
+<p>注意此后的矩阵<span class="math inline">\(\widetilde M\)</span> 为对M矩阵进行初等变换后的矩阵，而矩阵<span class="math inline">\(\hat M\)</span> 为矩阵<span class="math inline">\(\widetilde M\)</span> 左上角<span class="math inline">\(h k \times h k\)</span>的分块矩阵，而由于构造，故有<span class="math inline">\(det(\hat M) = det(\widetilde M) = det(M)\)</span>， 而格基约化的对象为矩阵$det(M) $。</p>
+<p>论文的以下部分是在论证欲求的解向量在<span class="math inline">\(\hat M\)</span> 所形成的Lattice上</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200914160137408.png"></p>
+<p>以下部分说明了必然存在一个线性组合<span class="math inline">\(f_g\)</span>，使得<span class="math inline">\(\sum_g f_g d_g = 0\)</span>，也就产生了一个格上的short vector，而最终通过LLL约简出的short vector即是<span class="math inline">\(f_g\)</span>， 之后正常解方程即可</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200914170840728.png"></p>
+<p>需要注意的是对于不同的多项式，构造矩阵时存在着不同形式的优化，例如sage中集成的small_roots构造的单变量矩阵便与Copper Smith最初论文中的矩阵有所不同。</p>
+<p>github的<a target="_blank" rel="noopener" href="https://github.com/mimoo/RSA-and-LLL-attacks">这个项目</a>，便使用的是如下构造方法：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200916163818846.png"></p>
+<h6 id="copper-smith延申">Copper Smith延申</h6>
+<ol type="1">
+<li><p>模N未知：</p>
+<p>​ 其实最早学习Copper Smith的时候，对于partial_p和partial_d的情况我就很疑惑，不像partial_m，这两种情况似乎并没有给出一个模N上的等式，而事实上，Copper Smith确实是可以作用于不确定的有限域上的。</p>
+<p>以partial p情况为例：</p></li>
+</ol>
+<p><span class="math display">\[
+|\hat p - p| &lt; N^{\frac{1}{4}} \\
+    \Rightarrow \hat p \equiv x_0 \mod p \\
+    \Rightarrow f(x) = \hat p + x \equiv 0 \mod p\\
+    known:\hat p, \quad p &gt; N^\beta , \ \beta \in (0, 1] \quad x &lt; X\\
+\]</span></p>
+<p>我们仍然按照之前的形式构造多项式：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200916163818846.png"></p>
+<p>那么第一种多项式在模<span class="math inline">\(p^{m-i} N^i = p^m * q^i\)</span> 上为0，将<span class="math inline">\(q^i\)</span>看作常数，即为在<span class="math inline">\(p^m\)</span>上为0，第二种多项式亦为在模<span class="math inline">\(p^m\)</span> 上位0，符合Howgrave-Graham定理的条件，即可约简出一组较好的基。</p>
+<p>而不同之处在于对根范围的计算，需要将<span class="math inline">\(p\)</span> 替换为<span class="math inline">\(N^\beta\)</span>，剩余步骤与已知N情况相同，最终得到约束：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200916193419716.png"></p>
+<ol start="2" type="1">
+<li><p>多变量情况</p>
+<p>先从二元谈起，可以看这篇<a target="_blank" rel="noopener" href="https://www.math.auckland.ac.nz/~sgal018/crypto-book/ch19.pdf">paper</a></p>
+<p>​ 讲的很详细，虽然略去了不少证明，但是可以比较直观的认识到多元Copper Smith的本质也是先shift多项式的阶，再使用格基约化将模方程降维，从而更容易的求解，与单变量并没有本质的区别。</p>
+<p>​ 多元的构造方法，可以参见这个<a target="_blank" rel="noopener" href="https://gist.github.com/jhs7jhs/0c26e83bb37866f5c7c6b8918a854333">多元Copper Smith的脚本</a>，原blog是韩文写的，看着很难受，这里大致阐述一下构造方法，以2变量为例：</p>
+<p>solve函数中的参数m代表shift的阶数，t代表初始多项式的阶数，这里使用</p>
+<p><span class="math inline">\(p_1 * 2^{k_1} + p_2 *2^{k_2} + p_3*2^{k_3} = p\)</span></p>
+<p>​ 已知<span class="math inline">\(p_2, p | N, N\)</span>，求p1，p3，可以看到多项式阶数为1，shift一般可选用变量数乘2，此处为4</p>
+<p>​ 最终构造<span class="math inline">\(T\)</span> 个多项式，<span class="math inline">\(T\)</span> 为n个元素，和小于等于m的全排列数量（这点其实可以从n维空间去考虑，即在n维空间构造一个半径为m的球，取其中所有整数点，即返回了T个n维向量，每个向量即为<span class="math inline">\((e_1, e_2, \dots, e_n)\)</span>，其中<span class="math inline">\(e_i\)</span> 即为下式中<span class="math inline">\(e_i\)</span>）</p>
+<p>构造n个多项式如下：</p>
+<p><span class="math inline">\(g(x) = f(x)^k * \prod_{i = 1}^{n} x_i^{e_i} * N^{max(t-k, 0)}\)</span></p>
+<p>以每个多项式中各个变量的系数为矩阵元素，可以看到构造的多项式是在<span class="math inline">\(GF(N^{max(k, t)})\)</span> 上的。</p>
+<p>这里为了加深理解，推荐看看<a target="_blank" rel="noopener" href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.40.2636&amp;rep=rep1&amp;type=pdf">这篇论文</a>，即是Boneh and Durfee attack</p>
+<p>关于多元Copper的整体结构之后会单独写一篇文章来说。</p></li>
+</ol>
+<h3 id="lattice">Lattice</h3>
+<h4 id="biu-crypto-lattice">2012 Biu Crypto Lattice</h4>
+<p>b站有中英翻译视频，直接搜索即可</p>
+<p>纠正：</p>
+<ol type="1">
+<li>Introduction，49：00，所乘幺模矩阵除对角线外应为0，而非1</li>
+</ol>
+<h5 id="introduction-to-lattice">Introduction to Lattice</h5>
+<ol type="1">
+<li><p>格基等价条件：</p>
+<ol type="1">
+<li>换序：<span class="math inline">\(V_i \leftrightarrow V_j\)</span></li>
+<li>相反：<span class="math inline">\(-V_i \leftarrow V_i\)</span></li>
+<li>齐次：<span class="math inline">\(V_i \leftarrow V_i + kV_j\)</span></li>
+</ol>
+<p>证明简单，此处略，此三种映射均可使用<a href="%5Bhttps://baike.baidu.com/item/%E5%B9%BA%E6%A8%A1%E7%9F%A9%E9%98%B5%5D(https://baike.baidu.com/item/幺模矩阵)">幺模矩阵</a>（幺模矩阵对乘法和求逆封闭）描述。</p></li>
+<li><p>空间映射到格基：</p>
+<p>通过规定基础平行多面体：<span class="math inline">\(P(B) = \{a_1x_1,a_2x_2,\dots, a_nx_n | a_i\in[0,1) \}\)</span>，将空间任意点均可映射到此结构中.</p></li>
+<li><p>格的行列式定义：</p>
+<p><span class="math inline">\(for\ L(B),\ det(L) = det(B) = S_B\)</span></p>
+<p>B即为格的一组基，<span class="math inline">\(S_B\)</span>为基础平行多面体的面积，基础平行多面体中有且仅有一个格点，故可用来描述格的密度。</p></li>
+<li><p>最短向量<span class="math inline">\(\lambda_1(L)\)</span> （这个定理非常重要，很多时候需要通过其算bound）:</p>
+<p>利用正交化求出其下界<span class="math inline">\(min\{\hat{v_i}\}\)</span>，根据Minkowski's Theorem的推论得到上界<span class="math inline">\(n^{\frac{1}{2}} det(L)^{\frac{1}{n}}\)</span></p></li>
+</ol>
+<h5 id="reduction-for-sis">Reduction for SIS</h5>
+<ol type="1">
+<li><p>SIS问题：</p>
+<p>$for  vectors:  a_1, , a_n, find  z_1, , z_n $</p>
+<p><span class="math inline">\(meet: z_1*a_1 + \dots + z_n*a_n = 0 \ | \ z_i \ in\ \{-1, 0, 1\} \  \ \ a_i, z_i \ in\  Z_q^n\)</span></p>
+<p><span class="math inline">\(z_i\)</span>的范围越小，越难解出，简单考虑可知整数解集对加法有封闭性，故而构成一个格</p>
+<p>（容易想到利用LLL解决背包问题的情况）</p></li>
+<li><p>格上的高斯分布：</p>
+<ol type="1">
+<li><p>对于区域A，若其选点上均匀分布，其Gram-Schmidit正交的基也均匀分布。</p></li>
+<li><p>若一个基础平行多面体上均匀分布，则每个格基构成的基础平行多面体选点均均匀分布。 这里的含义是，对于整个<span class="math inline">\(R^n\)</span>空间上的某个高斯分布的点集，在每个满足以上条件之一的区域内均为均匀分布，即选到任何一个点的概率相同。可以结合以下MATLAB代码理解正态分布在一个方差上界下的光滑性：</p></li>
+</ol>
+<p><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ceita = <span class="number">1.25</span>:<span class="number">0.005</span>:<span class="number">1.3</span></span><br><span class="line">    x=<span class="number">0.00</span>:<span class="number">0.01</span>:<span class="number">1.00</span>;</span><br><span class="line">    y = normpdf(x<span class="number">-100</span>,<span class="number">0</span>,ceita)</span><br><span class="line">    <span class="keyword">for</span> n = <span class="number">-100</span>:<span class="number">1</span>:<span class="number">100</span></span><br><span class="line">        y = y + normpdf(x+n,<span class="number">0</span>,ceita);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="built_in">figure</span></span><br><span class="line">    <span class="built_in">plot</span>(x,y);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>基于高斯分布的规约算法：</p>
+<p>​ 本质即是对于随机的一个格点，以其为高斯分布的原点（即期望），根据设定好的高斯分布在其附近取一点（此处由于格点是离散的，所以存在一个取整处理）。由于基于高斯分布，故所选向量距离原点的距离期望会较小，从而找到一个较小的向量。高斯分布的方差会在限定范围（即上面所提约束条件）内移动，直至找到一个足够短的向量为止，为了找到短的向量，同时满足点的随机性，方差应该较小，但又不能低于某个限度。</p>
+<p>​ 讲座中其实已经足够直观了：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/way_to_crypto_1.png"></p></li>
+</ol>
+<h4 id="introduction-to-mathematical-chapter-6">Introduction-to-Mathematical Chapter 6</h4>
+<p><em>如果BIU冬令营都听懂了，其实中间（指6.3-6.5）关于格的介绍部分就可以都不看了，直接跳到6.6就行，也可也结合6.5具象化的理解基于高斯分布的规约算法。</em></p>
+<h5 id="babais-cvp-solve-algorithm">Babai's CVP solve algorithm</h5>
+<p>基于正交基的解决CVP算法，只有基底正交性足够好时，才可以解决CVP问题。</p>
+<p>算法过程即是将目标向量表示成正交性好的基底的组合，对系数求最接近取整，得到的向量即为一个与目标向量非常接近的格上向量。</p>
+<p>Hadamard's ratio：描述基底正交性的量，越接近于1，正交性越好。</p>
+<h5 id="ggh">GGH</h5>
+<p>GGH基于了CVP问题，利用Babai's Algorithm来实现，需要在较高维度实现，否则可以使用规约算法（如LLL）找出一组正交性很好的基底。</p>
+<h5 id="卷积多项式环">卷积多项式环</h5>
+<p>多项式环上的乘积运算，其实可看成级数乘法（梦回史济怀）：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/way_to_crypto_4.png"></p>
+<p>N控制指数的域，q控制系数的域。</p>
+<p>将<span class="math inline">\(R_q\)</span>上环lift到<span class="math inline">\(R\)</span>上环，常采用的方法：将<span class="math inline">\(0, 1, \dots, q-1\)</span>映射到<span class="math inline">\(\lceil-\frac{q}{2}\rceil, \dots, \lceil\frac{q}{2}\rceil\)</span>上。</p>
+<h5 id="ntru">NTRU</h5>
+<p>NTRU系统本身其实代表着一个较为泛的理念，实现较为简单，且其可以在多个层面实现，多项式/整数等等，可以参见书中描述或<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_36742186/article/details/83689529">此篇博文</a>，即可以基于多项式，也可也基于整数。</p>
+<p>NTRU的q估值问题（根本原因是因为先后所处有限域为p，q，不相同，故而a(x)需要小于q，否则会被截断），由于往往很难达到最大情况，所以其实一般取一个较小q以提高效率，并保证错误率较低即可。</p>
+<p>NTRU系统的破解可以从自构造私钥入手，通过推导不难发现，如果找到一组<span class="math inline">\(f(x), g(x)\)</span>，满足<span class="math inline">\(f(x)*h(x) \equiv g(x) \pmod q\)</span>，并且<span class="math inline">\(f(x), g(x)\)</span>的系数较小（为了使<span class="math inline">\(f(x)*m(x) + p * g(x)*r(x)\)</span>较小，不被截断），且在<span class="math inline">\(Z_p\)</span>下可逆，则可以解密，但需要注意的是，碰撞的概率非常小，且得到不是原有私钥簇内元素（即通过乘<span class="math inline">\(x^k, k=1,2,\dots,q-1\)</span>生成的簇）的概率更加小。</p>
+<p><em>NTRU系统的安全重点在于前后不同有限域（<span class="math inline">\(G_p, G_q\)</span>），故而需要考虑截断问题</em></p>
+<h5 id="格基约化">格基约化</h5>
+<ol type="1">
+<li><p>二维上的高斯约化：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200712120740513.png"></p>
+<p>这样可以求得一组最小且正交性好的基，不过仅适用于二维情况。极小性由<span class="math inline">\(v_1,v_2\)</span>之间大小及系数m保证，正交性由每次的系数m保证，具体证明看书上的即可，写的很详细。</p></li>
+<li><p>LLL算法：</p>
+<p>通过施密特正交化和condition判断，得到一组正交性好的基，同时其中的最短向量为格上的较短向量，可以解决近似SVP和近似CVP。</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200712174936772.png"></p>
+<p>扩展LLL：BKZ-LLL，sage中也有集成:</p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 调用格式如下，L为格矩阵，通常取格维度的1/10左右作为block大小即可</span></span><br><span class="line">L.BKZ(block_size)</span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<h5 id="密码分析中的格基约化">密码分析中的格基约化</h5>
+<p>包括NTRU、背包、GGH等问题的格基约化破解，书上例子较为详细，结合习题理解即可。</p>
+<h4 id="ctf中遇到的其他格相关问题">CTF中遇到的其他格相关问题</h4>
+<h5 id="hnp问题">HNP问题</h5>
+<p>可以通过[这篇文章][https://kel.bz/post/hnp/#:~:text=The%20Hidden%20Number%20Problem%20(HNP,compute%20as%20the%20entire%20secret%3F&amp;text=They%20also%20demonstrate%20an%20efficient,a%20significant%20enough%20bit%20leakage.]认识HNP问题，下为简单的测试代码（p需要大于x，但不能超出太多，因为可能会使其本身小于误差值的绝对值）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">msb_oracle</span>(<span class="params">x, k, p</span>):</span></span><br><span class="line">    delta = p &gt;&gt; (k + <span class="number">1</span>)</span><br><span class="line">    ui = random.randint(x - delta, x + delta)</span><br><span class="line">    <span class="keyword">return</span> ui</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve_hnp</span>(<span class="params">t, u, col, k, p</span>):</span> </span><br><span class="line">    M = Matrix(RationalField(), col, col)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(col<span class="number">-1</span>):</span><br><span class="line">        M[i, i] = p</span><br><span class="line">        M[col<span class="number">-1</span>, i] = t[i]</span><br><span class="line"></span><br><span class="line">    M[col<span class="number">-1</span>, col<span class="number">-1</span>] = <span class="number">1</span> / (<span class="number">2</span> ** (k + <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">babai</span>(<span class="params">A, w</span>):</span></span><br><span class="line">        A = A.LLL(delta=<span class="number">0.75</span>)</span><br><span class="line">        G = A.gram_schmidt()[<span class="number">0</span>]</span><br><span class="line">        t = w</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> reversed(range(A.nrows())):</span><br><span class="line">            c = ((t * G[i]) / (G[i] * G[i])).round()</span><br><span class="line">            t -= A[i] * c</span><br><span class="line">        <span class="keyword">return</span> w - t</span><br><span class="line"></span><br><span class="line">    closest = babai(M, vector(u+[<span class="number">0</span>]))</span><br><span class="line">    <span class="keyword">return</span> (closest[<span class="number">-1</span>] * (<span class="number">2</span> ** (k + <span class="number">1</span>))) % p</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">base_1 = <span class="number">256</span></span><br><span class="line">base_2 = <span class="number">270</span></span><br><span class="line">hidden_num = random_prime(<span class="number">2</span>^base_1, <span class="number">2</span>^(base_1<span class="number">-1</span>))</span><br><span class="line">p = random_prime(<span class="number">2</span>^base_2, <span class="number">2</span>^(base_2<span class="number">-1</span>))</span><br><span class="line"></span><br><span class="line">n = <span class="number">30</span></span><br><span class="line"></span><br><span class="line">k = ceil(sqrt(base_2)) + ceil(log(base_2, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">t = [random.randint(<span class="number">1</span>, p<span class="number">-1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]</span><br><span class="line">u = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">	u.append(msb_oracle(hidden_num * t[i], k, p))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(k)</span><br><span class="line">print(solve_hnp(t, u, n+<span class="number">1</span>, k, p))</span><br><span class="line">print(hidden_num)</span><br></pre></td></tr></table></figure>
+<p>相关题目writeup链接：</p>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2d7aa18677a0">2018 BCTF guess_number</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/204846">2020 XCTF 高校战役 NHP</a></li>
+</ol>
+<h5 id="相关心得">相关心得</h5>
+<p>其实基于LLL算法的Crypto破解本质都是相似的，即构造一个合适的矩阵，其中可能包含题中的已知参数，通过一系列初等变换，找到一个范数较小的向量，将未知数转移到这个小范数向量中，从而求解。</p>
+<p>以碰到的一个mix_bag为例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">secret = int(secret.encode(<span class="string">&#x27;hex&#x27;</span>),<span class="number">16</span>)</span><br><span class="line">p = getPrime(<span class="number">2040</span>)</span><br><span class="line">pub = []</span><br><span class="line">key = []</span><br><span class="line">tmp_key = getPrime(<span class="number">1024</span>)</span><br><span class="line">dec_key = getPrime(<span class="number">1024</span>)</span><br><span class="line">enc_key = inverse(dec_key,p)</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">30</span>):</span><br><span class="line">    key.append(tmp_key)</span><br><span class="line">    pub.append(tmp_key * enc_key % p)</span><br><span class="line">    tmp_key = getPrime(<span class="number">512</span>)</span><br><span class="line"></span><br><span class="line">tmp_key = sum(key)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(flag.bit_length() - <span class="number">30</span>):</span><br><span class="line">    tmp_key *= <span class="number">2</span></span><br><span class="line">    pub.append(tmp_key * enc_key % p)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">&quot;data.txt&quot;</span>,<span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">&quot;pub = &quot;</span>+str(pub).replace(<span class="string">&quot;L&quot;</span>,<span class="string">&quot;&quot;</span>)+<span class="string">&quot;\n&quot;</span>)</span><br><span class="line"></span><br><span class="line">S = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> flag &gt; <span class="number">0</span>:</span><br><span class="line">    S += (secret &amp; <span class="number">1</span>) * pub.pop()</span><br><span class="line">    flag &gt;&gt;= <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">&quot;data.txt&quot;</span>,<span class="string">&quot;a&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">&quot;S = &quot;</span> + str(S)+<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    f.write(<span class="string">&quot;p = &quot;</span> + str(p))</span><br></pre></td></tr></table></figure>
+<p>审题后发现，是一个混合背包，由两部分组成，前30为无序背包，后面则为超递增序列构成的正常背包，但只给了总的和，故需要计算出前面的随机序列key，才能获得flag，根据题意，有：</p>
+<p><span class="math display">\[key_i * enc  = K_i + T_i * p\]</span></p>
+<p><span class="math inline">\(K_i\)</span>（此处K数列即为pub数列前30项）已知，p已知，想到可以构建矩阵，利用格基约化解决问题，构造矩阵如下：</p>
+<p><span class="math inline">\(p \quad 0 \quad \dots \quad 0 \quad 0 \\ 0 \quad p \quad \dots \quad 0 \quad 0 \\ \vdots \quad \ \vdots \quad \ddots \quad p \quad 0 \\ k_1 \ k_2 \ \ \ \dots \ \ \  k_n \ \ \ x\)</span></p>
+<p>容易发现，在此矩阵构造的格上有二向量（在这种构造的时候，不应该在有限域下去考虑问题）：</p>
+<p><span class="math inline">\((T_1 p + K_1, \ T_2p+K_2, \ \dots, \ T_np+K_n, \ x)\)</span></p>
+<p><span class="math inline">\((key_1 *enc, \ key_2 * enc, \ \dots, \ key_n * enc, \ enc * x)\)</span></p>
+<p>将两向量相减，并把<span class="math inline">\(key_i * enc = K_i + T_i * p\)</span>代入，则可以得到：</p>
+<p><span class="math inline">\((0, \ 0, \ \dots, \ 0, (enc - 1) * x)\)</span></p>
+<p>再将此式乘以dec(enc在模p上的逆)，则得到：</p>
+<p><span class="math inline">\((0, \ 0, \ \dots, \ 0, -dec * x)\)</span></p>
+<p>如果将x的值控制得当，则此向量范数将很小，可以通过LLL得到， 此部分exp如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_seed</span>(<span class="params">t, col, k, p</span>):</span> </span><br><span class="line">    <span class="comment"># 在有理数域上也可构造格，并使用格基约化</span></span><br><span class="line">	M = Matrix(RationalField(), col, col)</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(col<span class="number">-1</span>):</span><br><span class="line">		M[i, i] = p</span><br><span class="line">		M[col<span class="number">-1</span>, i] = t[i]</span><br><span class="line"></span><br><span class="line">	M[col<span class="number">-1</span>, col<span class="number">-1</span>] = <span class="number">1</span> / (<span class="number">2</span> ** k)</span><br><span class="line"></span><br><span class="line">	final_vector = M.LLL(delta=<span class="number">0.75</span>)[<span class="number">0</span>]</span><br><span class="line">	print(final_vector)</span><br><span class="line">	<span class="keyword">return</span> (<span class="number">-1</span> * final_vector[<span class="number">-1</span>] * (<span class="number">2</span> ** k)) % p</span><br><span class="line">dec = find_seed(pub[:<span class="number">30</span>], <span class="number">31</span>, <span class="number">1</span>,p)</span><br></pre></td></tr></table></figure>
+<p>其中k的选取不宜过大，较小的值均可找到正确的dec，有了dec之后就变成了简单的背包问题，不再详述。</p>
+<h3 id="ecc">ECC</h3>
+<h4 id="introduction-to-mathematical-chapter-5">Introduction-to-Mathematical Chapter 5</h4>
+<h5 id="椭圆曲线基础概念">椭圆曲线基础概念</h5>
+<p>理解椭圆曲线上的基本运算，重点理解O点（所有与y轴垂直线的交点）是为了使椭圆曲线上的加法群完备而虚构的点，为其上加法单位元，至于具体运算公式，如两点相加的泛式等，从原理上理解即可。</p>
+<p>至于约束条件，其实本质上是为了使三次方程无解，使得不存在孤立点。</p>
+<p>加法规则：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200719221158307.png"></p>
+<h5 id="有限域上的椭圆曲线基础概念">有限域上的椭圆曲线基础概念</h5>
+<p>Hasse Theorem:</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200715203211389.png"></p>
+<p>SEA算法可以在较短时间内计算一个椭圆曲线的阶（椭圆曲线上点的个数），在sage中的cypari2模块有集成，ellcard函数和ellsea函数均有涉及，可通过官方文档决定具体使用情况（需要根据有限域的阶是否为素数判断）。</p>
+<h5 id="有限域上椭圆曲线的dlp问题">有限域上椭圆曲线的DLP问题</h5>
+<p>某个点作为生成元的集合的阶是曲线上点集合阶的因子，通过拉格朗日定理易得：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200715212418259.png"></p>
+<p>具体证明看75页即可。</p>
+<p>The Double-and-Add Algorithm：思想其实就是快速幂算法，在椭圆曲线上，或可称为快速加算法。如果允许三元扩张（即2的幂次的系数不仅可以为0/1，还可以为-1），在期望上会更快，会有<span class="math inline">\(\frac{3}{2}k +1\)</span> 的上界。</p>
+<p>解决ECDLP问题的复杂度为<span class="math inline">\(O(n^{\frac{1}{2}})\)</span></p>
+<p>Lenstra 算法：利用椭圆曲线的倍数分布分解n，算法的复杂度取决于n最小的因子。</p>
+<h5 id="k上的椭圆曲线"><span class="math inline">\(2^k\)</span>上的椭圆曲线</h5>
+<p>注意这里的<span class="math inline">\(2^k\)</span>不是指椭圆曲线上点的模数为<span class="math inline">\(2^k\)</span>，而是指其在<span class="math inline">\(F(2^k)\)</span>上，即k维度的，系数在<span class="math inline">\(F(2)\)</span>上的向量（即可映射为多项式）。</p>
+<p>为了满足之前的无孤立点条件，需要进一步平衡曲线（原因是<span class="math inline">\(\Delta= -16 (4A^3 + 27B^2)\)</span>，而现在在<span class="math inline">\(F(2)\)</span>上讨论时前面的系数16即等价于0，则<span class="math inline">\(\Delta \equiv 0\)</span>）：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200719220641020.png"></p>
+<p>平衡后计算规则大体不变，对于一个点的对称点的公式会变为：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200719220911438.png"></p>
+<p>加法公式：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200719221419061.png"></p>
+<p>在<strong>Koblitz曲线</strong>（<span class="math inline">\(E_a : Y_2 + XY = X^3 + aX^2 + 1\)</span>）上，通过Frobenius映射得到（<span class="math inline">\(t \leq \sqrt{p}\)</span>应为<span class="math inline">\(t \leq 2\sqrt{p}\)</span>，且这里<span class="math inline">\(\alpha,\beta\)</span>的绝对值有误，并不一定为<span class="math inline">\(\sqrt{p}\)</span>，）：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200720135121300.png"></p>
+<p>Frobenius映射提供了一种更高效的计算<span class="math inline">\(nQ, Q \in E\)</span>的算法，由5.29.(b)可以得到<span class="math inline">\(\tau^2 = t\tau - p\)</span></p>
+<p>由此可以将n表示为<span class="math inline">\(n = v_0 + v_1\tau+v_2\tau^2 + \dots + v_l\tau^l\)</span>，使用类似Double-and-Add Algorithm的方法可以在较短时间内计算出<span class="math inline">\(nQ\)</span>。</p>
+<h5 id="bilinear-pairings">Bilinear pairings</h5>
+<p>双线性对看作一个函数<span class="math inline">\(f\)</span>的话，其实本质即是对输入<span class="math inline">\(v, w\)</span> 两个向量，有输出$f(v, w) $ 为一数，且映射<span class="math inline">\(f\)</span> 对于<span class="math inline">\(v\)</span> 和<span class="math inline">\(w\)</span> 都是线性映射。</p>
+<p>一个比较泛的例子：</p>
+<p><span class="math inline">\(A_{n * n}\)</span> 为一n阶方阵，v和w为n阶向量，则<span class="math inline">\(f(v, w) = v * A * w^t\)</span> 为一<span class="math inline">\(R^n\)</span> 上的Bilinear pairings</p>
+<p>椭圆曲线上，可定义双线性对，先用点阶做一个划分，即有<span class="math inline">\(E[m] = \{P|mP=O, P \in E\}\)</span>，<span class="math inline">\(\forall P \in E[m], P = aP_1 + bP_2\)</span></p>
+<p><span class="math inline">\(P_1, P_2\)</span> 即 <span class="math inline">\(E[m]\)</span>上一组基</p>
+<p>则对一双线性对<span class="math inline">\(f\)</span>，有<span class="math inline">\(f(P_1+P_2, P&#39;) = f(P_1, P&#39;) \times f(P_2, P&#39;)\)</span></p>
+<p>(此处的<span class="math inline">\(\times\)</span>是未定义算子)</p>
+<h5 id="divisor">Divisor</h5>
+<p>对于一个有理多项式<span class="math inline">\(f(x) = \frac{a\prod_{i=1}^r(X-\alpha_i)^{e_i}}{b\prod_{i=1}^s(X-\beta_i)^{d_i}}\)</span></p>
+<p>其中<span class="math inline">\(\alpha_i\)</span> 为零点（zeros），<span class="math inline">\(\beta_i\)</span> 为极点（poles），顾名思义即是让<span class="math inline">\(f(x) = 0/ \infin\)</span> 的点</p>
+<p>定义<span class="math inline">\(div(f(x)) = \sum_{i=1}^re_i[\alpha_i] - \sum_{i=1}^rd_i[\beta_i]\)</span></p>
+<p>这里的$[_i] <span class="math inline">\(，并不是一个具体的操作，中括号只是提供一个形式和，即将\)</span>_i, _i<span class="math inline">\(映射到一个abelian上，从而使得\)</span>div$ 为一个free abelian，具体的映射是不定的，关键在于定义了一个有理多项式上的零点和极点关系的刻画。</p>
+<p>对于椭圆曲线E上的<span class="math inline">\(f\)</span>，有<span class="math inline">\(div(f) = \sum_{P\in E}n_P [P]\)</span></p>
+<p>其中<span class="math inline">\(n_P\)</span> 为使得<span class="math inline">\(P\)</span>为<span class="math inline">\(f\)</span> zeros/poles的次数，以<span class="math inline">\(GF(7)\)</span>上曲线 <span class="math inline">\(E: Y^2= X^3 +1 = (x-6)(x-3)(x-5)\)</span> 为例，其点集为：</p>
+<figure>
+<img src="/2020/07/06/Way-to-Crypto/image-20201030005553374.png" alt="image-20201030005553374"><figcaption aria-hidden="true">image-20201030005553374</figcaption>
+</figure>
+<p>可知当x坐标使得<span class="math inline">\(y=0\)</span> 共有三点，皆不同，故$div(y) = [P_1] + [P_2] + [P_3] - 3O, P_1 =(3,0),P_2 = (5,0),P_3=(6,0) $</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20201030211900778.png"></p>
+<p>这里的分析是考虑对于<span class="math inline">\(div(f_P) = m[P]-m[O]\)</span> 的情况只有P为<span class="math inline">\((\alpha, 0)\)</span>此种形式时，<span class="math inline">\(f_p = X-\alpha\)</span> 才可以满足，因为对于正常的<span class="math inline">\(P = (\alpha, \beta)\)</span>， 有<span class="math inline">\(-P = (\alpha, -\beta)\)</span>，故<span class="math inline">\(div[X-\alpha] = [P] + [-P] - 2[O]\)</span>。</p>
+<p><em>需要注意区分多项式的原始情形和椭圆曲线上的情形，因为多项式原始情形是基于单变量定义的，而椭圆曲线上有两个变量，且使用点来表示div，故存在一些不同，这也是要使用[ ]来做形式和的原因。</em></p>
+<h5 id="weil-pairing">Weil pairing</h5>
+<p>Weil pairing 其实即是定义了一个ECC上的Bilinear pairing，如下</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20201030224528430.png"></p>
+<p><em><span class="math inline">\(e_m(P, Q)\)</span> 的值与<span class="math inline">\(f_P, f_Q, S\)</span> 无关，他们本质上只是凑出一个自洽的映射</em></p>
+<p>回顾双线性对的定义：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20201103221217410.png"></p>
+<p>考虑到有<span class="math inline">\(e_m(aP, bQ) = ab \ e_m(PQ)\)</span>，即等价于第一条。</p>
+<p>Weil pairing有性质如下：</p>
+<ol type="1">
+<li><span class="math inline">\(e_m(P,Q)^m = 1 | P, Q\in E[m]\)</span></li>
+<li><span class="math inline">\(e_m\)</span> 为一双线性对</li>
+<li><span class="math inline">\(e_m(P, P) = 1|P \in E[m]\)</span>， 即<span class="math inline">\(e_m(P, Q) e_m(Q,P) =1 | P, Q\in E[m]\)</span></li>
+<li>如果对于<span class="math inline">\(\forall Q \in E[m], e_m(P, Q) = 1\)</span>， 则<span class="math inline">\(P= O\)</span></li>
+</ol>
+<p>由性质四知，<span class="math inline">\(\forall P, Q \in E[m], P \not= O, Q\not=O\)</span>，则有<span class="math inline">\(e_m(P, Q) \not=1\)</span>，即对于双线性对的条件2。</p>
+<p>这里可以以前面order为2时的多项式<span class="math inline">\(f = X-\alpha\)</span>举例：<span class="math inline">\(\frac{(Q+S).x - \alpha}{S.x-\alpha}/\frac{(P+S).x -\beta}{(-S).x-\beta}\)</span></p>
+<p>仍然以<span class="math inline">\(GF(7)\)</span>上曲线 <span class="math inline">\(E: Y^2= X^3 +1 = (x-6)(x-3)(x-5)\)</span> 为例，其点集为：</p>
+<figure>
+<img src="/2020/07/06/Way-to-Crypto/image-20201030005553374.png" alt="image-20201030005553374"><figcaption aria-hidden="true">image-20201030005553374</figcaption>
+</figure>
+<p>这里取<span class="math inline">\(\alpha = 5, P=(5, 0), \beta = 6, Q = (6,0), S = (2, 4)\)</span></p>
+<p>则<span class="math inline">\((Q+S).x = 0, (P+S).x = 1, S.x =-S.x = 2\)</span></p>
+<p>则<span class="math inline">\(e_m(P, Q) = \frac{-5}{-3} / \frac{-5}{-4} = \frac{4}{3}\)</span></p>
+<p>取<span class="math inline">\(S = (4, 3)\)</span>， 则<span class="math inline">\((Q+S).x = 1, (P+S).x = 0, S.x = -S.x = 4\)</span></p>
+<p>则<span class="math inline">\(e_m(P, Q) = \frac{-4}{-1}/\frac{-6}{-2} = \frac{4}{3}\)</span></p>
+<p>可知，确实相等，具体的公式推导也可以结合Example5.40理解。</p>
+<p><em>到这里其实可以泛的理解一下，我们定义divsor来刻画极点和零点关系，就是为了构造出<span class="math inline">\(m[P]-m[O]\)</span>这样的多项式，使其是阶是‘0’，则再构造出来的Weil pairing即是双线性对了</em></p>
+<h5 id="jacobian-coordinates">Jacobian Coordinates</h5>
+<p>Jacobian坐标是不同于仿射坐标的另一种表示椭圆曲线的方式，好处是使得加，乘，求逆等运算的复杂度大幅降低，不过其只能在模为素数的曲线上表示。</p>
+<p>Jacobian坐标使用三个分量<span class="math inline">\((X, Y, Z)\)</span>，对应仿射坐标中的<span class="math inline">\((\frac{X}{Z^2}, \frac{Y}{Z^3})\)</span>，之前其实一直也有些疑惑为什么sage中的椭圆曲线坐标都是<span class="math inline">\((x,y,1)\)</span>，现在才知道其实这是取Z=1，则前两个分量等同于在仿射坐标系下的值。Jacobian坐标下的add和double提供了更低复杂度的算法，通常我们先将仿射坐标系的点转化为Jacobian坐标下的点，计算结束后再转为仿射坐标。</p>
+<p>具体算法参见<a target="_blank" rel="noopener" href="https://en.wikibooks.org/wiki/Cryptography/Prime_Curve/Jacobian_Coordinates">wiki</a> 。</p>
+<h4 id="超椭圆曲线">超椭圆曲线</h4>
+<p>椭圆曲线为亏格等于1的代数曲线，而<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/超椭圆曲线">超椭圆曲线</a>指亏格大于1的代数曲线，但仅有亏格为2的超椭圆曲线有与椭圆曲线相同的安全性。</p>
+<p>推荐看这篇<a target="_blank" rel="noopener" href="https://www.math.uwaterloo.ca/~ajmeneze/publications/hyperelliptic.pdf">文章</a>，对超椭圆曲线的基础概念介绍的非常详细（可以只看1，2，5，9章，即可有个大概了解了）。</p>
+<p>超椭圆曲线定义如下，其天然不存在孤立点：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200930140124578.png"></p>
+<h5 id="jacobian-variety">Jacobian variety</h5>
+<p>超椭圆曲线上的加法群完备性源自于其Jacobian variety（雅克比簇）加法群为Abelian group，其点的运算也是需要先转化为Jacobian variety后再运算，环Jacobian variety的阶记为<span class="math inline">\(\#J\)</span>，即类似于<span class="math inline">\(GF(n)\)</span>上欧拉函数的意义。</p>
+<p><span class="math inline">\(\#J\)</span> 是基于超椭圆曲线的密码学中重要的安全参数，有如下限制：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200930170010402.png"></p>
+<p>其计算方法如下（此为亏格为2的情况，其余情况类比即可，其中<span class="math inline">\(M_i\)</span> 为<span class="math inline">\(F_{q^i}\)</span>下曲线阶数）：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200930185253258.png"></p>
+<p>化为代码（使用的曲线为TCTF2020 Simple Curve）如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Paramters and curve</span></span><br><span class="line">q = <span class="number">2</span></span><br><span class="line">n = <span class="number">256</span></span><br><span class="line">genus = <span class="number">2</span></span><br><span class="line"><span class="comment"># h(x) = x^2 + x</span></span><br><span class="line"><span class="comment"># f(x) = x^5 + x^3 + 1</span></span><br><span class="line">h = <span class="keyword">lambda</span> x: x ^ <span class="number">2</span> + x</span><br><span class="line">f = <span class="keyword">lambda</span> x: x ^ <span class="number">5</span> + x ^ <span class="number">3</span> + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Calc M_i</span></span><br><span class="line">M = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(genus):</span><br><span class="line">    P.&lt;x&gt; = PolynomialRing(GF(q ^ (i + <span class="number">1</span>)))</span><br><span class="line">    C = HyperellipticCurve(f(x), h(x))</span><br><span class="line">    M.append(C.cardinality())</span><br><span class="line">print(<span class="string">&quot;Calc M done&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calc a_i</span></span><br><span class="line">a = [<span class="number">0</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(genus):</span><br><span class="line">    a.append((M[i] - <span class="number">1</span> - q ^ (i + <span class="number">1</span>) + a[i] ^ (i + <span class="number">1</span>)) / (i + <span class="number">1</span>))</span><br><span class="line">a = [<span class="number">1</span>] + a[<span class="number">1</span>:]</span><br><span class="line">print(<span class="string">&quot;Calc a done&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calc gamma_i</span></span><br><span class="line">var(<span class="string">&#x27;X&#x27;</span>)</span><br><span class="line">function = -genus * q</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(genus + <span class="number">1</span>):</span><br><span class="line">    function += a[i] * X ^ (genus - i)</span><br><span class="line">gamma = list(map(<span class="keyword">lambda</span> x: x.rhs(), solve([function == <span class="number">0</span>], X)))</span><br><span class="line">print(<span class="string">&quot;Calc gamma done&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calc alpha_i</span></span><br><span class="line">alpha = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(genus):</span><br><span class="line">    function = X ^ <span class="number">2</span> - gamma[i] * X + q</span><br><span class="line">    alpha.append(list(map(<span class="keyword">lambda</span> x: x.rhs(), solve([function == <span class="number">0</span>], X))))</span><br><span class="line">print(<span class="string">&quot;Calc alpha done&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calc #J</span></span><br><span class="line">order = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(genus):</span><br><span class="line">    order *= abs(<span class="number">1</span> - alpha[i][<span class="number">0</span>] ^ n) ^ <span class="number">2</span></span><br><span class="line">print(<span class="string">&#x27;#J =&#x27;</span>, int(order))</span><br></pre></td></tr></table></figure>
+<h3 id="stream">Stream</h3>
+<h4 id="prng">PRNG</h4>
+<h5 id="lcg">LCG</h5>
+<p>已知（a，b，m）的直接通过解同模方程就行（方法很多，也可以利用格），已知（a，b），但m未知可以通过淘宝师傅博客的方法：</p>
+<p><img src="/2020/07/06/Way-to-Crypto/image-20200728185617021.png"></p>
+<p>也比较简单，至于有截断的泄露，其实就是普通的HNP问题，直接套用HNP脚本求解即可，附上NPUCTF2020中baby_LCG的求解seed部分exp：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">key = &#123;<span class="string">&#x27;b&#x27;</span>: <span class="number">153582801876235638173762045261195852087</span>, <span class="string">&#x27;a&#x27;</span>: <span class="number">107763262682494809191803026213015101802</span>, <span class="string">&#x27;m&#x27;</span>: <span class="number">226649634126248141841388712969771891297</span>&#125;</span><br><span class="line">data = [<span class="number">7800489346663478448</span>,</span><br><span class="line">            <span class="number">11267068470666042741</span>,</span><br><span class="line">            <span class="number">5820429484185778982</span>,</span><br><span class="line">            <span class="number">6151953690371151688</span>,</span><br><span class="line">            <span class="number">548598048162918265</span>,</span><br><span class="line">            <span class="number">1586400863715808041</span>,</span><br><span class="line">            <span class="number">7464677042285115264</span>,</span><br><span class="line">            <span class="number">4702115170280353188</span>,</span><br><span class="line">            <span class="number">5123967912274624410</span>,</span><br><span class="line">            <span class="number">8517471683845309964</span>,</span><br><span class="line">            <span class="number">2106353633794059980</span>,</span><br><span class="line">            <span class="number">11042210261466318284</span>,</span><br><span class="line">            <span class="number">4280340333946566776</span>,</span><br><span class="line">            <span class="number">6859855443227901284</span>,</span><br><span class="line">            <span class="number">3149000387344084971</span>,</span><br><span class="line">            <span class="number">7055653494757088867</span>,</span><br><span class="line">            <span class="number">5378774397517873605</span>,</span><br><span class="line">            <span class="number">8265548624197463024</span>,</span><br><span class="line">            <span class="number">2898083382910841577</span>,</span><br><span class="line">            <span class="number">4927088585601943730</span>]</span><br><span class="line"></span><br><span class="line">u = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">19</span>):</span><br><span class="line">	u.append((data[i+<span class="number">1</span>] - data[i]) &lt;&lt; <span class="number">64</span>)</span><br><span class="line"></span><br><span class="line">t = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">19</span>):</span><br><span class="line">	t.append(key[<span class="string">&#x27;a&#x27;</span>] ** i)</span><br><span class="line"></span><br><span class="line">k = <span class="number">64</span></span><br><span class="line">n = <span class="number">19</span></span><br><span class="line">print(solve_hnp(t, u, n+<span class="number">1</span>, k, key[<span class="string">&#x27;m&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+<p>其中的solve_hnp函数即是我之前HNP示例中的函数。</p>
+<h5 id="梅森旋转">梅森旋转</h5>
+<p>如果是已知624位以上的序列，可以直接使用rand_crack破解，如果知道的序列下标之间有<span class="math inline">\(a \equiv (b + t) \mod(m)\)</span>（其中m为梅森旋转的状态数，t为旋转步骤中的参数），则也可以破解，具体例题可参见NPUCTF2020 Mersenne twister，exp如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> binascii <span class="keyword">import</span> hexlify , unhexlify</span><br><span class="line"><span class="keyword">from</span> z3 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">XOR = <span class="keyword">lambda</span> s1 ,s2 : bytes([x1 ^ x2 <span class="keyword">for</span> x1 ,x2 <span class="keyword">in</span> zip(s1 , s2)])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">mt73991</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self , seed</span>):</span></span><br><span class="line">        self.state = [seed] + [<span class="number">0</span>] * <span class="number">232</span></span><br><span class="line">        self.flag = <span class="number">0</span></span><br><span class="line">        self.srand()</span><br><span class="line">        self.generate()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">srand</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">232</span>):</span><br><span class="line">            self.state[i+<span class="number">1</span>] = <span class="number">1812433253</span> * (self.state[i] ^ (self.state[i] &gt;&gt; <span class="number">27</span>)) - i</span><br><span class="line">            self.state[i+<span class="number">1</span>] &amp;= <span class="number">0xffffffff</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generate</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">233</span>):</span><br><span class="line">            y = (self.state[i] &amp; <span class="number">0x80000000</span>) | (self.state[(i+<span class="number">1</span>)%<span class="number">233</span>] &amp; <span class="number">0x7fffffff</span>)</span><br><span class="line">            temp = y &gt;&gt; <span class="number">1</span></span><br><span class="line">            temp ^= self.state[(i + <span class="number">130</span>) % <span class="number">233</span>]</span><br><span class="line">            <span class="keyword">if</span> y &amp; <span class="number">1</span>:</span><br><span class="line">                temp ^= <span class="number">0x9908f23f</span></span><br><span class="line">            self.state[i] = temp</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getramdanbits</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> self.flag == <span class="number">233</span>:</span><br><span class="line">            self.generate()</span><br><span class="line">            self.flag = <span class="number">0</span></span><br><span class="line">        bits = self.Next(self.state[self.flag]).to_bytes(<span class="number">4</span>, <span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        self.flag += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> bits</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_random_num</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> self.flag == <span class="number">233</span>:</span><br><span class="line">            self.generate()</span><br><span class="line">            self.flag = <span class="number">0</span></span><br><span class="line">        num = self.state[self.flag]</span><br><span class="line">        self.flag += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> num</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Next</span>(<span class="params">self , tmp</span>):</span></span><br><span class="line">        tmp ^= (tmp &gt;&gt; <span class="number">11</span>)</span><br><span class="line">        tmp ^= (tmp &lt;&lt; <span class="number">7</span>) &amp; <span class="number">0x9ddf4680</span></span><br><span class="line">        tmp ^= (tmp &lt;&lt; <span class="number">15</span>) &amp; <span class="number">0xefc65400</span></span><br><span class="line">        tmp ^= (tmp &gt;&gt; <span class="number">18</span>) &amp; <span class="number">0x34adf670</span></span><br><span class="line">        <span class="keyword">return</span> tmp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span>(<span class="params">key , plain</span>):</span></span><br><span class="line">    tmp = md5(plain).digest()</span><br><span class="line">    <span class="keyword">return</span> hexlify(XOR(tmp , key))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decrypt</span>(<span class="params">c, m</span>):</span></span><br><span class="line">    tmp = md5(m).digest()</span><br><span class="line">    bits = XOR(tmp, c)</span><br><span class="line">    <span class="keyword">return</span> [bytes_to_long(bits[<span class="number">4</span> * _:<span class="number">4</span> * (_+<span class="number">1</span>)]) <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">4</span>)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">true_decrypt</span>(<span class="params">c, key</span>):</span></span><br><span class="line">    tmp = XOR(c, key)</span><br><span class="line">    <span class="keyword">for</span> a <span class="keyword">in</span> range(<span class="number">0x20</span>, <span class="number">0x7f</span>):</span><br><span class="line">        <span class="keyword">if</span> md5(chr(a).encode()).digest() == tmp:</span><br><span class="line">            <span class="keyword">return</span> chr(a)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;\x00&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">__kMaxBits = <span class="number">0xffffffff</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__inverse_right_shift_xor</span>(<span class="params">value, shift, mask</span>):</span></span><br><span class="line"></span><br><span class="line">    i, result = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i * shift &lt; <span class="number">32</span>:</span><br><span class="line">        part_mask = ((__kMaxBits &lt;&lt; (<span class="number">32</span> - shift)) &amp; __kMaxBits) &gt;&gt; (i * shift)</span><br><span class="line">        part = value &amp; part_mask</span><br><span class="line">        <span class="keyword">if</span> mask != <span class="number">0</span>:</span><br><span class="line">            value ^= (part &gt;&gt; shift) &amp; mask</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            value ^= part &gt;&gt; shift</span><br><span class="line">        result |= part</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__inverse_left_shift_xor</span>(<span class="params">value, shift, mask</span>):</span></span><br><span class="line">    i, result = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i * shift &lt; <span class="number">32</span>:</span><br><span class="line">        part_mask = (__kMaxBits &gt;&gt; (<span class="number">32</span> - shift)) &lt;&lt; (i * shift)</span><br><span class="line">        part = value &amp; part_mask</span><br><span class="line">        value ^= (part &lt;&lt; shift) &amp; mask</span><br><span class="line">        result |= part</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">from_mt_to_state</span>(<span class="params">tmp</span>):</span></span><br><span class="line">    tmp = __inverse_right_shift_xor(tmp, <span class="number">18</span>, <span class="number">0x34adf670</span>)</span><br><span class="line">    tmp = __inverse_left_shift_xor(tmp, <span class="number">15</span>, <span class="number">0xefc65400</span>)</span><br><span class="line">    tmp = __inverse_left_shift_xor(tmp, <span class="number">7</span>, <span class="number">0x9ddf4680</span>)</span><br><span class="line">    tmp = __inverse_right_shift_xor(tmp, <span class="number">11</span>, <span class="number">0xffffffff</span>)</span><br><span class="line">    <span class="keyword">return</span> tmp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">guess</span>(<span class="params">state_103, state_0</span>):</span></span><br><span class="line">    possible = state_103</span><br><span class="line">    possible ^= state_0</span><br><span class="line">    <span class="keyword">if</span> possible.bit_length() &gt; <span class="number">31</span>:</span><br><span class="line">        possible ^= <span class="number">0x9908f23f</span></span><br><span class="line">    possible &lt;&lt;= <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> possible</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">final_inverse</span>(<span class="params">enc</span>):</span></span><br><span class="line">    tmp = enc &amp; <span class="number">0x7fffffff</span></span><br><span class="line">    <span class="keyword">return</span> tmp | (<span class="number">0x7fffffff</span>+<span class="number">1</span>), tmp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inverse_srand</span>(<span class="params">value, i</span>):</span></span><br><span class="line">    value += i</span><br><span class="line">    value *= inverse(<span class="number">1812433253</span>, <span class="number">0xffffffff</span>+<span class="number">1</span>)</span><br><span class="line">    value = __inverse_right_shift_xor(value, <span class="number">27</span>, <span class="number">0xffffffff</span>)</span><br><span class="line">    <span class="keyword">return</span> value</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_init_seed</span>(<span class="params">state_103</span>):</span></span><br><span class="line">    last_state = state_103</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">103</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">        last_state = inverse_srand(last_state, i)</span><br><span class="line">    <span class="keyword">return</span> last_state</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line"></span><br><span class="line">    flag_start = <span class="string">&#x27;npuctf&#123;&#x27;</span></span><br><span class="line">    flag_end = <span class="string">&#x27;&#125;&#x27;</span></span><br><span class="line">    cipher = unhexlify(open(<span class="string">&quot;cipher.txt&quot;</span>, <span class="string">&quot;rb&quot;</span>).read())</span><br><span class="line">    random = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">7</span>):</span><br><span class="line">        random.extend(decrypt(cipher[<span class="number">16</span> * i: <span class="number">16</span> * (i+<span class="number">1</span>)], flag_start[i].encode()))</span><br><span class="line">    print(random)</span><br><span class="line"></span><br><span class="line">    state = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">28</span>):</span><br><span class="line">        state.append(from_mt_to_state(random[i]))</span><br><span class="line">    print(state)</span><br><span class="line"></span><br><span class="line">    random_last = decrypt(cipher[<span class="number">-1</span>*<span class="number">16</span>:], flag_end.encode())</span><br><span class="line">    state_last = [from_mt_to_state(i) <span class="keyword">for</span> i <span class="keyword">in</span> random_last]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># print(state_last)</span></span><br><span class="line">    mid = guess(state_last[<span class="number">-1</span>], state[<span class="number">0</span>])</span><br><span class="line">    old_104 = []</span><br><span class="line">    old_104.extend(final_inverse(mid))</span><br><span class="line">    <span class="keyword">if</span> inverse_srand(old_104[<span class="number">0</span>], <span class="number">103</span>) &amp; <span class="number">0x80000000</span> == mid &amp; <span class="number">0x80000000</span>:</span><br><span class="line">        <span class="keyword">if</span> inv_srand(old_104[<span class="number">1</span>], <span class="number">103</span>) &amp; <span class="number">0x80000000</span> == mid &amp; <span class="number">0x80000000</span>:</span><br><span class="line">            print(<span class="string">&quot;two cases found&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            old_104 = old_104[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        old_104 = old_104[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    print(<span class="string">&#x27;old state 104 = &#x27;</span> + str(old_104))</span><br><span class="line"></span><br><span class="line">    seed = find_init_seed(old_104)</span><br><span class="line">    print(<span class="string">&#x27;seed = &#x27;</span> + str(seed))</span><br><span class="line"></span><br><span class="line">    random = mt73991(seed)</span><br><span class="line">    flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">26</span>):</span><br><span class="line">        tmp = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">            tmp += random.getramdanbits()</span><br><span class="line">        flag += true_decrypt(cipher[<span class="number">16</span> * i: <span class="number">16</span> * (i+<span class="number">1</span>)], tmp)</span><br><span class="line">    print(flag)</span><br></pre></td></tr></table></figure>
+<h4 id="lfsr">LFSR</h4>
+<h5 id="given-n-bits-mask">Given n bits, mask</h5>
+<p>如果可以泄露LFSR的n位并且知晓抽头序列，则可以直接破解，方法可以参见<a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/181811">这篇博客</a>，给出通用的exp：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inverse_lfsr</span>(<span class="params">out, mask</span>):</span></span><br><span class="line">    out = out[::<span class="number">-1</span>]</span><br><span class="line">    mask = mask[::<span class="number">-1</span>]</span><br><span class="line">    index = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(mask)):</span><br><span class="line">        <span class="keyword">if</span> mask[i] == <span class="string">&#x27;1&#x27;</span>:</span><br><span class="line">            index.append(i)</span><br><span class="line">    print(index)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(out)):</span><br><span class="line">        mid = int(out[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(index)<span class="number">-1</span>):</span><br><span class="line">            mid ^= int(out[index[j]+<span class="number">1</span>])</span><br><span class="line">        out = out[<span class="number">1</span>:] + str(mid)</span><br><span class="line">    <span class="keyword">return</span> out[::<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<h5 id="nlfsr">NLFSR</h5>
+<p>n个LFSR并行，最终结果通过每个LFSR输出的代数运算获得密钥流，设输入为<span class="math inline">\(a_1, \dots, a_n\)</span>，输出为<span class="math inline">\(b\)</span>，则<span class="math inline">\(p_i = P\{a_i=b\}\)</span>，则当<span class="math inline">\(p_i\)</span>较大时（大于0.6即可），我们可以通过足够多的密钥流，通过统计找到概率相近的，作为备选值，之后依次爆破即可，可参见De1CTF2020 NLFSR的exp。</p>
+<h5 id="given-2n-bits">Given 2n bits</h5>
+<p>如果已知至少2n位的密钥流，但不知道抽头序列，则即为KPA问题，因为只要把前n个bit <span class="math inline">\(a_1,\dots,a_n\)</span>看成原本状态，则对后n个bit <span class="math inline">\(b_1, \dots, b_n\)</span>均有<span class="math inline">\(b_i = \sum_{i=1}^{n}a_i\&amp;p_i\)</span>，<span class="math inline">\(p_i\)</span>即为抽头序列，有n个这样的表达式，即为解n元一次方程，故而一定有解，通用exp如下（其中inverse_lfsr即为之前例子中函数）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init_stream</span>(<span class="params">known_plain, known_cipher</span>):</span></span><br><span class="line">    <span class="keyword">assert</span>(len(known_plain) == len(known_cipher) <span class="keyword">and</span> len(known_plain) &lt;= <span class="number">24</span>)</span><br><span class="line">    known_plain_dec = int(known_plain, <span class="number">16</span>)</span><br><span class="line">    known_cipher_dec = int(known_cipher, <span class="number">16</span>)</span><br><span class="line">    <span class="keyword">return</span> bin(known_plain_dec ^ known_cipher_dec)[<span class="number">2</span>:].rjust(<span class="number">4</span> * len(known_plain), <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lfsr_crack_key</span>(<span class="params">stream, key_length, p</span>):</span></span><br><span class="line">    <span class="keyword">assert</span>(len(stream) &gt;= <span class="number">2</span> * key_length)</span><br><span class="line">    solver = Solver()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream) - key_length):</span><br><span class="line">        cur = stream[i: i + key_length + <span class="number">1</span>]</span><br><span class="line">        equation = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(key_length):</span><br><span class="line">            <span class="keyword">if</span> cur[j] == <span class="string">&#x27;1&#x27;</span>:</span><br><span class="line">                equation += <span class="string">&#x27;p[&#x27;</span> + str(j) + <span class="string">&#x27;]+&#x27;</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">if</span> len(equation):</span><br><span class="line">            equation = equation[:<span class="number">-1</span>] + <span class="string">&#x27; == &#x27;</span> + str(cur[<span class="number">-1</span>])</span><br><span class="line">            solver.add(eval(equation))</span><br><span class="line">    <span class="keyword">if</span> solver.check() == sat:</span><br><span class="line">        m = solver.model()</span><br><span class="line">        feedback = <span class="string">&#x27;&#x27;</span>.join([str(m[p[i]]) <span class="keyword">for</span> i <span class="keyword">in</span> range(key_length)])</span><br><span class="line">        <span class="keyword">return</span> stream[:key_length], feedback</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span>, <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inverse_lfsr_kpa</span>(<span class="params">stream</span>):</span></span><br><span class="line">    <span class="keyword">for</span> key_length <span class="keyword">in</span> tqdm(range(<span class="number">2</span>, len(stream)//<span class="number">2</span> + <span class="number">1</span>)):</span><br><span class="line">        p = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">32</span>):</span><br><span class="line">            p.append(<span class="string">&#x27;p%d&#x27;</span> % i)</span><br><span class="line">        p = [BitVec(i, <span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> p]</span><br><span class="line">        key, mask = lfsr_crack_key(stream, key_length, p)</span><br><span class="line">        <span class="keyword">if</span> (key, mask) != (<span class="literal">False</span>, <span class="literal">False</span>):</span><br><span class="line">            <span class="keyword">return</span> inverse_lfsr(key, mask)</span><br></pre></td></tr></table></figure>
+<h3 id="block">Block</h3>
+<p>推荐书目：《分组密码攻击实例》</p>
+<p><strong>咕咕咕</strong></p>
+<h3 id="推荐题单">推荐题单</h3>
+<table>
+<thead>
+<tr class="header">
+<th>题目</th>
+<th>考点</th>
+<th>难度(?/100)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>De1CTF2020 ECDH</td>
+<td>筛法构造低阶椭圆曲线--ECC</td>
+<td>60</td>
+</tr>
+<tr class="even">
+<td>De1CTF2020 NLFSR</td>
+<td>根据布尔表达式计算概率--Stream</td>
+<td>35</td>
+</tr>
+<tr class="odd">
+<td>RCTF2020 infant_ECC</td>
+<td>多元Copper Smith--ECC</td>
+<td>70</td>
+</tr>
+<tr class="even">
+<td>SCTF2020 Lattice</td>
+<td>基础NTRU攻击--Lattice</td>
+<td>30</td>
+</tr>
+<tr class="odd">
+<td>NCTF2019 easy_RSA</td>
+<td>有限域开高次方--AMM algorithm</td>
+<td>60</td>
+</tr>
+<tr class="even">
+<td>watevrCTF2019 Swedish_RSA</td>
+<td>多项式上的RSA--RSA&amp;Polynomial</td>
+<td>30</td>
+</tr>
+<tr class="odd">
+<td>watevrCTF2019 ECC_RSA</td>
+<td>多项式分解--ECC&amp;RSA</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td>MIXCTF2020 mix_bag</td>
+<td>HNP--Knapsack</td>
+<td>65</td>
+</tr>
+<tr class="odd">
+<td>NPUCTF2020 baby_LCG</td>
+<td>HNP--PRNG（可以先做这道，再做上面的）</td>
+<td>55</td>
+</tr>
+<tr class="even">
+<td>NPUCTF2020 Mersenne twister</td>
+<td>梅森旋转--PRNG</td>
+<td>55</td>
+</tr>
+<tr class="odd">
+<td>WMCTF2020 piece_of_a_cake</td>
+<td>NTRU攻击&amp;私钥重复攻击--Lattice</td>
+<td>65</td>
+</tr>
+<tr class="even">
+<td>天翼杯2020 hard_RSA</td>
+<td>Copper Smith--RSA</td>
+<td>40</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Way-to-Crypto/" rel="tag"># Way to Crypto</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/06/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0/" rel="next" title="杂题闲记">
+      杂题闲记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#pre-algorithm"><span class="nav-number">1.</span> <span class="nav-text">Pre Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rsa"><span class="nav-number">2.</span> <span class="nav-text">RSA</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#givenedn"><span class="nav-number">2.0.1.</span> <span class="nav-text">Given(e,d,n)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#given-p-q-dp-dq"><span class="nav-number">2.0.2.</span> <span class="nav-text">Given (p, q, dp, dq)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#wiener-attack"><span class="nav-number">2.0.3.</span> <span class="nav-text">Wiener Attack</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#coppersmith-%E5%B8%B8%E8%A7%81%E7%9B%B8%E5%85%B3%E6%94%BB%E5%87%BB"><span class="nav-number">2.0.4.</span> <span class="nav-text">Coppersmith 常见相关攻击</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#e%E4%B8%8Ephi%E4%B8%8D%E4%BA%92%E7%B4%A0"><span class="nav-number">2.0.5.</span> <span class="nav-text">e与phi不互素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#gcdp-1-q-1%E8%BF%87%E5%A4%A7"><span class="nav-number">2.0.6.</span> <span class="nav-text">gcd(p-1, q-1)过大</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rsa-crt%E4%BD%93%E7%B3%BB%E6%94%BB%E5%87%BB"><span class="nav-number">2.0.7.</span> <span class="nav-text">RSA-CRT体系攻击</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#copper-smith%E5%8E%9F%E7%90%86"><span class="nav-number">2.0.8.</span> <span class="nav-text">Copper Smith原理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#copper-smith%E5%9F%BA%E7%A1%80"><span class="nav-number">2.0.8.1.</span> <span class="nav-text">Copper Smith基础</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#copper-smith%E5%BB%B6%E7%94%B3"><span class="nav-number">2.0.8.2.</span> <span class="nav-text">Copper Smith延申</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lattice"><span class="nav-number">3.</span> <span class="nav-text">Lattice</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#biu-crypto-lattice"><span class="nav-number">3.1.</span> <span class="nav-text">2012 Biu Crypto Lattice</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#introduction-to-lattice"><span class="nav-number">3.1.1.</span> <span class="nav-text">Introduction to Lattice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#reduction-for-sis"><span class="nav-number">3.1.2.</span> <span class="nav-text">Reduction for SIS</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#introduction-to-mathematical-chapter-6"><span class="nav-number">3.2.</span> <span class="nav-text">Introduction-to-Mathematical Chapter 6</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#babais-cvp-solve-algorithm"><span class="nav-number">3.2.1.</span> <span class="nav-text">Babai&#39;s CVP solve algorithm</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ggh"><span class="nav-number">3.2.2.</span> <span class="nav-text">GGH</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%8E%AF"><span class="nav-number">3.2.3.</span> <span class="nav-text">卷积多项式环</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ntru"><span class="nav-number">3.2.4.</span> <span class="nav-text">NTRU</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%BC%E5%9F%BA%E7%BA%A6%E5%8C%96"><span class="nav-number">3.2.5.</span> <span class="nav-text">格基约化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%A0%BC%E5%9F%BA%E7%BA%A6%E5%8C%96"><span class="nav-number">3.2.6.</span> <span class="nav-text">密码分析中的格基约化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ctf%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%85%B6%E4%BB%96%E6%A0%BC%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98"><span class="nav-number">3.3.</span> <span class="nav-text">CTF中遇到的其他格相关问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#hnp%E9%97%AE%E9%A2%98"><span class="nav-number">3.3.1.</span> <span class="nav-text">HNP问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%BF%83%E5%BE%97"><span class="nav-number">3.3.2.</span> <span class="nav-text">相关心得</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ecc"><span class="nav-number">4.</span> <span class="nav-text">ECC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#introduction-to-mathematical-chapter-5"><span class="nav-number">4.1.</span> <span class="nav-text">Introduction-to-Mathematical Chapter 5</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-number">4.1.1.</span> <span class="nav-text">椭圆曲线基础概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E5%9F%9F%E4%B8%8A%E7%9A%84%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-number">4.1.2.</span> <span class="nav-text">有限域上的椭圆曲线基础概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E5%9F%9F%E4%B8%8A%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E7%9A%84dlp%E9%97%AE%E9%A2%98"><span class="nav-number">4.1.3.</span> <span class="nav-text">有限域上椭圆曲线的DLP问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#k%E4%B8%8A%E7%9A%84%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF"><span class="nav-number">4.1.4.</span> <span class="nav-text">\(2^k\)上的椭圆曲线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bilinear-pairings"><span class="nav-number">4.1.5.</span> <span class="nav-text">Bilinear pairings</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#divisor"><span class="nav-number">4.1.6.</span> <span class="nav-text">Divisor</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#weil-pairing"><span class="nav-number">4.1.7.</span> <span class="nav-text">Weil pairing</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#jacobian-coordinates"><span class="nav-number">4.1.8.</span> <span class="nav-text">Jacobian Coordinates</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B6%85%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF"><span class="nav-number">4.2.</span> <span class="nav-text">超椭圆曲线</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#jacobian-variety"><span class="nav-number">4.2.1.</span> <span class="nav-text">Jacobian variety</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stream"><span class="nav-number">5.</span> <span class="nav-text">Stream</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prng"><span class="nav-number">5.1.</span> <span class="nav-text">PRNG</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#lcg"><span class="nav-number">5.1.1.</span> <span class="nav-text">LCG</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A2%85%E6%A3%AE%E6%97%8B%E8%BD%AC"><span class="nav-number">5.1.2.</span> <span class="nav-text">梅森旋转</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lfsr"><span class="nav-number">5.2.</span> <span class="nav-text">LFSR</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#given-n-bits-mask"><span class="nav-number">5.2.1.</span> <span class="nav-text">Given n bits, mask</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nlfsr"><span class="nav-number">5.2.2.</span> <span class="nav-text">NLFSR</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#given-2n-bits"><span class="nav-number">5.2.3.</span> <span class="nav-text">Given 2n bits</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#block"><span class="nav-number">6.</span> <span class="nav-text">Block</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90%E9%A2%98%E5%8D%95"><span class="nav-number">7.</span> <span class="nav-text">推荐题单</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lord Riot"
+      src="https://raw.githubusercontent.com/Lord-Riot/Lord-Riot.github.io/master/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Lord Riot</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Lord-Riot" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Lord-Riot" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lordriotglacier@gmail.com" title="E-Mail → mailto:lordriotglacier@gmail.com" rel="noopener" target="_blank"><i class="fab fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=2079541692&site=qq&menu=yes" title="QQ → http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;2079541692&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+    
+
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lord Riot</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

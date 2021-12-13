@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lord-riot.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Ant x D3CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="摸鱼Writeup-2">
+<meta property="og:url" content="https://lord-riot.github.io/2021/03/10/%E6%91%B8%E9%B1%BCWriteup-2/index.html">
+<meta property="og:site_name" content="Lord Riot&#39;s Blog">
+<meta property="og:description" content="Ant x D3CTF">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lord-riot.github.io/2021/03/10/%E6%91%B8%E9%B1%BCWriteup-2/image-20210310232854416.png">
+<meta property="article:published_time" content="2021-03-10T14:55:47.000Z">
+<meta property="article:modified_time" content="2021-06-10T12:38:08.966Z">
+<meta property="article:author" content="Lord Riot">
+<meta property="article:tag" content="Crypto in CTF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lord-riot.github.io/2021/03/10/%E6%91%B8%E9%B1%BCWriteup-2/image-20210310232854416.png">
+
+<link rel="canonical" href="https://lord-riot.github.io/2021/03/10/%E6%91%B8%E9%B1%BCWriteup-2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>摸鱼Writeup-2 | Lord Riot's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lord Riot's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lord-riot.github.io/2021/03/10/%E6%91%B8%E9%B1%BCWriteup-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Lord-Riot/Lord-Riot.github.io/master/images/avatar.jpg">
+      <meta itemprop="name" content="Lord Riot">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lord Riot's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          摸鱼Writeup-2
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-10 22:55:47" itemprop="dateCreated datePublished" datetime="2021-03-10T22:55:47+08:00">2021-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-10 20:38:08" itemprop="dateModified" datetime="2021-06-10T20:38:08+08:00">2021-06-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Crypto-in-CTF/" itemprop="url" rel="index"><span itemprop="name">Crypto in CTF</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">Ant x D3CTF</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="ant-x-d3ctf">Ant x D3CTF</h4>
+<h5 id="babylattice">BabyLattice</h5>
+<p>考虑r很小，有<span class="math inline">\(b m + r= c + k n\)</span>，故构造格</p>
+<p><span class="math display">\[\begin{bmatrix} n &amp; 0 &amp; 0 \\ b &amp; 1 &amp; 0 \\ c &amp; 0 &amp; X\end{bmatrix}\]</span> <span class="math display">\[
+\infin
+\]</span></p>
+<p>X为放缩因子，目标向量为<span class="math inline">\((k, m, 1)\)</span>时，通过格映射为向量<span class="math inline">\((r, m, X)\)</span>，调整X大小为<span class="math inline">\(2^{300}\)</span>，可成功规约出目标向量，exp如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</span><br><span class="line"></span><br><span class="line">n = <span class="number">69804507328197961654128697510310109608046244030437362639637009184945533884294737870524186521509776189989451383438084507903660182212556466321058025788319193059894825570785105388123718921480698851551024108844782091117408753782599961943040695892323702361910107399806150571836786642746371968124465646209366215361</span></span><br><span class="line">b = <span class="number">65473938578022920848984901484624361251869406821863616908777213906525858437236185832214198627510663632409869363143982594947164139220013904654196960829350642413348771918422220404777505345053202159200378935309593802916875681436442734667249049535670986673774487031873808527230023029662915806344014429627710399196</span></span><br><span class="line">c = <span class="number">64666354938466194052720591810783769030566504653409465121173331362654665231573809234913985758725048071311571549777481776826624728742086174609897160897118750243192791021577348181130302572185911750797457793921069473730039225991755755340927506766395262125949939309337338656431876690470938261261164556850871338570</span></span><br><span class="line"></span><br><span class="line">X = <span class="number">2</span>**<span class="number">300</span></span><br><span class="line">M = Matrix(ZZ, [[n, <span class="number">0</span>, <span class="number">0</span>], [b, <span class="number">1</span>, <span class="number">0</span>], [c, <span class="number">0</span>, X]])</span><br><span class="line"></span><br><span class="line">ML = M.LLL()</span><br><span class="line"></span><br><span class="line">r = int(ML[<span class="number">0</span>][<span class="number">0</span>])</span><br><span class="line">m = int(abs(ML[<span class="number">0</span>][<span class="number">1</span>]))</span><br><span class="line"><span class="keyword">assert</span> (b * m + r) % n == c</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;d3ctf&#123;%s&#125;&#x27;</span> % sha256(int(m).to_bytes(<span class="number">50</span>, <span class="string">&#x27;big&#x27;</span>)).hexdigest())</span><br></pre></td></tr></table></figure>
+<h5 id="simplegroup">SimpleGroup</h5>
+<p>需要用到第一题中有关n，b的关系式，</p>
+<p><span class="math inline">\(b * a11 - a12 \equiv 0 \mod p\)</span></p>
+<p><span class="math inline">\(b * a21 - a22 \equiv 0 \mod q\)</span></p>
+<p>考虑到a11，a12，a21，a22都很小，可以使用格基规约，但p，q未知（这里我一开始想直接二元Copper，但发现好像bound不太够，懒得想复杂的多项式构造了），考虑将两个式子相乘，展开得到</p>
+<p><span class="math display">\[a11 * a21 * b^2 -(a11*a22 + a21*a12) *b  + a12 * a22  = k * n\]</span></p>
+<p>构造格如下：</p>
+<p><span class="math display">\[\begin{bmatrix} n &amp; 0 &amp; 0 \\ b &amp; 1 &amp; 0 \\ b^2 &amp; 0 &amp; 1\end{bmatrix}\]</span></p>
+<p>这里由于a11，a12，a21，a22都非常小，不需要平衡因子，目标向量<span class="math inline">\((k, a11*a22 + a21*a12, -a11 * a21)\)</span>，通过格映射，得到向量<span class="math inline">\((a12 * a22, a11*a22 + a21*a12, -a12 * a22)\)</span>，之后联立方程，即可解除a11，a12，a21，a22，然后即可分解n。</p>
+<p>又考虑到$e = e_1 * e_2, e_1 = 36493 ,e_2= 52859 $</p>
+<p>对于<span class="math inline">\(m_i\)</span>， 有<span class="math inline">\(c_i \equiv y^{m_i} r_i^{e} \mod n,\quad m \equiv m_1 \mod e_1, \quad m \equiv m_2 \mod e_2\)</span></p>
+<p><span class="math inline">\(\Rightarrow c_1 \equiv y^{m_1} (y^{k_1} r^{e_2})^{e_1} \mod n, \quad c_2 \equiv y^{m_1} (y^{k_2} r^{e_1})^{e_2} \mod n\)</span></p>
+<p>可以看到由于y已知，<span class="math inline">\(e_1, e_2\)</span> 位数均很小，可以通过分别爆破<span class="math inline">\(m_1, m_2\)</span>（利用<span class="math inline">\(c_1 y^{-m_1}, c_2 y^{-m_2}\)</span> 在<span class="math inline">\(GF(n)\)</span> 上是否是<span class="math inline">\(e_1, e_2\)</span> 次数剩余来判断），之后CRT即可恢复<span class="math inline">\(m_i\)</span>，完整exp如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> tqdm <span class="keyword">import</span> tqdm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check</span>(<span class="params">s, t, _phi</span>):</span></span><br><span class="line">    <span class="keyword">if</span> _phi % t != <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> pow(s, _phi//t, n) == <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n = <span class="number">69804507328197961654128697510310109608046244030437362639637009184945533884294737870524186521509776189989451383438084507903660182212556466321058025788319193059894825570785105388123718921480698851551024108844782091117408753782599961943040695892323702361910107399806150571836786642746371968124465646209366215361</span></span><br><span class="line">b = <span class="number">65473938578022920848984901484624361251869406821863616908777213906525858437236185832214198627510663632409869363143982594947164139220013904654196960829350642413348771918422220404777505345053202159200378935309593802916875681436442734667249049535670986673774487031873808527230023029662915806344014429627710399196</span></span><br><span class="line">y = <span class="number">12064801545723347322936991186738560311049061235541031580807549422258814170771738262264930441670708308259694588963224372530498305648578520552038029773849342206125074212912788823834152785756697757209804475031974445963691941515756901268376267360542656449669715367587909233618109269372332127072063171947435639328</span></span><br><span class="line">e = <span class="number">1928983487</span></span><br><span class="line">C = [<span class="number">63173987757788284988620600191109581820396865828379773315280703314093571300861961873159324234626635582246705378908610341772657840682572386153960342976445563045427986000105931341168525422286612417662391801508953619857648844420751306271090777865836201978470895906780036112804110135446130976275516908136806153488</span>, <span class="number">9763526786754236516067080717710975805995955013877681492195771779269768465872108434027813610978940562101906769209984501196515248675767910499405415921162131390513502065270491854965819776080041506584540996447044249409209699608342257964093713589580983775580171905489797513718769578177025063630080394722500351718</span>, <span class="number">37602000735227732258462226884765737048138920479521815995321941033382094711120810035265327876995207117707635304728511052367297062940325564085193593024741832905771507189762521426736369667607865137900432117426385504101413622851293642219573920971637080154905579082646915297543490131171875075081464735374022745371</span>, <span class="number">1072671768043618032698040622345664216689606325179075270470875647188092538287671951027561894188700732117175202207361845034630743422559130952899064461493359903596018309221581071025635286144053941851624510600383725195476917014535032481197737938329722082022363122585603600777143850326268988298415885565240343957</span>, <span class="number">27796821408982345007197248748277202310092789604135169328103109167649193262824176309353412519763498156841477483757818317945381469765077400076181689745139555466187324921460327576193198145058918081061285618767976454153221256648341316332169223400180283361166887912012807743326710962143011946929516083281306203120</span>, <span class="number">27578857139265869760149251280906035333246393024444009493717159606257881466594628022512140403127178174789296810502616834123420723261733024810610501421455454191654733275226507268803879479462533730695515454997186867769363797096196096976825300792616487723840475500246639213793315097434400920355043141319680299224</span>, <span class="number">29771574667682104634602808909981269404867338382394257360936831559517858873826664867201410081659799334286847985842898792091629138292008512383903137248343194156307703071975381090326280520578349920827357328925184297610245746674712939135025013001878893129144027068837197196517160934998930493581708256039240833145</span>, <span class="number">33576194603243117173665354646070700520263517823066685882273435337247665798346350495639466826097821472152582124503891668755684596123245873216775681469053052037610568862670212856073776960384038120245095140019195900547005026888186973915360493993404372991791346105083429461661784366706770467146420310246467262823</span>, <span class="number">5843375768465467361166168452576092245582688894123491517095586796557653258335684018047406320846455642101431751502161722135934408574660609773328141061123577914919960794180555848119813522996120885320995386856042271846703291295871836092712205058173403525430851695443361660808933971009396237274706384697230238104</span>, <span class="number">61258574367240969784057122450219123953816453759807167817741267194076389100252707986788076240792732730306129067314036402554937862139293741371969020708475839483175856346263848768229357814022084723576192520349994310793246498385086373753553311071932502861084141758640546428958475211765697766922596613007928849964</span>, <span class="number">13558124437758868592198924133563305430225927636261069774349770018130041045454468021737709434182703704611453555980636131119350668691330635012675418568518296882257236341035371057355328669188453984172750580977924222375208440790994249194313841200024395796760938258751149376135149958855550611392962977597279393428</span>]</span><br><span class="line"></span><br><span class="line">e1 = <span class="number">36493</span></span><br><span class="line">e2 = e//e1</span><br><span class="line"></span><br><span class="line">X = <span class="number">1</span></span><br><span class="line">M = Matrix(ZZ, [[n, <span class="number">0</span>, <span class="number">0</span>], [b, X, <span class="number">0</span>], [b ^ <span class="number">2</span>, <span class="number">0</span>, X]])</span><br><span class="line">ML = M.LLL()</span><br><span class="line"></span><br><span class="line"><span class="comment"># a = a11 * a21, b = a11*a22 + a21*a12, c = a12 * a22</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">a = 211380743487233628797755584958526337321408979158793229985661</span></span><br><span class="line"><span class="string">b = 1382843159437215516163973075066558157591473749635266665605630</span></span><br><span class="line"><span class="string">c = 1173142580751247504024100371706709782500216511824162516724129</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">a11, a21, a12, a22 = var(&#x27;a11, a21, a12, a22&#x27;)</span></span><br><span class="line"><span class="string">solve([a == a11 * a21, b == a11*a22 + a21*a12, c == a12 * a22], a11, a21, a12, a22)</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a11 = <span class="number">1018979931854255696816714991181</span></span><br><span class="line">a12 = <span class="number">1017199123798810531137951821909</span></span><br><span class="line"></span><br><span class="line">p = gcd(b * a11 - a12, n)</span><br><span class="line">q = n//p</span><br><span class="line"><span class="keyword">assert</span> n == p * q</span><br><span class="line"></span><br><span class="line">M = []</span><br><span class="line">phi = (p<span class="number">-1</span>)*(q<span class="number">-1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> tqdm(range(len(C))):</span><br><span class="line">    <span class="keyword">for</span> m <span class="keyword">in</span> range(<span class="number">1</span>, e1+<span class="number">1</span>):</span><br><span class="line">        tmp = (C[i] * inverse(int(pow(y, m, n)), n)) % n</span><br><span class="line">        <span class="keyword">if</span> check(tmp, e1, phi):</span><br><span class="line">            m1 = m</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">for</span> m <span class="keyword">in</span> range(<span class="number">1</span>, e2+<span class="number">1</span>):</span><br><span class="line">        tmp = (C[i] * inverse(int(pow(y, m, n)), n)) % n</span><br><span class="line">        <span class="keyword">if</span> check(tmp, e2, phi):</span><br><span class="line">            m2 = m</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    tmp_m = CRT([m1, m2], [e1, e2])</span><br><span class="line">    M.append(tmp_m)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;M:&#x27;</span>, M)</span><br><span class="line">flag = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(M)):</span><br><span class="line">    flag += M[i] * (e**i)</span><br><span class="line"></span><br><span class="line">print(long_to_bytes(flag))</span><br></pre></td></tr></table></figure>
+<h5 id="easycurve">EasyCurve</h5>
+<p>这一题有个很大的非预期，就是由于x，y坐标给的较小，可以完全通过hackergame2020中OT的方法来获得完整的一对<span class="math inline">\(x, y\)</span>，由于p-1非常光滑，可以直接在其曲线上使用Pohlig Hellman算法来得到e，从而得到flag。</p>
+<p>这里谈下预期解法，是通过一个映射来讲曲线的点映射到GF上，然后构造OT，再在GF上使用Pohlig Hellman求解的，具体得到这个映射的方法很多，我这里讲一种比较简单的求通项得到的方法。</p>
+<p>稍作分析可以发现题给曲线其实是一个<span class="math inline">\(GF(p)\)</span> 上的pell方程，即<span class="math inline">\(x^2 \equiv Dy^2 + u^2\)</span>，而pell方程的解可以通过以下方法得到（这里的<span class="math inline">\(x_n\)</span> 即对应<span class="math inline">\((nG)x\)</span>，即n倍点的坐标）</p>
+<p><img src="/2021/03/10/%E6%91%B8%E9%B1%BCWriteup-2/image-20210310232854416.png"></p>
+<p>对矩阵<span class="math inline">\(\begin{bmatrix} x_1 &amp; Dy_1 \\ y_1 &amp; x_1\end{bmatrix}\)</span>，进行对角化，可以得到其特征值为$ D y + x, -D y + x$，之后求得 <span class="math display">\[
+x_n = \frac{(y_1\sqrt D + x_1)^n + (-y_1\sqrt D + x_1)^n}{2 u^{n-1}}
+\]</span></p>
+<p><span class="math display">\[
+y_n = \frac{(y_1\sqrt D + x_1)^n - (-y_1\sqrt D + x_1)^n}{2 \sqrt Du^{n-1}}
+\]</span></p>
+<p>容易得到 <span class="math display">\[
+\frac{x_n - \sqrt D y_n}{ u} = (\frac{x1 - \sqrt D y1}{u}) ^ n
+\]</span></p>
+<p><span class="math display">\[
+\frac{x_n + \sqrt D y_n}{ u} = (\frac{x1 + \sqrt D y1}{u}) ^ n
+\]</span></p>
+<p>即找到了两个将曲线上点映射到GF的映射 <span class="math display">\[
+f: f(x, y) = \frac{x - \sqrt D y}{ u}
+\]</span></p>
+<p><span class="math display">\[
+g: g(x, y) = \frac{x + \sqrt D y}{ u}
+\]</span></p>
+<p>此时，利用hackergame2020的OT中的技巧，且D已知，对于每一个点，可以得到<span class="math inline">\(x - \sqrt D y\)</span>，得到两组数据后相除，即可得到 <span class="math display">\[
+\frac{x_{1n} + \sqrt D y_{1n}}{ x_{2n} + \sqrt D y_{2n}} = (\frac{x1 + \sqrt D y1}{x_1 + \sqrt D y_2}) ^ n
+\]</span> 对这两个数通过Pohlig Hellman算法求DLP，即可得到e，从而得到flag，完整exp如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> winpwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt, ceil</span><br><span class="line"><span class="keyword">from</span> factordb.factordb <span class="keyword">import</span> FactorDB</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> jacobi</span><br><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> nthroot_mod</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</span><br><span class="line"><span class="keyword">from</span> string <span class="keyword">import</span> digits, ascii_letters</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">charset = digits + ascii_letters</span><br><span class="line">p = <span class="number">9688074905643914060390149833064012354277254244638141162997888145741631958242340092013958501673928921327767591959476890238698855704376126231923819603296257</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_factor_list</span>(<span class="params">n</span>):</span></span><br><span class="line">    factor = FactorDB(n)</span><br><span class="line">    factor.connect()</span><br><span class="line">    <span class="keyword">return</span> list(factor.get_factor_list())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_factor_list_with_exponent</span>(<span class="params">n, factor_list=None</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> factor_list:</span><br><span class="line">        factor = FactorDB(n)</span><br><span class="line">        factor.connect()</span><br><span class="line">        factor_list = list(factor.get_factor_list())</span><br><span class="line">    factor_list_with_exponent = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> factor <span class="keyword">in</span> factor_list:</span><br><span class="line">        <span class="keyword">if</span> factor <span class="keyword">not</span> <span class="keyword">in</span> factor_list_with_exponent.keys():</span><br><span class="line">            factor_list_with_exponent[factor] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            factor_list_with_exponent[factor] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> factor_list_with_exponent</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bsgs</span>(<span class="params">g, y, p, upper_bound=None</span>):</span></span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> upper_bound:</span><br><span class="line">        upper_bound = p - <span class="number">1</span></span><br><span class="line">    m = int(ceil(sqrt(upper_bound)))</span><br><span class="line">    S = &#123;pow(g, j, p): j <span class="keyword">for</span> j <span class="keyword">in</span> range(m+<span class="number">1</span>)&#125;</span><br><span class="line">    gs = pow(g, (-m) % (p<span class="number">-1</span>), p)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(m+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> y <span class="keyword">in</span> S:</span><br><span class="line">            <span class="keyword">return</span> i * m + S[y]</span><br><span class="line">        y = (y * gs) % p</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">GCRT</span>(<span class="params">mi, ai</span>):</span></span><br><span class="line">    <span class="keyword">assert</span> (isinstance(mi, list) <span class="keyword">and</span> isinstance(ai, list))</span><br><span class="line">    curm, cura = mi[<span class="number">0</span>], ai[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> (m, a) <span class="keyword">in</span> zip(mi[<span class="number">1</span>:], ai[<span class="number">1</span>:]):</span><br><span class="line">        d = int(GCD(curm, m))</span><br><span class="line">        c = a - cura</span><br><span class="line">        <span class="keyword">assert</span> (c % d == <span class="number">0</span>)</span><br><span class="line">        K = c // d * inverse(curm // d, m // d)</span><br><span class="line">        cura += curm * K</span><br><span class="line">        curm = curm * m // d</span><br><span class="line">        cura %= curm</span><br><span class="line">    <span class="keyword">return</span> cura % curm, curm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_n_order</span>(<span class="params">g, p, phi=None, factor_list=None</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> phi:</span><br><span class="line">        phi = p<span class="number">-1</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> factor_list:</span><br><span class="line">        factor_list = get_factor_list(phi)</span><br><span class="line">    ord = phi</span><br><span class="line">    new_factor_list = factor_list</span><br><span class="line">    <span class="keyword">for</span> factor <span class="keyword">in</span> factor_list:</span><br><span class="line">        <span class="keyword">if</span> pow(g, ord//factor, p) == <span class="number">1</span>:</span><br><span class="line">            ord //= factor</span><br><span class="line">            new_factor_list.remove(factor)</span><br><span class="line">    <span class="keyword">return</span> ord, get_factor_list_with_exponent(p, new_factor_list)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pohlig_hellman</span>(<span class="params">g, y, p, ord=None, factor_list=None</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> ord:</span><br><span class="line">        ord, factor_list = get_n_order(g, p, factor_list=factor_list)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        factor_list = get_factor_list_with_exponent(ord)</span><br><span class="line">    prime_order_mod = [<span class="number">0</span>] * len(factor_list)</span><br><span class="line">    <span class="keyword">for</span> i, factor <span class="keyword">in</span> enumerate(factor_list.keys()):</span><br><span class="line">        tmp_g = pow(g, ord//factor, p)</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(factor_list[factor]):</span><br><span class="line">            tmp_y = (y * inverse(pow(g, prime_order_mod[i], p), p)) % p</span><br><span class="line">            tmp_y = pow(tmp_y, ord//(factor**(j+<span class="number">1</span>)), p)</span><br><span class="line">            pmod = bsgs(tmp_g, tmp_y, p, factor**(j+<span class="number">1</span>))</span><br><span class="line">            prime_order_mod[i] += pmod * (factor**j)</span><br><span class="line">    <span class="keyword">return</span> GCRT([factor**factor_list[factor] <span class="keyword">for</span> factor <span class="keyword">in</span> factor_list.keys()], prime_order_mod)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">proof_of_work</span>(<span class="params">end, judge</span>):</span></span><br><span class="line">    <span class="keyword">for</span> a <span class="keyword">in</span> tqdm(charset):</span><br><span class="line">        <span class="keyword">for</span> b <span class="keyword">in</span> charset:</span><br><span class="line">            <span class="keyword">for</span> c <span class="keyword">in</span> charset:</span><br><span class="line">                <span class="keyword">for</span> d <span class="keyword">in</span> charset:</span><br><span class="line">                    tmp = a + b + c + d</span><br><span class="line">                    <span class="keyword">if</span> sha256((tmp + end).encode()).hexdigest() == judge:</span><br><span class="line">                        <span class="keyword">return</span> tmp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_x_y</span>(<span class="params">s</span>):</span></span><br><span class="line">    io.recvuntil(<span class="string">&#x27;n = &#x27;</span>)</span><br><span class="line">    n = int(io.recvuntil(<span class="string">&#x27;\n&#x27;</span>).strip())</span><br><span class="line">    io.recvuntil(<span class="string">&#x27;e = &#x27;</span>)</span><br><span class="line">    e = int(io.recvuntil(<span class="string">&#x27;\n&#x27;</span>).strip())</span><br><span class="line">    io.recvuntil(<span class="string">&#x27;x0 = &#x27;</span>)</span><br><span class="line">    x0 = int(io.recvuntil(<span class="string">&#x27;\n&#x27;</span>).strip())</span><br><span class="line">    io.recvuntil(<span class="string">&#x27;x1 = &#x27;</span>)</span><br><span class="line">    x1 = int(io.recvuntil(<span class="string">&#x27;\n&#x27;</span>).strip())</span><br><span class="line">    io.recvuntil(<span class="string">&#x27;v = &#x27;</span>)</span><br><span class="line"></span><br><span class="line">    v = pow(-s, e, n) * x1 - x0</span><br><span class="line">    v = (v * inverse(pow(-s, e, n) - <span class="number">1</span>, n)) % n</span><br><span class="line">    io.sendline(str(v))</span><br><span class="line"></span><br><span class="line">    io.recvuntil(<span class="string">&#x27;m0_ = &#x27;</span>)</span><br><span class="line">    m0 = int(io.recvuntil(<span class="string">&#x27;\n&#x27;</span>).strip())</span><br><span class="line">    io.recvuntil(<span class="string">&#x27;m1_ = &#x27;</span>)</span><br><span class="line">    m1 = int(io.recvuntil(<span class="string">&#x27;\n&#x27;</span>).strip())</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (m0 + m1 * s) % n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># io = remote(&#x27;47.100.50.252&#x27;, 10000)</span></span><br><span class="line">    io = remote(<span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="number">10015</span>)</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;io.recvuntil(&#x27;sha256(XXXX+&#x27;)</span></span><br><span class="line"><span class="string">    have = io.recv(16)</span></span><br><span class="line"><span class="string">    io.recvuntil(&#x27;== &#x27;)</span></span><br><span class="line"><span class="string">    ans = io.recv(64)</span></span><br><span class="line"><span class="string">    io.recvuntil(&#x27;Give me XXXX:&#x27;)</span></span><br><span class="line"><span class="string">    io.sendline(proof_of_work(have, ans))&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">    io.recvuntil(<span class="string">&#x27;D = &#x27;</span>)</span><br><span class="line">    D = int(io.recvuntil(<span class="string">&#x27;\n&#x27;</span>).strip())</span><br><span class="line">    <span class="keyword">if</span> jacobi(D, p) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    io.close()</span><br><span class="line">a = nthroot_mod(D, <span class="number">2</span>, p)</span><br><span class="line"></span><br><span class="line">Gx = []</span><br><span class="line">kGx = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">    Gx.append(get_x_y(a))</span><br><span class="line">    kGx.append(get_x_y(a))</span><br><span class="line">    io.recvuntil(<span class="string">&#x27;do you know my e?&#x27;</span>)</span><br><span class="line">    io.sendline(str(<span class="number">0</span>))</span><br><span class="line">    print(io.recvuntil(<span class="string">&#x27;\n&#x27;</span>))</span><br><span class="line"></span><br><span class="line">get_x_y(<span class="number">0</span>)</span><br><span class="line">get_x_y(<span class="number">0</span>)</span><br><span class="line">io.recvuntil(<span class="string">&#x27;do you know my e?&#x27;</span>)</span><br><span class="line"></span><br><span class="line">g = (Gx[<span class="number">0</span>] * inverse(Gx[<span class="number">1</span>], p)) % p</span><br><span class="line">y = (kGx[<span class="number">0</span>] * inverse(kGx[<span class="number">1</span>], p)) % p</span><br><span class="line">print(<span class="string">&#x27;g =&#x27;</span>, g)</span><br><span class="line">print(<span class="string">&#x27;y =&#x27;</span>, y)</span><br><span class="line"></span><br><span class="line">guess = pohlig_hellman(g, y, p)</span><br><span class="line"><span class="keyword">assert</span> pow(g, guess, p) == y</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;guess =&#x27;</span>, guess)</span><br><span class="line">io.sendline(str(guess))</span><br><span class="line">print(io.recvuntil(<span class="string">&#x27;\n&#x27;</span>))</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Crypto-in-CTF/" rel="tag"># Crypto in CTF</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/28/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0-4/" rel="prev" title="杂题闲记-4">
+      <i class="fa fa-chevron-left"></i> 杂题闲记-4
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ant-x-d3ctf"><span class="nav-number">1.</span> <span class="nav-text">Ant x D3CTF</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#babylattice"><span class="nav-number">1.1.</span> <span class="nav-text">BabyLattice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#simplegroup"><span class="nav-number">1.2.</span> <span class="nav-text">SimpleGroup</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#easycurve"><span class="nav-number">1.3.</span> <span class="nav-text">EasyCurve</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lord Riot"
+      src="https://raw.githubusercontent.com/Lord-Riot/Lord-Riot.github.io/master/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Lord Riot</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Lord-Riot" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Lord-Riot" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lordriotglacier@gmail.com" title="E-Mail → mailto:lordriotglacier@gmail.com" rel="noopener" target="_blank"><i class="fab fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=2079541692&site=qq&menu=yes" title="QQ → http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;2079541692&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+    
+
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lord Riot</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

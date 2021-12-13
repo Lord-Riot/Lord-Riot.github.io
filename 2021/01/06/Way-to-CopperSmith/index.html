@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lord-riot.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="算是寒假学习CopperSmith的一些小的总结吧，说到底就两条，多看paper，多写代码，自然就能理解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Way to CopperSmith">
+<meta property="og:url" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/index.html">
+<meta property="og:site_name" content="Lord Riot&#39;s Blog">
+<meta property="og:description" content="算是寒假学习CopperSmith的一些小的总结吧，说到底就两条，多看paper，多写代码，自然就能理解。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210105163614824.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210119210323145.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210105151007107.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210105151153621.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210105151232073.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210105160118293.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210125173538955.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210125172941690.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210125173015118.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210125173721623.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210125174319490.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210125224615811.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210125230055826.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210125230151910.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210126183324108.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210126183642058.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210126183819553.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210126184446792.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210126185425947.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210128160544093.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210128160939371.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210128171340140.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210128203056552.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210129102940414.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210129103005875.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210129132431762.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210129153325247.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210129153651691.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210129220618047.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210130182655949.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210130230114222.png">
+<meta property="og:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210122160238781.png">
+<meta property="article:published_time" content="2021-01-06T08:31:33.000Z">
+<meta property="article:modified_time" content="2021-12-03T15:03:34.670Z">
+<meta property="article:author" content="Lord Riot">
+<meta property="article:tag" content="Way to Crypto">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/image-20210105163614824.png">
+
+<link rel="canonical" href="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Way to CopperSmith | Lord Riot's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lord Riot's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lord-riot.github.io/2021/01/06/Way-to-CopperSmith/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Lord-Riot/Lord-Riot.github.io/master/images/avatar.jpg">
+      <meta itemprop="name" content="Lord Riot">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lord Riot's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Way to CopperSmith
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-06 16:31:33" itemprop="dateCreated datePublished" datetime="2021-01-06T16:31:33+08:00">2021-01-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-03 23:03:34" itemprop="dateModified" datetime="2021-12-03T23:03:34+08:00">2021-12-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning-Notes/" itemprop="url" rel="index"><span itemprop="name">Learning Notes</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">算是寒假学习CopperSmith的一些小的总结吧，说到底就两条，多看paper，多写代码，自然就能理解。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="整体思路">整体思路</h2>
+<p>利用构造多项式技巧，构造出多项式，形成一个格，然后进行规约，得到较小范数的多项式，然后通过结式求解（有时也有其他办方，比如直接系数gcd，多项式gcd或是Gröbner basis等，May’s origin attack on CRT-RSA就出现了好几种方法）小范数多项式，即可得到原多项式在一定范围下的所有根。本质思想其实就是把有限域上的方程转化到整数域，而转化的界限就是由柯西-施瓦茨不等式给出的。</p>
+<h2 id="理论基础">理论基础</h2>
+<h3 id="howgrave-grahams-lemma">Howgrave-Graham’s Lemma</h3>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210105163614824.png"></p>
+<p>此定理的意义在于，如果找到了符合约束的多项式<span class="math inline">\(h\)</span>，则<span class="math inline">\(h\)</span>在模<span class="math inline">\(N\)</span>上的所有小根也即是<span class="math inline">\(h\)</span>在整数域上的所有小根，也就是说，我们可以将有限域上的多项式转化为整数域上的多项式。</p>
+<h3 id="lll">LLL</h3>
+<p>即是格基约化，这里的作用即是通过对构造出的特定的格的约化而产生符合约束的多项式<span class="math inline">\(h\)</span>，然后通过结式将多元方程转化成一元方程式，之后解整数域上的一元方程即可。</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210119210323145.png"></p>
+<p>通过以上事实，可以看到LLL至少可以找到两组满足约束的向量，也就保证了在规定条件下结式有解的可能性。</p>
+<h2 id="构造多项式">构造多项式</h2>
+<h3 id="jochemsz-may-strategy">Jochemsz-May Strategy</h3>
+<h4 id="modular">Modular</h4>
+<h5 id="basic-strategy">Basic Strategy</h5>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210105151007107.png"></p>
+<p>先算出m及<span class="math inline">\(f_N^m\)</span>，然后使<span class="math inline">\(k\)</span>遍历<span class="math inline">\([0, m]\)</span>，计算<span class="math inline">\(M_k\)</span>，指定<span class="math inline">\(l\)</span> 并根据以下公式，计算多个多项式，构成格基。</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210105151153621.png"></p>
+<p>例子如下</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210105151232073.png"></p>
+<p>这样的构造是为了保证，最终构造的多项式里的每个单项式都是<span class="math inline">\(f_N^m\)</span>中的单项式。</p>
+<p>要注意的是，并不是说构造出来的多项式需要严格是以上形式，这只是提供了一种总体构造思想。</p>
+<h5 id="extended-strategy">Extended Strategy</h5>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210105160118293.png"></p>
+<p>针对某个变量的extended strategy，是为了得到更好的界，有时也可以通过一些关式构造出新的变量用来shift。</p>
+<h2 id="相关知识学习">相关知识学习</h2>
+<h3 id="gröbner-basis">Gröbner basis</h3>
+<h4 id="仿射簇与理想">仿射簇与理想</h4>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210125173538955.png"></p>
+<p>可以看到仿射簇是一组多项式公共根的集合。</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210125172941690.png"></p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210125173015118.png"></p>
+<p>理想与子空间类似，不同的是子空间我们使用标量相乘的线性组合，而理想使用多项式相乘的线性组合。</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210125173721623.png"></p>
+<p>可以根据一个仿射簇的所有根来定义理想，其内所有多项式的根均包含仿射簇中所有根。</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210125174319490.png"></p>
+<p>可以根据仿射簇定义理想，同样可以根据理想定义仿射簇，但通过这样的嵌套的结果不一定总是相等。</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210125224615811.png"></p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210125230055826.png"></p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210125230151910.png"></p>
+<p>多项式间gcd性质与整数基本一致</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210126183324108.png"></p>
+<h4 id="序与单项式理想">序与单项式理想</h4>
+<p>由于通过总结多项式除法和高斯消元法，意识到‘序’的意义，故这里定义多元单项式的一种比较的序。</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210126183642058.png"></p>
+<p>同时我们知道定义一个序是好的，当且仅当它不存在无穷递减序列。</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210126183819553.png"></p>
+<p>这里通过比较向量差的首个非零向量来作为一个序（此即lex order，类似于字符串的字典序比较法）</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210126184446792.png"></p>
+<p>考虑到纯字典序有不妥，这里将向量的范数也引入，优先以范数比较，再其次以字典序比较</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210126185425947.png"></p>
+<p>也可以定义反向字典序（即从最右边变量开始比较，且最右边小的在前面）</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210128160544093.png"></p>
+<p>对于一个多项式，定义诸多概念如上</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210128160939371.png"></p>
+<p>于是有朴素的定理如上。</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210128171340140.png"></p>
+<p>这里定义了多元变量的多项式除法，主要点在于除的对象是一组多项式，具体操作与单元多项式除法类似，通过leading term判断是否结束除法，依次除各个多项式即可。若<span class="math inline">\(f\)</span> 对于<span class="math inline">\(f_1, f_2, \dots,f_s\)</span>做除法余数为0，则<span class="math inline">\(f \in &lt;f_1,\dots,f_s&gt;\)</span>，即<span class="math inline">\(f\)</span>属于由这组多项式生成的理想。于是考虑想找一种好的basis，使得任意多项式除此basis的余数唯一确定。</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210128203056552.png"></p>
+<p>定义无系数的“单项式理想”，这里建议结合wiki看着理解，单纯概念感觉这里介绍的有点不是很清晰，定义单项式理想的目的是方便刻画Grobner Basis。一个多项式属于一个单项式理想当且仅当它的每个项都可以被此理想的基中的一个项整除。</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210129102940414.png"></p>
+<p>单项式理想可以有限生成</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210129103005875.png"></p>
+<p>定义了单项式理想上的最小基</p>
+<h4 id="grobner-basis">Grobner Basis</h4>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210129132431762.png"></p>
+<p>定义了由首项生成的理想，需要注意的是<span class="math inline">\(&lt;LT(f_1), \dots,LT(f_s)&gt;\)</span>和<span class="math inline">\(&lt;LT(I)&gt;\)</span></p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210129153325247.png"></p>
+<p>关于Grobner Basis存在性的定理</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210129153651691.png"></p>
+<p>给出了Grobner Basis的定义</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210129220618047.png"></p>
+<p>此即是由Hilbert定理得出的，任意多项式环可以有限生成。</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210130182655949.png"></p>
+<p>这里表面了在Grobner Basis下余多项式的唯一性，证明仍是标准的反证结合定义即可，这也顺其自然的推出了一个多项式的余多项式为0和其属于理想的等价性。</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210130230114222.png"></p>
+<p>定义一个表示对于basis余多项式的表示方法。</p>
+<p>Grobner Basis之所以可以用于解多元方程，在于其会将多元分离，即只要方程数量保证，产生的基中变量是依次递增，即从1到n，由此可以依次求解各个方程，得到各个变量，类似于对多项式构成的矩阵做了一个上三角化。</p>
+<h2 id="推荐阅读论文">推荐阅读论文</h2>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007/11935230_18">A Strategy for Finding Roots of Multivariate Polynomials with New Applications in Attacking RSA Variants</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/221010552_New_attacks_on_RSA_with_small_secret_CRT-exponents">New attacks on RSA with small secret CRT-exponents</a></li>
+<li><a target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007/3-540-44670-2_6">Approximate Integer Common Divisors</a></li>
+</ol>
+<p>这些论文里出现的参考文献都可以跟进阅读，加深理解。</p>
+<h2 id="相关论文勘误">相关论文勘误</h2>
+<h3 id="cryptanalysis-of-unbalanced-rsa-with-small-crt-exponent-alexander-may">Cryptanalysis of Unbalanced RSA with Small CRT-Exponent | Alexander May</h3>
+<p>在module e的attack中最后的例子矩阵中</p>
+<p><img src="/2021/01/06/Way-to-CopperSmith/image-20210122160238781.png"></p>
+<p>矩阵第五行，第四列元素错误，应为<span class="math inline">\(eNY^2\)</span>，而非<span class="math inline">\(eN^2Y^2\)</span>，我一开始写代码没套多项式生成，直接搬的矩阵，导致bound严重不符合，最后发现这里多了个N。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Way-to-Crypto/" rel="tag"># Way to Crypto</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/04/%E6%91%B8%E9%B1%BCWriteup-1/" rel="prev" title="摸鱼Writeup-1">
+      <i class="fa fa-chevron-left"></i> 摸鱼Writeup-1
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/28/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0-4/" rel="next" title="杂题闲记-4">
+      杂题闲记-4 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E6%80%9D%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">整体思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">理论基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#howgrave-grahams-lemma"><span class="nav-number">2.1.</span> <span class="nav-text">Howgrave-Graham’s Lemma</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lll"><span class="nav-number">2.2.</span> <span class="nav-text">LLL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%A4%9A%E9%A1%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">构造多项式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jochemsz-may-strategy"><span class="nav-number">3.1.</span> <span class="nav-text">Jochemsz-May Strategy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#modular"><span class="nav-number">3.1.1.</span> <span class="nav-text">Modular</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#basic-strategy"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">Basic Strategy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#extended-strategy"><span class="nav-number">3.1.1.2.</span> <span class="nav-text">Extended Strategy</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0"><span class="nav-number">4.</span> <span class="nav-text">相关知识学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gr%C3%B6bner-basis"><span class="nav-number">4.1.</span> <span class="nav-text">Gröbner basis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%BF%E5%B0%84%E7%B0%87%E4%B8%8E%E7%90%86%E6%83%B3"><span class="nav-number">4.1.1.</span> <span class="nav-text">仿射簇与理想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%8F%E4%B8%8E%E5%8D%95%E9%A1%B9%E5%BC%8F%E7%90%86%E6%83%B3"><span class="nav-number">4.1.2.</span> <span class="nav-text">序与单项式理想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#grobner-basis"><span class="nav-number">4.1.3.</span> <span class="nav-text">Grobner Basis</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB%E8%AE%BA%E6%96%87"><span class="nav-number">5.</span> <span class="nav-text">推荐阅读论文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87%E5%8B%98%E8%AF%AF"><span class="nav-number">6.</span> <span class="nav-text">相关论文勘误</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cryptanalysis-of-unbalanced-rsa-with-small-crt-exponent-alexander-may"><span class="nav-number">6.1.</span> <span class="nav-text">Cryptanalysis of Unbalanced RSA with Small CRT-Exponent | Alexander May</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lord Riot"
+      src="https://raw.githubusercontent.com/Lord-Riot/Lord-Riot.github.io/master/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Lord Riot</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Lord-Riot" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Lord-Riot" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lordriotglacier@gmail.com" title="E-Mail → mailto:lordriotglacier@gmail.com" rel="noopener" target="_blank"><i class="fab fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=2079541692&site=qq&menu=yes" title="QQ → http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;2079541692&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+    
+
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lord Riot</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
