@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lord-riot.github.io/2021/03/10/%E6%91%B8%E9%B1%BCWriteup-2/image-20210310232854416.png">
 <meta property="article:published_time" content="2021-03-10T14:55:47.000Z">
-<meta property="article:modified_time" content="2021-06-10T12:38:08.966Z">
+<meta property="article:modified_time" content="2021-12-13T09:26:25.046Z">
 <meta property="article:author" content="Lord Riot">
 <meta property="article:tag" content="Crypto in CTF">
 <meta name="twitter:card" content="summary">
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-10 20:38:08" itemprop="dateModified" datetime="2021-06-10T20:38:08+08:00">2021-06-10</time>
+                <time title="修改时间：2021-12-13 17:26:25" itemprop="dateModified" datetime="2021-12-13T17:26:25+08:00">2021-12-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,9 +253,7 @@
         <h4 id="ant-x-d3ctf">Ant x D3CTF</h4>
 <h5 id="babylattice">BabyLattice</h5>
 <p>考虑r很小，有<span class="math inline">\(b m + r= c + k n\)</span>，故构造格</p>
-<p><span class="math display">\[\begin{bmatrix} n &amp; 0 &amp; 0 \\ b &amp; 1 &amp; 0 \\ c &amp; 0 &amp; X\end{bmatrix}\]</span> <span class="math display">\[
-\infin
-\]</span></p>
+<p><span class="math display">\[\begin{bmatrix} n &amp; 0 &amp; 0 \\ b &amp; 1 &amp; 0 \\ c &amp; 0 &amp; X\end{bmatrix}\]</span></p>
 <p>X为放缩因子，目标向量为<span class="math inline">\((k, m, 1)\)</span>时，通过格映射为向量<span class="math inline">\((r, m, X)\)</span>，调整X大小为<span class="math inline">\(2^{300}\)</span>，可成功规约出目标向量，exp如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</span><br><span class="line"></span><br><span class="line">n = <span class="number">69804507328197961654128697510310109608046244030437362639637009184945533884294737870524186521509776189989451383438084507903660182212556466321058025788319193059894825570785105388123718921480698851551024108844782091117408753782599961943040695892323702361910107399806150571836786642746371968124465646209366215361</span></span><br><span class="line">b = <span class="number">65473938578022920848984901484624361251869406821863616908777213906525858437236185832214198627510663632409869363143982594947164139220013904654196960829350642413348771918422220404777505345053202159200378935309593802916875681436442734667249049535670986673774487031873808527230023029662915806344014429627710399196</span></span><br><span class="line">c = <span class="number">64666354938466194052720591810783769030566504653409465121173331362654665231573809234913985758725048071311571549777481776826624728742086174609897160897118750243192791021577348181130302572185911750797457793921069473730039225991755755340927506766395262125949939309337338656431876690470938261261164556850871338570</span></span><br><span class="line"></span><br><span class="line">X = <span class="number">2</span>**<span class="number">300</span></span><br><span class="line">M = Matrix(ZZ, [[n, <span class="number">0</span>, <span class="number">0</span>], [b, <span class="number">1</span>, <span class="number">0</span>], [c, <span class="number">0</span>, X]])</span><br><span class="line"></span><br><span class="line">ML = M.LLL()</span><br><span class="line"></span><br><span class="line">r = int(ML[<span class="number">0</span>][<span class="number">0</span>])</span><br><span class="line">m = int(abs(ML[<span class="number">0</span>][<span class="number">1</span>]))</span><br><span class="line"><span class="keyword">assert</span> (b * m + r) % n == c</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;d3ctf&#123;%s&#125;&#x27;</span> % sha256(int(m).to_bytes(<span class="number">50</span>, <span class="string">&#x27;big&#x27;</span>)).hexdigest())</span><br></pre></td></tr></table></figure>
 <h5 id="simplegroup">SimpleGroup</h5>
@@ -320,7 +318,10 @@ g: g(x, y) = \frac{x + \sqrt D y}{ u}
     <a href="/2021/01/28/%E6%9D%82%E9%A2%98%E9%97%B2%E8%AE%B0-4/" rel="prev" title="杂题闲记-4">
       <i class="fa fa-chevron-left"></i> 杂题闲记-4
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/12/13/%E6%91%B8%E9%B1%BCWriteup-3/" rel="next" title="摸鱼Writeup-3">
+      摸鱼Writeup-3 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -395,7 +396,7 @@ g: g(x, y) = \frac{x + \sqrt D y}{ u}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
