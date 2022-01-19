@@ -286,6 +286,98 @@ g: g(x, y) = \frac{x + \sqrt D y}{ u}
       </tags>
   </entry>
   <entry>
+    <title>每个人都该学点代数几何</title>
+    <url>/2022/01/19/%E6%AF%8F%E4%B8%AA%E4%BA%BA%E9%83%BD%E8%AF%A5%E5%AD%A6%E7%82%B9%E4%BB%A3%E6%95%B0%E5%87%A0%E4%BD%95/</url>
+    <content><![CDATA[<h2 id="algebraic-number-theory">Algebraic Number Theory</h2>
+<p>reference book: <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf">Algebraic Number Theory</a></p>
+<h3 id="introduction">introduction</h3>
+<h4 id="primary-concept">primary concept</h4>
+<blockquote>
+<p><strong>free abelian group</strong></p>
+<p>G is an abelian group with a basis, then any element in G could be uniquely expressed as an integer combination of finitely basis elements, like a lattice in <span class="math inline">\(\mathbb{Z}\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>module</strong></p>
+<p>module is an algebraic structure which is extension of vector space, scalar multiplication of module could be a ring instead of a field in vector space.</p>
+</blockquote>
+<blockquote>
+<p><strong>field of fractions</strong></p>
+<p>Frac(R) means a field is defined based on a integral domain R like Q based on Z, which uses an equivalence relation on <span class="math inline">\(R\times R\backslash \{0\}\)</span> by letting <span class="math inline">\((n, d) \sim (m, b)\)</span> whenever <span class="math inline">\(nb =md\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>fractional ideal</strong></p>
+<p>A fractional ideal <span class="math inline">\(I\)</span> of R is an R-submodule, and it’s a subgroup of Frac(R). There exists a non-zero <span class="math inline">\(r \in R\)</span> let <span class="math inline">\(rI \subset R\)</span>.</p>
+</blockquote>
+<h4 id="symbol">symbol</h4>
+<p><span class="math inline">\(K^{\times}\)</span> means the multiplicative group of units in K.</p>
+<p><span class="math inline">\(O_K\)</span> means the ring of integers in field K, which contains all algebraic integers in K.</p>
+<h4 id="p8">p8</h4>
+<p>The definition of <strong>norm map</strong> is in <a href="https://en.wikipedia.org/wiki/Field_norm">Field norm</a>, as follow:</p>
+<figure>
+<img src="/2022/01/19/%E6%AF%8F%E4%B8%AA%E4%BA%BA%E9%83%BD%E8%AF%A5%E5%AD%A6%E7%82%B9%E4%BB%A3%E6%95%B0%E5%87%A0%E4%BD%95/image-20220118233152972.png" alt="image-20220118233152972"><figcaption aria-hidden="true">image-20220118233152972</figcaption>
+</figure>
+<p>this is multiplicative.</p>
+<h4 id="p10">p10</h4>
+<p>There’s two errors here</p>
+<ol type="1">
+<li><p><span class="math inline">\((1+\sqrt{-5})^2 = -4 + 2\sqrt{-5}\)</span>, but <span class="math inline">\((2, 1 + \sqrt{-5})^2\)</span> still be equal to <span class="math inline">\((2)\)</span>.</p></li>
+<li><p><span class="math inline">\((2, 1+\sqrt{-5})(3, 1-\sqrt{-5})\)</span> should be <span class="math inline">\((6, 3+3\sqrt{-5}, 2-2\sqrt{-5})\)</span></p>
+<ol type="1">
+<li><p>as book says, <span class="math inline">\((2, 1+\sqrt{-5})^2 = (4, -4 + 2\sqrt{-5}, 2+2\sqrt{-5}) = (2)\)</span></p></li>
+<li><p><span class="math inline">\((3, 1+\sqrt{-5})(3, 1-\sqrt{-5}) = (9, 3+3\sqrt{-5}, 3-3\sqrt{-5}, 6) \sub (3)\)</span></p>
+<p><span class="math inline">\(3 = 9-6 \in (9, 3+3\sqrt{-5}, 3-3\sqrt{-5}, 6)\)</span></p>
+<p>so <span class="math inline">\((3, 1+\sqrt{-5})(3, 1-\sqrt{-5}) = (3)\)</span></p></li>
+<li><p><span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) = (6, 3+3\sqrt{-5}, 2+2\sqrt{-5}, -4 + 2\sqrt{-5})\)</span></p>
+<p><span class="math inline">\(6 = (1+\sqrt{-5})(1-\sqrt{-5})\)</span>, <span class="math inline">\(-4 + 2\sqrt{-5}= (1+\sqrt{-5})^2\)</span></p>
+<p><span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) = (1+\sqrt{-5})\)</span></p>
+<p>so <span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) \sub (1+\sqrt{-5})\)</span></p>
+<p>and $1+ =3+3 - (2+2) (2, 1+)(3, 1+) $</p>
+<p>so <span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) = (1+\sqrt{-5})\)</span></p></li>
+<li><p><span class="math inline">\((2, 1+\sqrt{-5})(3, 1-\sqrt{-5}) = (6, 3+3\sqrt{-5}, 2-2\sqrt{-5})\)</span></p>
+<p><span class="math inline">\(1-\sqrt{-5} = 6 - (3+3\sqrt{-5} + 2-2\sqrt{-5}) \in (6, 3+3\sqrt{-5}, 2-2\sqrt{-5})\)</span></p>
+<p><span class="math inline">\((6, 3+3\sqrt{-5}, 2-2\sqrt{-5}) \sub (1+\sqrt{-5}, 1-\sqrt{-5})\)</span></p></li>
+</ol></li>
+</ol>
+<h4 id="p11">p11</h4>
+<p><strong>doubtful point</strong>:</p>
+<p>units of <span class="math inline">\(\mathbb{Z}[\sqrt2]\)</span> are not only <span class="math inline">\(1+\sqrt 2\)</span>, why <span class="math inline">\(\mathbb{Z}[\sqrt 2]^{\times} = \{\pm(1+\sqrt 2)^m | m \in \mathbb{Z}\}\)</span>?</p>
+<p>maybe in <span class="math inline">\(\mathbb{Z}[\sqrt 2]^{\times}\)</span>, we could still use addition?</p>
+<h4 id="exercises">exercises</h4>
+<ol type="1">
+<li><p><span class="math inline">\(d\)</span>, a square-free number, <span class="math inline">\(K = \mathbb{Q}[\sqrt d]\)</span>, we talk about <span class="math inline">\(O_K\)</span> here.</p>
+<p>​ Let <span class="math inline">\(\alpha = a+b \sqrt d, b \neq 0, a, b\in \mathbb{Q}\)</span>, then if <span class="math inline">\(\alpha \in O_K\)</span>,</p>
+<p>it should satisfy <span class="math inline">\(2a \in \mathbb{Z}, a^2-b^2d\in \mathbb{Z}\)</span></p>
+<p>​ If <span class="math inline">\(a, b \in \mathbb{Z}\)</span>, it’s obviously that the condition are met whatever d is.</p>
+<p>​ if <span class="math inline">\(a \notin \mathbb{Z}\)</span>, it should be a half-integer, set <span class="math inline">\(a = \frac{1}{2} + a&#39;\)</span>, <span class="math inline">\(\frac{1-4b^2d}{4}\)</span> should be an integer, which is equivalent to <span class="math inline">\(4b^2d \equiv 1 \mod 4\)</span>. if this work , the coefficient <span class="math inline">\(4\)</span> should be cancelled, and <span class="math inline">\(4b^2d\)</span> should be an integer, so b is a half-integer too, set <span class="math inline">\(b = b&#39; + \frac{1}{2}\)</span>, then it turns to <span class="math inline">\(d \equiv 1\mod 4\)</span>.</p>
+<p>​ After all, if <span class="math inline">\(d \equiv 1 \mod 4\)</span>, <span class="math inline">\(a, b\)</span> could be all half-integer or all integer, else <span class="math inline">\(a, b\)</span> should be all integer.</p></li>
+<li><p>In <span class="math inline">\(\mathbb{Z}[\sqrt{-5}]\)</span>, proof <span class="math inline">\((6) = (2, 1+\sqrt{-5})^2(3, 1+\sqrt{-5})(3, 1-\sqrt{-5})\)</span> is a factorization of <span class="math inline">\((6)\)</span> into a product of prime ideals.</p>
+<ol type="1">
+<li><p><span class="math inline">\((2, 1+\sqrt{-5})\)</span> is prime means:</p>
+<p><span class="math inline">\(\forall a, b\in \mathbb{Z},\)</span> if <span class="math inline">\((2a+(1+\sqrt{-5})b)\ |\ (cd),\ c, d \in \mathbb{Z}[\sqrt{-5}]\)</span></p>
+<p>then <span class="math inline">\(c \in (2, 1+\sqrt{-5})\)</span> or <span class="math inline">\(d \in (2, 1+\sqrt{-5})\)</span>.</p>
+<p>Let <span class="math inline">\(c = c_0 + c_1\sqrt{-5}, d = d_0 + d_1\sqrt{-5}\)</span>, then we have</p>
+<p><span class="math inline">\(2(2a^2 + 3b^2+2ab) = (c_0^2+5c_1^2)(d_0^2+5d_1^2)\)</span></p>
+<p><span class="math inline">\(2\)</span> is prime, which means <span class="math inline">\((c_0^2 + 5c_1^2) \in (2)\)</span> or <span class="math inline">\((d_0^2 + 5d_1^2) \in (2)\)</span></p>
+<p>so <span class="math inline">\((2, 1+\sqrt{-5})\)</span> is prime.</p></li>
+<li><p><span class="math inline">\((3, 1+\sqrt{-5})\)</span> is prime means:</p>
+<p><span class="math inline">\(\forall a, b\in \mathbb{Z},\)</span> if <span class="math inline">\((3a+(1+\sqrt{-5})b)\ |\ (cd),\ c, d \in \mathbb{Z}[\sqrt{-5}]\)</span></p>
+<p>then <span class="math inline">\(c \in (3, 1+\sqrt{-5})\)</span> or <span class="math inline">\(d \in (3, 1+\sqrt{-5})\)</span>.</p>
+<p>Let <span class="math inline">\(c = c_0 + c_1\sqrt{-5}, d = d_0 + d_1\sqrt{-5}\)</span>, then we have</p>
+<p><span class="math inline">\(3(3a^2 + 2b^2+2ab) = (c_0^2+5c_1^2)(d_0^2+5d_1^2)\)</span></p>
+<p><span class="math inline">\(3\)</span> is prime, which means <span class="math inline">\((c_0^2 + 5c_1^2) \in (3)\)</span> or <span class="math inline">\((d_0^2 + 5d_1^2) \in (3))\)</span></p>
+<p>so <span class="math inline">\((3, 1+\sqrt{-5})\)</span> is prime.</p></li>
+<li><p>In a similar way, we could also prove that <span class="math inline">\((3, 1-\sqrt{-5})\)</span> is prime.</p></li>
+</ol></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Learning Notes</category>
+      </categories>
+      <tags>
+        <tag>Notes on Algebraic Number Theory</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>摸鱼Writeup-1</title>
     <url>/2020/11/04/%E6%91%B8%E9%B1%BCWriteup-1/</url>
     <content><![CDATA[<p><em>本系列博客大概写一些较大比赛解数量较少的writeup，主要提供思路，具体流程可能不会过于细节</em></p>
