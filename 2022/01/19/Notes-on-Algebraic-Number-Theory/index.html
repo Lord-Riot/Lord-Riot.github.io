@@ -28,7 +28,7 @@
 <meta property="og:description" content="这半年搞完保研之后一直在摸鱼，虽然有搞出来一些东西，但是新的知识学的很零碎，感觉本质没什么提升。于是👴决定不能再摸鱼了，从寒假开始先学一波代数数论，这里大概记录一下学习笔记，估计3-4天一更。由于笔者代数功底也并不是很扎实，如果证明或者概念出现纰漏之处可以联系笔者。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-19T14:20:03.000Z">
-<meta property="article:modified_time" content="2022-01-22T12:59:33.812Z">
+<meta property="article:modified_time" content="2022-01-25T15:54:07.729Z">
 <meta property="article:author" content="Lord Riot">
 <meta property="article:tag" content="Algebraic Number Theory">
 <meta name="twitter:card" content="summary">
@@ -224,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-22 20:59:33" itemprop="dateModified" datetime="2022-01-22T20:59:33+08:00">2022-01-22</time>
+                <time title="修改时间：2022-01-25 23:54:07" itemprop="dateModified" datetime="2022-01-25T23:54:07+08:00">2022-01-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -289,18 +289,18 @@
 <li><p><span class="math inline">\((2, 1+\sqrt{-5})(3, 1-\sqrt{-5})\)</span> should be <span class="math inline">\((6, 3+3\sqrt{-5}, 2-2\sqrt{-5})\)</span></p>
 <ol type="1">
 <li><p>as book says, <span class="math inline">\((2, 1+\sqrt{-5})^2 = (4, -4 + 2\sqrt{-5}, 2+2\sqrt{-5}) = (2)\)</span></p></li>
-<li><p><span class="math inline">\((3, 1+\sqrt{-5})(3, 1-\sqrt{-5}) = (9, 3+3\sqrt{-5}, 3-3\sqrt{-5}, 6) \sub (3)\)</span></p>
+<li><p><span class="math inline">\((3, 1+\sqrt{-5})(3, 1-\sqrt{-5}) = (9, 3+3\sqrt{-5}, 3-3\sqrt{-5}, 6) \subset (3)\)</span></p>
 <p><span class="math inline">\(3 = 9-6 \in (9, 3+3\sqrt{-5}, 3-3\sqrt{-5}, 6)\)</span></p>
 <p>so <span class="math inline">\((3, 1+\sqrt{-5})(3, 1-\sqrt{-5}) = (3)\)</span></p></li>
 <li><p><span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) = (6, 3+3\sqrt{-5}, 2+2\sqrt{-5}, -4 + 2\sqrt{-5})\)</span></p>
 <p><span class="math inline">\(6 = (1+\sqrt{-5})(1-\sqrt{-5})\)</span>, <span class="math inline">\(-4 + 2\sqrt{-5}= (1+\sqrt{-5})^2\)</span></p>
 <p><span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) = (1+\sqrt{-5})\)</span></p>
-<p>so <span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) \sub (1+\sqrt{-5})\)</span></p>
+<p>so <span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) \subset (1+\sqrt{-5})\)</span></p>
 <p>and $1+ =3+3 - (2+2) (2, 1+)(3, 1+) $</p>
 <p>so <span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) = (1+\sqrt{-5})\)</span></p></li>
 <li><p><span class="math inline">\((2, 1+\sqrt{-5})(3, 1-\sqrt{-5}) = (6, 3+3\sqrt{-5}, 2-2\sqrt{-5})\)</span></p>
 <p><span class="math inline">\(1-\sqrt{-5} = 6 - (3+3\sqrt{-5} + 2-2\sqrt{-5}) \in (6, 3+3\sqrt{-5}, 2-2\sqrt{-5})\)</span></p>
-<p><span class="math inline">\((6, 3+3\sqrt{-5}, 2-2\sqrt{-5}) \sub (1+\sqrt{-5}, 1-\sqrt{-5})\)</span></p></li>
+<p><span class="math inline">\((6, 3+3\sqrt{-5}, 2-2\sqrt{-5}) \subset (1+\sqrt{-5}, 1-\sqrt{-5})\)</span></p></li>
 </ol></li>
 </ol>
 <h4 id="p11">p11</h4>
@@ -357,7 +357,7 @@
 <p>Let <span class="math inline">\(K\)</span> be a field, and let <span class="math inline">\(A\)</span> be a vector space over K, if there’s a bilinear map <span class="math inline">\(A \times A \rightarrow A\)</span> on A, then we call <span class="math inline">\(A\)</span> as <span class="math inline">\(K\)</span>-algebra, and <span class="math inline">\(K\)</span> is the base field of <span class="math inline">\(A\)</span>.</p>
 </blockquote>
 <h4 id="symbol-1">symbol</h4>
-<p><span class="math display">\[\rm{Hom}\]</span>: For two modules <span class="math inline">\(M, N\)</span> over a ring <span class="math inline">\(R\)</span>, <span class="math inline">\({\rm Hom}_R(M, N)\)</span> denotes the set of all module homomorphisms from <span class="math inline">\(M\)</span> to <span class="math inline">\(N\)</span>.</p>
+<p><span class="math display">\[{\rm Hom}\]</span>: For two modules <span class="math inline">\(M, N\)</span> over a ring <span class="math inline">\(R\)</span>, <span class="math inline">\({\rm Hom}_R(M, N)\)</span> denotes the set of all module homomorphisms from <span class="math inline">\(M\)</span> to <span class="math inline">\(N\)</span>.</p>
 <h4 id="p17">p17</h4>
 <p>In the first one of Nakayama’s Lemma, <span class="math inline">\(\mathfrak{a}\)</span> should be an ideal contained in all maximal ideals of <span class="math inline">\(A\)</span>, this make <span class="math inline">\(1-a_1\)</span> not be in <span class="math inline">\(\mathfrak{m}\)</span>, more details could be seen <a target="_blank" rel="noopener" href="http://homepage.divms.uiowa.edu/~acwood/files/notes/nakayamaslemma.pdf">here</a>.</p>
 <h4 id="p18">p18</h4>
@@ -386,14 +386,45 @@
 <h4 id="exercises-1">exercises</h4>
 <ol type="1">
 <li><p>If <span class="math inline">\(S\)</span> is saturated, we assumpt that its complement isnot a union of prime ideals, which means there’s at least one prime ideal <span class="math inline">\(I\)</span> satisfies:</p>
-<p><span class="math inline">\(\exists I_0 \subseteq S,\ I_0 \not \sub A\backslash S,\quad \ I\backslash I_0 \subseteq A\backslash S,\ I\backslash I_0\not \sub S\)</span></p>
-<p>then because of the property of being saturated , <span class="math inline">\(\exists i_0 \in I_0, i_0 \in S\)</span>, <span class="math inline">\(i_0\)</span> is prime, so <span class="math inline">\(\{1, i_0, i_0^2, \dots, i_0^n, \dots \} \sube S\)</span>. For all the prime ideals with one generator $(i_0), (i_1), , $ the set <span class="math inline">\(\{1, i_j, i_j^2, \dots, i_j^n, \dots \} = A - \cup_{ k\neq j}(i_k)\)</span>.</p>
+<p><span class="math inline">\(\exists I_0 \subseteq S,\ I_0 \not \subset A\backslash S,\quad \ I\backslash I_0 \subseteq A\backslash S,\ I\backslash I_0\not \subset S\)</span></p>
+<p>then because of the property of being saturated , <span class="math inline">\(\exists i_0 \in I_0, i_0 \in S\)</span>, <span class="math inline">\(i_0\)</span> is prime, so <span class="math inline">\(\{1, i_0, i_0^2, \dots, i_0^n, \dots \} \sube S\)</span>. Let <span class="math inline">\(U\)</span> be the set of all the units, because <span class="math inline">\(1 \in S\)</span>, then <span class="math inline">\(U \subseteq S\)</span>. For all the prime ideals with one generator $(i_0), (i_1), , $ the set <span class="math inline">\(\{1, i_j, i_j^2, \dots, i_j^n, \dots \} = A\backslash U - \cup_{ k\neq j}(i_k)\)</span>.</p>
 <p>so in this case, all the elements in <span class="math inline">\(I\backslash I_0\)</span> could still be allocated to other prime ideals, the assumption is false.</p>
-<p>If complement of <span class="math inline">\(S\)</span> is a union of prime ideals, then according to above proof, S should be like <span class="math inline">\(A - \cup_{ k\notin J}(i_k) = \cup_{j\in J}\{1, i_j, i_j^2, \dots,i_j^n,\dots \}\)</span>, then <span class="math inline">\(\forall s \in S\)</span>, the form of it is <span class="math inline">\(\prod_{j\in J} i_j^{e_j}, e_j \in \mathbb{Z}\)</span>, clearly it’s saturated.</p></li>
+<p>If complement of <span class="math inline">\(S\)</span> is a union of prime ideals, then according to above proof, S should be like <span class="math inline">\(A- \cup_{ k\notin J}(i_k) = \cup_{j\in J}\{1, i_j, i_j^2, \dots,i_j^n,\dots \} \cup U\)</span>, then <span class="math inline">\(\forall s \in S\)</span>, the form of it is <span class="math inline">\(\prod_{j\in J} i_j^{e_j}, e_j \in \mathbb{Z}\)</span>, clearly it’s saturated.</p></li>
 <li><p>According to 1, we know that <span class="math inline">\(S&#39; = S\)</span> could satisfy the need.</p>
 <p>For <span class="math inline">\(S^{-1}A = \{\frac{a}{s} \ | \ a\in A, s \in S\}\)</span>, the form of <span class="math inline">\(\frac{a}{s}\)</span> is <span class="math inline">\(\frac{a}{\prod_{j\in J} i_j^{e_j}} , e_j \in \mathbb{Z}\)</span>.</p>
 <p>so for prime ideal <span class="math inline">\(i_w \in A\)</span>, <span class="math inline">\((\frac{1}{i_w})\)</span> is still a prime ideal in <span class="math inline">\(S^{-1}A\)</span>.</p></li>
 </ol>
+<h3 id="rings-of-integers">Rings of Integers</h3>
+<h4 id="p25">p25</h4>
+<p>symmetric polynomial means all the coefficients in the polynomial has equal status.</p>
+<h4 id="p26">p26</h4>
+<p>Cause <span class="math inline">\(h(X)\)</span> is a product of monomials, so we could take <span class="math inline">\(g(\alpha_{\sigma(1)}, \dots,\alpha_{\sigma(n))})\)</span> as <span class="math inline">\(g_i(\alpha_1, \dots, \alpha_n)\)</span>, then the coefficient polynomials would be symmetric after expanding the product.</p>
+<p>The point is: for any integral elements $ , $, <span class="math inline">\(\alpha +\beta, \alpha \beta\)</span> are still integral elements.</p>
+<p>For the first proof, the chain of thought should be:</p>
+<p>‘symmetric polynomials are polynomials of symmetric elementary polynomials’ <span class="math inline">\(\Rightarrow\)</span></p>
+<p>‘plug integral elements in any polynomial in <span class="math inline">\(A[X]\)</span> would get other integral elements.’ <span class="math inline">\(\Rightarrow\)</span></p>
+<p>then we use polynomials <span class="math inline">\(x+y / xy\)</span> to get ‘all integral elements form a ring’.</p>
+<p>At the end of the second proof, the point is <span class="math inline">\(\alpha \beta M, (\alpha \beta) M\)</span> all in <span class="math inline">\(M\)</span>.</p>
+<h4 id="p28">p28</h4>
+<p>another proof of <strong>Proposition 2.9</strong> could be seen <a target="_blank" rel="noopener" href="https://proofwiki.org/wiki/Unique_Factorization_Domain_is_Integrally_Closed">here</a>. <span class="math inline">\(a, b\)</span> are not random elements in <span class="math inline">\(A\)</span>.</p>
+<h4 id="p29">p29</h4>
+<p>For proposition 2.11, firstly I’m confused about ‘some <span class="math inline">\(a_i \in A\)</span>’, if $$ is integral over A, then all <span class="math inline">\(a_i\)</span> should be in <span class="math inline">\(A\)</span>. The rest part of proof are clearly, we know all integral elements form a ring, so if all the roots are integral over <span class="math inline">\(A\)</span>, and so are all the coefficients. The proof in book has proved that if an element <span class="math inline">\(\alpha\)</span> of <span class="math inline">\(L\)</span> is integral over <span class="math inline">\(A\)</span>, then all the coefficients of its minimal polynomial over K are in <span class="math inline">\(A\)</span>.</p>
+<p>And conversely, I know ‘some’ works that if there’s no coefficient of <span class="math inline">\(\alpha\)</span> minimal polynomial over <span class="math inline">\(K\)</span> is in <span class="math inline">\(A\)</span>, then <span class="math inline">\(\alpha\)</span> would not be integral over <span class="math inline">\(A\)</span>.</p>
+<p>Also, I’m confused about proposition 2.13, any A-algebra should be a vector space, then it should be a A-module, why need to prove that.</p>
+<h4 id="p31">p31</h4>
+<p>There’s a example could help us to understand the determinant of a basis of module works <a target="_blank" rel="noopener" href="https://math.stackexchange.com/questions/3255768/determinant-for-a-basis-of-a-free-module">here</a>.</p>
+<p>The proof of ‘index of <span class="math inline">\(N\)</span> is <span class="math inline">\(det(a_{ij})\)</span>’ could be seen <a target="_blank" rel="noopener" href="https://math.stackexchange.com/questions/920870/explain-why-the-determinant-of-a-is-the-index-of-the-subring">here</a>. We could associate it with the relation with determinant of lattice and sublattice (In <span class="math inline">\(\mathbb{Z}^n\)</span>, determinant of sublattice is multiple of determinant of lattice.).</p>
+<blockquote>
+<p><strong>trace</strong> and <strong>norm</strong></p>
+<p>Consider <span class="math inline">\(L/K\)</span> as an extension of fields of degree <span class="math inline">\(n\)</span>. The <strong>trace</strong> of <span class="math inline">\(x \in L\)</span> is the trace of the <span class="math inline">\(K\)</span>-linear endomorphism <span class="math inline">\(m_x: L\rightarrow L, m_x(y) = xy\)</span>, the <strong>norm</strong> of <span class="math inline">\(x\)</span> is <span class="math inline">\(det(m_x)\)</span>.</p>
+<p>Computational procedure (for element $ x L$, basis is <span class="math inline">\(\{e_0,\dots, e_{n-1}\}\)</span>):</p>
+<ol type="1">
+<li>calculate vector: <span class="math inline">\(\vec m_{xy} = x (e_0y_0, \dots, e_{n-1}y_{n-1})\)</span></li>
+<li>calculate matrix: <span class="math inline">\(m_x : m_x \sdot \vec m_{xy} = (y_0, \dots, y_{n-1})\)</span></li>
+<li>calculate trace and norm: <span class="math inline">\(Tr(x) = Tr(m_x), Nm(x) = det(m_x)\)</span></li>
+</ol>
+</blockquote>
+<p>For proposition 2.19, it build a field <span class="math inline">\(K[\beta]\)</span> in the middle to complete the proof. <span class="math inline">\(L = K[\beta]\)</span> in the proof is not the previous <span class="math inline">\(L\)</span>. For <span class="math inline">\(L/K\)</span> with basis <span class="math inline">\(\{1, \beta, \beta^2, \dots, \beta^{n-1}\}\)</span>, <span class="math inline">\(Tr(\beta) = \sum \beta_i, Nm(\beta) = \prod \beta_i\)</span>, $ _i$ are all the roots of minimal polybomial of <span class="math inline">\(\beta\)</span> over <span class="math inline">\(K\)</span>, and 2.19 extend it to some <span class="math inline">\(L\)</span> with degree bigger than <span class="math inline">\(n\)</span>.</p>
 
     </div>
 
@@ -474,7 +505,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#algebraic-number-theory"><span class="nav-number">1.</span> <span class="nav-text">Algebraic Number Theory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#primary-concept"><span class="nav-number">1.1.1.</span> <span class="nav-text">primary concept</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#symbol"><span class="nav-number">1.1.2.</span> <span class="nav-text">symbol</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p8"><span class="nav-number">1.1.3.</span> <span class="nav-text">p8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p10"><span class="nav-number">1.1.4.</span> <span class="nav-text">p10</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p11"><span class="nav-number">1.1.5.</span> <span class="nav-text">p11</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exercises"><span class="nav-number">1.1.6.</span> <span class="nav-text">exercises</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#commutative-algebra"><span class="nav-number">1.2.</span> <span class="nav-text">Commutative Algebra</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#primary-concept-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">primary concept</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#symbol-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">symbol</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p17"><span class="nav-number">1.2.3.</span> <span class="nav-text">p17</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p18"><span class="nav-number">1.2.4.</span> <span class="nav-text">p18</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p19"><span class="nav-number">1.2.5.</span> <span class="nav-text">p19</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p20"><span class="nav-number">1.2.6.</span> <span class="nav-text">p20</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p21"><span class="nav-number">1.2.7.</span> <span class="nav-text">p21</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p22"><span class="nav-number">1.2.8.</span> <span class="nav-text">p22</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p23"><span class="nav-number">1.2.9.</span> <span class="nav-text">p23</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exercises-1"><span class="nav-number">1.2.10.</span> <span class="nav-text">exercises</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#algebraic-number-theory"><span class="nav-number">1.</span> <span class="nav-text">Algebraic Number Theory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#primary-concept"><span class="nav-number">1.1.1.</span> <span class="nav-text">primary concept</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#symbol"><span class="nav-number">1.1.2.</span> <span class="nav-text">symbol</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p8"><span class="nav-number">1.1.3.</span> <span class="nav-text">p8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p10"><span class="nav-number">1.1.4.</span> <span class="nav-text">p10</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p11"><span class="nav-number">1.1.5.</span> <span class="nav-text">p11</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exercises"><span class="nav-number">1.1.6.</span> <span class="nav-text">exercises</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#commutative-algebra"><span class="nav-number">1.2.</span> <span class="nav-text">Commutative Algebra</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#primary-concept-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">primary concept</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#symbol-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">symbol</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p17"><span class="nav-number">1.2.3.</span> <span class="nav-text">p17</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p18"><span class="nav-number">1.2.4.</span> <span class="nav-text">p18</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p19"><span class="nav-number">1.2.5.</span> <span class="nav-text">p19</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p20"><span class="nav-number">1.2.6.</span> <span class="nav-text">p20</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p21"><span class="nav-number">1.2.7.</span> <span class="nav-text">p21</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p22"><span class="nav-number">1.2.8.</span> <span class="nav-text">p22</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p23"><span class="nav-number">1.2.9.</span> <span class="nav-text">p23</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exercises-1"><span class="nav-number">1.2.10.</span> <span class="nav-text">exercises</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rings-of-integers"><span class="nav-number">1.3.</span> <span class="nav-text">Rings of Integers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#p25"><span class="nav-number">1.3.1.</span> <span class="nav-text">p25</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p26"><span class="nav-number">1.3.2.</span> <span class="nav-text">p26</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p28"><span class="nav-number">1.3.3.</span> <span class="nav-text">p28</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p29"><span class="nav-number">1.3.4.</span> <span class="nav-text">p29</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p31"><span class="nav-number">1.3.5.</span> <span class="nav-text">p31</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
