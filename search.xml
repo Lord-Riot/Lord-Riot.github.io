@@ -101,194 +101,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Notes on Algebraic Number Theory</title>
-    <url>/2022/01/19/Notes-on-Algebraic-Number-Theory/</url>
-    <content><![CDATA[<h2 id="algebraic-number-theory">Algebraic Number Theory</h2>
-<p>reference book: <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf">Algebraic Number Theory</a></p>
-<h3 id="introduction">Introduction</h3>
-<h4 id="primary-concept">primary concept</h4>
-<blockquote>
-<p><strong>free abelian group</strong></p>
-<p>G is an abelian group with a basis, then any element in G could be uniquely expressed as an integer combination of finitely basis elements, like a 2-dim lattice in <span class="math inline">\(\mathbb{Z}\)</span>.</p>
-</blockquote>
-<blockquote>
-<p><strong>module</strong></p>
-<p>module is an algebraic structure which is extension of vector space, scalar multiplication of module could be a ring instead of a field in vector space.</p>
-<p>ideal is a kind of module, more details could be seen <a href="https://math.stackexchange.com/questions/1776913/a-conceptual-question-in-ring-theory">here</a>.</p>
-</blockquote>
-<blockquote>
-<p><strong>field of fractions</strong></p>
-<p>Frac(R) means a field is defined based on a integral domain R like Q based on Z, which uses an equivalence relation on <span class="math inline">\(R\times R\backslash \{0\}\)</span> by letting <span class="math inline">\((n, d) \sim (m, b)\)</span> whenever <span class="math inline">\(nb =md\)</span>.</p>
-</blockquote>
-<blockquote>
-<p><strong>fractional ideal</strong></p>
-<p>A fractional ideal <span class="math inline">\(I\)</span> of R is an R-submodule, and it’s a subgroup of Frac(R). There exists a non-zero <span class="math inline">\(r \in R\)</span> let <span class="math inline">\(rI \subset R\)</span>.</p>
-</blockquote>
-<blockquote>
-<p><strong>exact sequence</strong></p>
-<p>A sequence of group homomorphisms between groups like:</p>
-<p><span class="math inline">\(G_0 \stackrel{f_1}\rightarrow G_1 \stackrel{f_2}\rightarrow \dots \stackrel{f_n}\rightarrow G_n\)</span>, <span class="math inline">\(im(f_i) = ker(f_{i+1})\)</span></p>
-<p><span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span> in sequence always mean trivial group <span class="math inline">\(\{0\}, \{1\}\)</span>.</p>
-<p>for sequences whose form like <span class="math inline">\(0 \rightarrow A \stackrel{f}\rightarrow B \stackrel{g}\rightarrow C \rightarrow 0\)</span>, which is called ‘short exact sequences’. <span class="math inline">\(f\)</span> is monomorphism (injective or one-to-one) and <span class="math inline">\(g\)</span> is an epimorphism</p>
-</blockquote>
-<h4 id="symbol">symbol</h4>
-<p><span class="math inline">\(K^{\times}\)</span>: the multiplicative group of units in K.</p>
-<p><span class="math inline">\(O_K\)</span> : the ring of integers in field K, which contains all algebraic integers in K.</p>
-<h4 id="p8">p8</h4>
-<p>The definition of <strong>norm map</strong> is in <a href="https://en.wikipedia.org/wiki/Field_norm">Field norm</a>, <span class="math inline">\(N_{L/K} (\alpha) = \prod_{\sigma\in Gal(L/K)} \sigma(\alpha)\)</span></p>
-<p>this is multiplicative.</p>
-<h4 id="p10">p10</h4>
-<p>There’s two errors here</p>
-<ol type="1">
-<li><p><span class="math inline">\((1+\sqrt{-5})^2 = -4 + 2\sqrt{-5}\)</span>, but <span class="math inline">\((2, 1 + \sqrt{-5})^2\)</span> still be equal to <span class="math inline">\((2)\)</span>.</p></li>
-<li><p><span class="math inline">\((2, 1+\sqrt{-5})(3, 1-\sqrt{-5})\)</span> should be <span class="math inline">\((6, 3+3\sqrt{-5}, 2-2\sqrt{-5})\)</span></p>
-<ol type="1">
-<li><p>as book says, <span class="math inline">\((2, 1+\sqrt{-5})^2 = (4, -4 + 2\sqrt{-5}, 2+2\sqrt{-5}) = (2)\)</span></p></li>
-<li><p><span class="math inline">\((3, 1+\sqrt{-5})(3, 1-\sqrt{-5}) = (9, 3+3\sqrt{-5}, 3-3\sqrt{-5}, 6) \subset (3)\)</span></p>
-<p><span class="math inline">\(3 = 9-6 \in (9, 3+3\sqrt{-5}, 3-3\sqrt{-5}, 6)\)</span></p>
-<p>so <span class="math inline">\((3, 1+\sqrt{-5})(3, 1-\sqrt{-5}) = (3)\)</span></p></li>
-<li><p><span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) = (6, 3+3\sqrt{-5}, 2+2\sqrt{-5}, -4 + 2\sqrt{-5})\)</span></p>
-<p><span class="math inline">\(6 = (1+\sqrt{-5})(1-\sqrt{-5})\)</span>, <span class="math inline">\(-4 + 2\sqrt{-5}= (1+\sqrt{-5})^2\)</span></p>
-<p><span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) = (1+\sqrt{-5})\)</span></p>
-<p>so <span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) \subset (1+\sqrt{-5})\)</span></p>
-<p>and $1+ =3+3 - (2+2) (2, 1+)(3, 1+) $</p>
-<p>so <span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) = (1+\sqrt{-5})\)</span></p></li>
-<li><p><span class="math inline">\((2, 1+\sqrt{-5})(3, 1-\sqrt{-5}) = (6, 3+3\sqrt{-5}, 2-2\sqrt{-5})\)</span></p>
-<p><span class="math inline">\(1-\sqrt{-5} = 6 - (3+3\sqrt{-5} + 2-2\sqrt{-5}) \in (6, 3+3\sqrt{-5}, 2-2\sqrt{-5})\)</span></p>
-<p><span class="math inline">\((6, 3+3\sqrt{-5}, 2-2\sqrt{-5}) \subset (1+\sqrt{-5}, 1-\sqrt{-5})\)</span></p></li>
-</ol></li>
-</ol>
-<h4 id="p11">p11</h4>
-<p><strong>doubtful point</strong>:</p>
-<p>units of <span class="math inline">\(\mathbb{Z}[\sqrt2]\)</span> are not only <span class="math inline">\(1+\sqrt 2\)</span>, why <span class="math inline">\(\mathbb{Z}[\sqrt 2]^{\times} = \{\pm(1+\sqrt 2)^m | m \in \mathbb{Z}\}\)</span>?</p>
-<p>maybe in <span class="math inline">\(\mathbb{Z}[\sqrt 2]^{\times}\)</span>, we could still use addition?</p>
-<h4 id="exercises">exercises</h4>
-<ol type="1">
-<li><p><span class="math inline">\(d\)</span>, a square-free number, <span class="math inline">\(K = \mathbb{Q}[\sqrt d]\)</span>, we talk about <span class="math inline">\(O_K\)</span> here.</p>
-<p>​ Let <span class="math inline">\(\alpha = a+b \sqrt d, b \neq 0, a, b\in \mathbb{Q}\)</span>, then if <span class="math inline">\(\alpha \in O_K\)</span>,</p>
-<p>it should satisfy <span class="math inline">\(2a \in \mathbb{Z}, a^2-b^2d\in \mathbb{Z}\)</span></p>
-<p>​ If <span class="math inline">\(a, b \in \mathbb{Z}\)</span>, it’s obviously that the condition are met whatever d is.</p>
-<p>​ if <span class="math inline">\(a \notin \mathbb{Z}\)</span>, it should be a half-integer, set <span class="math inline">\(a = \frac{1}{2} + a&#39;\)</span>, <span class="math inline">\(\frac{1-4b^2d}{4}\)</span> should be an integer, which is equivalent to <span class="math inline">\(4b^2d \equiv 1 \mod 4\)</span>. if this work , the coefficient <span class="math inline">\(4\)</span> should be cancelled, and <span class="math inline">\(4b^2d\)</span> should be an integer, so b is a half-integer too, set <span class="math inline">\(b = b&#39; + \frac{1}{2}\)</span>, then it turns to <span class="math inline">\(d \equiv 1\mod 4\)</span>.</p>
-<p>​ After all, if <span class="math inline">\(d \equiv 1 \mod 4\)</span>, <span class="math inline">\(a, b\)</span> could be all half-integer or all integer, else <span class="math inline">\(a, b\)</span> should be all integer.</p></li>
-<li><p>In <span class="math inline">\(\mathbb{Z}[\sqrt{-5}]\)</span>, proof <span class="math inline">\((6) = (2, 1+\sqrt{-5})^2(3, 1+\sqrt{-5})(3, 1-\sqrt{-5})\)</span> is a factorization of <span class="math inline">\((6)\)</span> into a product of prime ideals.</p>
-<ol type="1">
-<li><p><span class="math inline">\((2, 1+\sqrt{-5})\)</span> is prime means:</p>
-<p><span class="math inline">\(\forall a, b\in \mathbb{Z},\)</span> if <span class="math inline">\((2a+(1+\sqrt{-5})b)\ |\ (cd),\ c, d \in \mathbb{Z}[\sqrt{-5}]\)</span></p>
-<p>then <span class="math inline">\(c \in (2, 1+\sqrt{-5})\)</span> or <span class="math inline">\(d \in (2, 1+\sqrt{-5})\)</span>.</p>
-<p>Let <span class="math inline">\(c = c_0 + c_1\sqrt{-5}, d = d_0 + d_1\sqrt{-5}\)</span>, then we have</p>
-<p><span class="math inline">\(2(2a^2 + 3b^2+2ab)\ |\ (c_0^2+5c_1^2)(d_0^2+5d_1^2)\)</span></p>
-<p><span class="math inline">\(2\)</span> is prime, which means <span class="math inline">\((c_0^2 + 5c_1^2) \in (2)\)</span> or <span class="math inline">\((d_0^2 + 5d_1^2) \in (2)\)</span></p>
-<p>so <span class="math inline">\((2, 1+\sqrt{-5})\)</span> is prime.</p></li>
-<li><p><span class="math inline">\((3, 1+\sqrt{-5})\)</span> is prime means:</p>
-<p><span class="math inline">\(\forall a, b\in \mathbb{Z},\)</span> if <span class="math inline">\((3a+(1+\sqrt{-5})b)\ |\ (cd),\ c, d \in \mathbb{Z}[\sqrt{-5}]\)</span></p>
-<p>then <span class="math inline">\(c \in (3, 1+\sqrt{-5})\)</span> or <span class="math inline">\(d \in (3, 1+\sqrt{-5})\)</span>.</p>
-<p>Let <span class="math inline">\(c = c_0 + c_1\sqrt{-5}, d = d_0 + d_1\sqrt{-5}\)</span>, then we have</p>
-<p><span class="math inline">\(3(3a^2 + 2b^2+2ab)\ | \ (c_0^2+5c_1^2)(d_0^2+5d_1^2)\)</span></p>
-<p><span class="math inline">\(3\)</span> is prime, which means <span class="math inline">\((c_0^2 + 5c_1^2) \in (3)\)</span> or <span class="math inline">\((d_0^2 + 5d_1^2) \in (3))\)</span></p>
-<p>so <span class="math inline">\((3, 1+\sqrt{-5})\)</span> is prime.</p></li>
-<li><p>In a similar way, we could also prove that <span class="math inline">\((3, 1-\sqrt{-5})\)</span> is prime.</p></li>
-</ol></li>
-</ol>
-<h3 id="commutative-algebra">Commutative Algebra</h3>
-<p>some details in this chapter would be found <a href="https://www.jmilne.org/math/xnotes/CA221.pdf">here</a>.</p>
-<h4 id="primary-concept-1">primary concept</h4>
-<blockquote>
-<p><strong>quotient ring</strong></p>
-<p>use an equivalence relation <span class="math inline">\(\sim\)</span> on a ring <span class="math inline">\(R\)</span>, <span class="math inline">\(I\)</span> is a two-sided ideal in R:</p>
-<p>$a b $ if and only if <span class="math inline">\((a-b) \in I\)</span></p>
-<p><span class="math inline">\(a \mod I\)</span> is the equivalence class of element <span class="math inline">\(a \in R\)</span>, <span class="math inline">\([a] = a+I:=\{a+r|r\in I\}\)</span></p>
-<p>we call <span class="math inline">\(R/I\)</span> a quotient ring which is <span class="math inline">\(\{a \mod I | a\in R\}\)</span></p>
-<p>zero-element in <span class="math inline">\(R/I\)</span> is <span class="math inline">\(I\)</span>, multiplicateive identity is <span class="math inline">\(1+I\)</span></p>
-</blockquote>
-<blockquote>
-<p><strong>Euclidean domain</strong></p>
-<p>A Euclidean domain is an integral domain which can be endowed with at least one Euclidean function.</p>
-<p>A Euclidean function on an integral domain R is a function <span class="math inline">\(f: R\backslash\{0\} \rightarrow \{a\ | \ a \geq 0\}\)</span> which satisfies:</p>
-<p><span class="math inline">\(\forall a, b \in R, b \neq 0\)</span>, there exist <span class="math inline">\(q, r \in R,\quad a = b q + r\)</span></p>
-<p>and <span class="math inline">\(r= 0\)</span> or <span class="math inline">\(f(r) &lt; f(b)\)</span></p>
-</blockquote>
-<blockquote>
-<p><strong>algebra</strong></p>
-<p>Let <span class="math inline">\(K\)</span> be a field, and let <span class="math inline">\(A\)</span> be a vector space over K, if there’s a bilinear map <span class="math inline">\(A \times A \rightarrow A\)</span> on A, then we call <span class="math inline">\(A\)</span> as <span class="math inline">\(K\)</span>-algebra, and <span class="math inline">\(K\)</span> is the base field of <span class="math inline">\(A\)</span>.</p>
-</blockquote>
-<h4 id="symbol-1">symbol</h4>
-<p><span class="math display">\[{\rm Hom}\]</span>: For two modules <span class="math inline">\(M, N\)</span> over a ring <span class="math inline">\(R\)</span>, <span class="math inline">\({\rm Hom}_R(M, N)\)</span> denotes the set of all module homomorphisms from <span class="math inline">\(M\)</span> to <span class="math inline">\(N\)</span>.</p>
-<h4 id="p17">p17</h4>
-<p>In the first one of Nakayama’s Lemma, <span class="math inline">\(\mathfrak{a}\)</span> should be an ideal contained in all maximal ideals of <span class="math inline">\(A\)</span>, this make <span class="math inline">\(1-a_1\)</span> not be in <span class="math inline">\(\mathfrak{m}\)</span>, more details could be seen <a href="http://homepage.divms.uiowa.edu/~acwood/files/notes/nakayamaslemma.pdf">here</a>.</p>
-<h4 id="p18">p18</h4>
-<p><span class="math inline">\(\mathfrak{a}^e \in S^{-1}A\)</span> means <span class="math inline">\(\{a/s \ | \ a \in \mathfrak{a}, s\in S\}\)</span></p>
-<p>For <span class="math inline">\(\mathfrak{a}\)</span> an a ideal of <span class="math inline">\(S^{-1}A\)</span>, <span class="math inline">\(\mathfrak{a} \cap A\)</span> means all integer in <span class="math inline">\(\mathfrak{a}\)</span>.</p>
-<h4 id="p19">p19</h4>
-<p>'<span class="math inline">\(\mathfrak{p}\)</span> a prime ideal in <span class="math inline">\(S^{-1}A \Rightarrow \mathfrak{p} \cap A\)</span> is a prime ideal in <span class="math inline">\(A\)</span> disjoint from <span class="math inline">\(S\)</span>’ is not clear, <span class="math inline">\(\mathfrak{p} = \{\frac{a}{b} \ | \ a\in \mathfrak{p}&#39;, b \in S\}\)</span> has to satisfies <span class="math inline">\(\mathfrak{p}&#39; \cap S = \varnothing\)</span></p>
-<p><span class="math inline">\(A_{\mathfrak{p}}\)</span> means <span class="math inline">\((A-\mathfrak{p})^{-1}A\)</span>, more details could be seen <a href="https://www.math.purdue.edu/~sbasu/teaching/fall08/557/Week3.pdf">here</a>.</p>
-<p>Conversely thinking, if there’s another genertors <span class="math inline">\(w\)</span> in <span class="math inline">\(\mathfrak{p}A_{\mathfrak{p}}\)</span>, then $w (A-)^{-1}(A-) $, it would make <span class="math inline">\(\mathfrak{p}A_{\mathfrak{p}}\)</span> and <span class="math inline">\(A\)</span> equal. We could use some examples in <span class="math inline">\(\mathbb{Z}\)</span> to help us understand.</p>
-<p>To understand <span class="math inline">\((m) + (n) = \mathbb{Z}\)</span> if and only if <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> are relatively prime. We could think back to <span class="math inline">\(GCD\)</span> on <span class="math inline">\(\mathbb{Z}\)</span>, if <span class="math inline">\(GCD(m, n) = 1\)</span>, then <span class="math inline">\(\exists\ s, t, \ sm+tn = 1\)</span>.</p>
-<h4 id="p20">p20</h4>
-<p><span class="math inline">\(\mathfrak{a} \mathfrak{b} = \{\sum_ia_ib_i\ | \ a_i\in \mathfrak{a}, b_i\in \mathfrak{b}\}, c\in \mathfrak{a}_1 \cap \mathfrak{a}_2\)</span>, which means <span class="math inline">\(a_1c+a_2c \in \mathfrak{a_1} \mathfrak{a_2}\)</span>.</p>
-<p>the detailed proof of <span class="math inline">\(A/(\mathfrak{a}_1 \cap \mathfrak{a}_2) \simeq A/\mathfrak{a}_1 \times A/ \mathfrak{a}_2\)</span> could be seen <a href="https://math.stackexchange.com/questions/1102037/the-chinese-remainder-theorem-for-rings">here</a>.</p>
-<h4 id="p21">p21</h4>
-<p><strong>doubtful point</strong>: element in <span class="math inline">\(\otimes_iM_i\)</span> should be like <span class="math inline">\((m_0, m_1, \dots)\)</span>, but why the isomorphism map be <span class="math inline">\((\sum m_i) \otimes (\sum n_j) \rightarrow \sum m_i \otimes n_j\)</span></p>
-<h4 id="p22">p22</h4>
-<p>proof for $M/aM (A/)_A M $ could be seen <a href="https://math.stackexchange.com/questions/682468/given-ring-a-ideal-i-and-a-module-m-show-that-a-i-otimes-a-m-is-is">here</a>. The point is why <span class="math inline">\(im(\mathfrak{a} \otimes_A M) \cap M = \mathfrak{a}M = \{\sum a_im_i \ | \ a_i \in \mathfrak{a}, m_i \in M\}\)</span>, firstly I think for different bilinear map <span class="math inline">\(f\)</span>, then <span class="math inline">\(\mathfrak{a} \otimes_A M\)</span> should be different. But then I realized that all the rings are isomorphic, so we could use an simple bilinear map <span class="math inline">\(f(a, b) = a \cdot b\)</span>, then we get <span class="math inline">\(im(\mathfrak{a} \otimes_A M) \cap M= \{\sum a_im_i \ | \ a_i \in \mathfrak{a}, m_i \in M\}\)</span>.</p>
-<p>For counter-example about <span class="math inline">\(M \rightarrow N\)</span> is injective but <span class="math inline">\(M \otimes_A P \rightarrow N \otimes_A P\)</span> is not.</p>
-<p>We know that <span class="math inline">\(M \otimes_A P \rightarrow N \otimes_A P = (M\rightarrow N)\otimes_AP\)</span></p>
-<p>Let <span class="math inline">\(A = \mathbb{Z}, M = \mathbb{Z}, N = m\mathbb{Z}, P = \mathbb{Z}/ m\mathbb{Z}\)</span>, then <span class="math inline">\(M \rightarrow N\)</span> s injective, and <span class="math inline">\(M \otimes_A P \rightarrow N \otimes_A P\)</span> is a zero map.</p>
-<h4 id="p23">p23</h4>
-<p>the reason of using <span class="math inline">\(m \rightarrow 1\otimes m\)</span> to denote the map from <span class="math inline">\(M\)</span> to <span class="math inline">\(B \otimes_A M\)</span> is that <span class="math inline">\(B\otimes_A M \simeq \{bm\ | \ b\in B, m\in M \} \simeq \{1 \otimes m\ | \ m \in M\}\)</span></p>
-<hr>
-<p><em>Because I’m not familiar with field, so maybe compelete notes on this part later.</em></p>
-<hr>
-<h4 id="exercises-1">exercises</h4>
-<ol type="1">
-<li><p>If <span class="math inline">\(S\)</span> is saturated, we assumpt that its complement isnot a union of prime ideals, which means there’s at least one prime ideal <span class="math inline">\(I\)</span> satisfies:</p>
-<p><span class="math inline">\(\exists I_0 \subseteq S,\ I_0 \not \subset A\backslash S,\quad \ I\backslash I_0 \subseteq A\backslash S,\ I\backslash I_0\not \subset S\)</span></p>
-<p>then because of the property of being saturated , <span class="math inline">\(\exists i_0 \in I_0, i_0 \in S\)</span>, <span class="math inline">\(i_0\)</span> is prime, so <span class="math inline">\(\{1, i_0, i_0^2, \dots, i_0^n, \dots \} \subseteq S\)</span>. Let <span class="math inline">\(U\)</span> be the set of all the units, because <span class="math inline">\(1 \in S\)</span>, then <span class="math inline">\(U \subseteq S\)</span>. For all the prime ideals with one generator $(i_0), (i_1), , $ the set <span class="math inline">\(\{1, i_j, i_j^2, \dots, i_j^n, \dots \} = A\backslash U - \cup_{ k\neq j}(i_k)\)</span>.</p>
-<p>so in this case, all the elements in <span class="math inline">\(I\backslash I_0\)</span> could still be allocated to other prime ideals, the assumption is false.</p>
-<p>If complement of <span class="math inline">\(S\)</span> is a union of prime ideals, then according to above proof, S should be like <span class="math inline">\(A- \cup_{ k\notin J}(i_k) = \cup_{j\in J}\{1, i_j, i_j^2, \dots,i_j^n,\dots \} \cup U\)</span>, then <span class="math inline">\(\forall s \in S\)</span>, the form of it is <span class="math inline">\(\prod_{j\in J} i_j^{e_j}, e_j \in \mathbb{Z}\)</span>, clearly it’s saturated.</p></li>
-<li><p>According to 1, we know that <span class="math inline">\(S&#39; = S\)</span> could satisfy the need.</p>
-<p>For <span class="math inline">\(S^{-1}A = \{\frac{a}{s} \ | \ a\in A, s \in S\}\)</span>, the form of <span class="math inline">\(\frac{a}{s}\)</span> is <span class="math inline">\(\frac{a}{\prod_{j\in J} i_j^{e_j}} , e_j \in \mathbb{Z}\)</span>.</p>
-<p>so for prime ideal <span class="math inline">\(i_w \in A\)</span>, <span class="math inline">\((\frac{1}{i_w})\)</span> is still a prime ideal in <span class="math inline">\(S^{-1}A\)</span>.</p></li>
-</ol>
-<h3 id="rings-of-integers">Rings of Integers</h3>
-<h4 id="p25">p25</h4>
-<p>symmetric polynomial means all the coefficients in the polynomial has equal status.</p>
-<h4 id="p26">p26</h4>
-<p>Cause <span class="math inline">\(h(X)\)</span> is a product of monomials, so we could take <span class="math inline">\(g(\alpha_{\sigma(1)}, \dots,\alpha_{\sigma(n))})\)</span> as <span class="math inline">\(g_i(\alpha_1, \dots, \alpha_n)\)</span>, then the coefficient polynomials would be symmetric after expanding the product.</p>
-<p>The point is: for any integral elements $ , $, <span class="math inline">\(\alpha +\beta, \alpha \beta\)</span> are still integral elements.</p>
-<p>For the first proof, the chain of thought should be:</p>
-<p>‘symmetric polynomials are polynomials of symmetric elementary polynomials’ <span class="math inline">\(\Rightarrow\)</span></p>
-<p>‘plug integral elements in any polynomial in <span class="math inline">\(A[X]\)</span> would get other integral elements.’ <span class="math inline">\(\Rightarrow\)</span></p>
-<p>then we use polynomials <span class="math inline">\(x+y / xy\)</span> to get ‘all integral elements form a ring’.</p>
-<p>At the end of the second proof, the point is <span class="math inline">\(\alpha \beta M, (\alpha \beta) M\)</span> all in <span class="math inline">\(M\)</span>.</p>
-<h4 id="p28">p28</h4>
-<p>another proof of <strong>Proposition 2.9</strong> could be seen <a href="https://proofwiki.org/wiki/Unique_Factorization_Domain_is_Integrally_Closed">here</a>. <span class="math inline">\(a, b\)</span> are not random elements in <span class="math inline">\(A\)</span>.</p>
-<h4 id="p29">p29</h4>
-<p>For proposition 2.11, firstly I’m confused about ‘some <span class="math inline">\(a_i \in A\)</span>’, if $$ is integral over A, then all <span class="math inline">\(a_i\)</span> should be in <span class="math inline">\(A\)</span>. The rest part of proof are clearly, we know all integral elements form a ring, so if all the roots are integral over <span class="math inline">\(A\)</span>, and so are all the coefficients. The proof in book has proved that if an element <span class="math inline">\(\alpha\)</span> of <span class="math inline">\(L\)</span> is integral over <span class="math inline">\(A\)</span>, then all the coefficients of its minimal polynomial over K are in <span class="math inline">\(A\)</span>.</p>
-<p>And conversely, I know ‘some’ works that if there’s no coefficient of <span class="math inline">\(\alpha\)</span> minimal polynomial over <span class="math inline">\(K\)</span> is in <span class="math inline">\(A\)</span>, then <span class="math inline">\(\alpha\)</span> would not be integral over <span class="math inline">\(A\)</span>.</p>
-<p>Also, I’m confused about proposition 2.13, any A-algebra should be a vector space, then it should be a A-module, why need to prove that.</p>
-<h4 id="p31">p31</h4>
-<p>There’s a example could help us to understand the determinant of a basis of module works <a href="https://math.stackexchange.com/questions/3255768/determinant-for-a-basis-of-a-free-module">here</a>.</p>
-<p>The proof of ‘index of <span class="math inline">\(N\)</span> is <span class="math inline">\(det(a_{ij})\)</span>’ could be seen <a href="https://math.stackexchange.com/questions/920870/explain-why-the-determinant-of-a-is-the-index-of-the-subring">here</a>. We could associate it with the relation with determinant of lattice and sublattice (In <span class="math inline">\(\mathbb{Z}^n\)</span>, determinant of sublattice is multiple of determinant of lattice.).</p>
-<blockquote>
-<p><strong>trace</strong> and <strong>norm</strong></p>
-<p>Consider <span class="math inline">\(L/K\)</span> as an extension of fields of degree <span class="math inline">\(n\)</span>. The <strong>trace</strong> of <span class="math inline">\(x \in L\)</span> is the trace of the <span class="math inline">\(K\)</span>-linear endomorphism <span class="math inline">\(m_x: L\rightarrow L, m_x(y) = xy\)</span>, the <strong>norm</strong> of <span class="math inline">\(x\)</span> is <span class="math inline">\(det(m_x)\)</span>.</p>
-<p>Computational procedure (for element $ x L$, basis is <span class="math inline">\(\{e_0,\dots, e_{n-1}\}\)</span>):</p>
-<ol type="1">
-<li>calculate vector: <span class="math inline">\(\vec m_{xy} = x (e_0y_0, \dots, e_{n-1}y_{n-1})\)</span></li>
-<li>calculate matrix: <span class="math inline">\(m_x : m_x \times \vec m_{xy} = (y_0, \dots, y_{n-1})\)</span></li>
-<li>calculate trace and norm: <span class="math inline">\(Tr(x) = Tr(m_x), Nm(x) = det(m_x)\)</span></li>
-</ol>
-</blockquote>
-<p>For proposition 2.19, it build a field <span class="math inline">\(K[\beta]\)</span> in the middle to complete the proof. <span class="math inline">\(L = K[\beta]\)</span> in the proof is not the previous <span class="math inline">\(L\)</span>. For <span class="math inline">\(L/K\)</span> with basis <span class="math inline">\(\{1, \beta, \beta^2, \dots, \beta^{n-1}\}\)</span>, <span class="math inline">\(Tr(\beta) = \sum \beta_i, Nm(\beta) = \prod \beta_i\)</span>, $ _i$ are all the roots of minimal polybomial of <span class="math inline">\(\beta\)</span> over <span class="math inline">\(K\)</span>, and 2.19 extend it to some <span class="math inline">\(L\)</span> with degree bigger than <span class="math inline">\(n\)</span>.</p>
-]]></content>
-      <categories>
-        <category>Learning Notes</category>
-      </categories>
-      <tags>
-        <tag>Algebraic Number Theory</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>摸鱼Writeup-2</title>
     <url>/2021/03/10/%E6%91%B8%E9%B1%BCWriteup-2/</url>
     <content><![CDATA[<h4 id="ant-x-d3ctf">Ant x D3CTF</h4>
@@ -471,6 +283,277 @@ g: g(x, y) = \frac{x + \sqrt D y}{ u}
       </categories>
       <tags>
         <tag>Crypto in CTF</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Notes on Algebraic Number Theory</title>
+    <url>/2022/01/19/Notes-on-Algebraic-Number-Theory/</url>
+    <content><![CDATA[<h2 id="algebraic-number-theory">Algebraic Number Theory</h2>
+<p>reference book: <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf">Algebraic Number Theory</a></p>
+<h3 id="introduction">Introduction</h3>
+<h4 id="primary-concept">primary concept</h4>
+<blockquote>
+<p><strong>free abelian group</strong></p>
+<p>G is an abelian group with a basis, then any element in G could be uniquely expressed as an integer combination of finitely basis elements, like a 2-dim lattice in <span class="math inline">\(\mathbb{Z}\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>module</strong></p>
+<p>module is an algebraic structure which is extension of vector space, scalar multiplication of module could be a ring instead of a field in vector space.</p>
+<p>ideal is a kind of module, more details could be seen <a href="https://math.stackexchange.com/questions/1776913/a-conceptual-question-in-ring-theory">here</a>.</p>
+</blockquote>
+<blockquote>
+<p><strong>field of fractions</strong></p>
+<p>Frac(R) means a field is defined based on a integral domain R like Q based on Z, which uses an equivalence relation on <span class="math inline">\(R\times R\backslash \{0\}\)</span> by letting <span class="math inline">\((n, d) \sim (m, b)\)</span> whenever <span class="math inline">\(nb =md\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>fractional ideal</strong></p>
+<p>A fractional ideal <span class="math inline">\(I\)</span> of R is an R-submodule, and it’s a subgroup of Frac(R). There exists a non-zero <span class="math inline">\(r \in R\)</span> let <span class="math inline">\(rI \subset R\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>exact sequence</strong></p>
+<p>A sequence of group homomorphisms between groups like:</p>
+<p><span class="math inline">\(G_0 \stackrel{f_1}\rightarrow G_1 \stackrel{f_2}\rightarrow \dots \stackrel{f_n}\rightarrow G_n\)</span>, <span class="math inline">\(im(f_i) = ker(f_{i+1})\)</span></p>
+<p><span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span> in sequence always mean trivial group <span class="math inline">\(\{0\}, \{1\}\)</span>.</p>
+<p>for sequences whose form like <span class="math inline">\(0 \rightarrow A \stackrel{f}\rightarrow B \stackrel{g}\rightarrow C \rightarrow 0\)</span>, which is called ‘short exact sequences’. <span class="math inline">\(f\)</span> is monomorphism (injective or one-to-one) and <span class="math inline">\(g\)</span> is an epimorphism</p>
+</blockquote>
+<h4 id="symbol">symbol</h4>
+<p><span class="math inline">\(K^{\times}\)</span>: the multiplicative group of units in K.</p>
+<p><span class="math inline">\(O_K\)</span> : the ring of integers in field K, which contains all algebraic integers in K.</p>
+<h4 id="p8">p8</h4>
+<p>The definition of <strong>norm map</strong> is in <a href="https://en.wikipedia.org/wiki/Field_norm">Field norm</a>, <span class="math inline">\(N_{L/K} (\alpha) = \prod_{\sigma\in Gal(L/K)} \sigma(\alpha)\)</span></p>
+<p>this is multiplicative, the details of norm could be found in <a href="#p31">p31</a></p>
+<h4 id="p10">p10</h4>
+<p>There’s two errors here</p>
+<ol type="1">
+<li><p><span class="math inline">\((1+\sqrt{-5})^2 = -4 + 2\sqrt{-5}\)</span>, but <span class="math inline">\((2, 1 + \sqrt{-5})^2\)</span> still be equal to <span class="math inline">\((2)\)</span>.</p></li>
+<li><p><span class="math inline">\((2, 1+\sqrt{-5})(3, 1-\sqrt{-5})\)</span> should be <span class="math inline">\((6, 3+3\sqrt{-5}, 2-2\sqrt{-5})\)</span></p>
+<ol type="1">
+<li><p>as book says, <span class="math inline">\((2, 1+\sqrt{-5})^2 = (4, -4 + 2\sqrt{-5}, 2+2\sqrt{-5}) = (2)\)</span></p></li>
+<li><p><span class="math inline">\((3, 1+\sqrt{-5})(3, 1-\sqrt{-5}) = (9, 3+3\sqrt{-5}, 3-3\sqrt{-5}, 6) \subset (3)\)</span></p>
+<p><span class="math inline">\(3 = 9-6 \in (9, 3+3\sqrt{-5}, 3-3\sqrt{-5}, 6)\)</span></p>
+<p>so <span class="math inline">\((3, 1+\sqrt{-5})(3, 1-\sqrt{-5}) = (3)\)</span></p></li>
+<li><p><span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) = (6, 3+3\sqrt{-5}, 2+2\sqrt{-5}, -4 + 2\sqrt{-5})\)</span></p>
+<p><span class="math inline">\(6 = (1+\sqrt{-5})(1-\sqrt{-5})\)</span>, <span class="math inline">\(-4 + 2\sqrt{-5}= (1+\sqrt{-5})^2\)</span></p>
+<p><span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) = (1+\sqrt{-5})\)</span></p>
+<p>so <span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) \subset (1+\sqrt{-5})\)</span></p>
+<p>and $1+ =3+3 - (2+2) (2, 1+)(3, 1+) $</p>
+<p>so <span class="math inline">\((2, 1+\sqrt{-5})(3, 1+\sqrt{-5}) = (1+\sqrt{-5})\)</span></p></li>
+<li><p><span class="math inline">\((2, 1+\sqrt{-5})(3, 1-\sqrt{-5}) = (6, 3+3\sqrt{-5}, 2-2\sqrt{-5})\)</span></p>
+<p><span class="math inline">\(1-\sqrt{-5} = 6 - (3+3\sqrt{-5} + 2-2\sqrt{-5}) \in (6, 3+3\sqrt{-5}, 2-2\sqrt{-5})\)</span></p>
+<p><span class="math inline">\((6, 3+3\sqrt{-5}, 2-2\sqrt{-5}) \subset (1+\sqrt{-5}, 1-\sqrt{-5})\)</span></p></li>
+</ol></li>
+</ol>
+<h4 id="p11">p11</h4>
+<p><strong>doubtful point</strong>:</p>
+<p>units of <span class="math inline">\(\mathbb{Z}[\sqrt2]\)</span> are not only <span class="math inline">\(1+\sqrt 2\)</span>, why <span class="math inline">\(\mathbb{Z}[\sqrt 2]^{\times} = \{\pm(1+\sqrt 2)^m | m \in \mathbb{Z}\}\)</span>?</p>
+<p>maybe in <span class="math inline">\(\mathbb{Z}[\sqrt 2]^{\times}\)</span>, we could still use addition?</p>
+<h4 id="exercises">exercises</h4>
+<ol type="1">
+<li><p><span class="math inline">\(d\)</span>, a square-free number, <span class="math inline">\(K = \mathbb{Q}[\sqrt d]\)</span>, we talk about <span class="math inline">\(O_K\)</span> here.</p>
+<pre><code> Let $\alpha  = a+b \sqrt d, b \neq 0, a, b\in \mathbb&#123;Q&#125;$, then if $\alpha \in O_K$, </code></pre>
+<p>it should satisfy <span class="math inline">\(2a \in \mathbb{Z}, a^2-b^2d\in \mathbb{Z}\)</span></p>
+<pre><code> If $a, b \in \mathbb&#123;Z&#125;$, it’s obviously that the condition are met whatever d is.
+
+ if $a \notin \mathbb&#123;Z&#125;$, it should be a half-integer, set $a = \frac&#123;1&#125;&#123;2&#125; + a&#39;$, $\frac&#123;1-4b^2d&#125;&#123;4&#125;$ should be an integer, which is equivalent to  $4b^2d \equiv 1 \mod 4$. if this work , the coefficient $4$ should be cancelled, and $4b^2d$ should be an integer, so b is a half-integer too, set $b = b&#39; + \frac&#123;1&#125;&#123;2&#125;$, then it turns to $d \equiv 1\mod 4$. 
+
+ After all, if $d \equiv 1 \mod 4$, $a, b$ could be all half-integer or all integer, else $a, b$ should be all integer.</code></pre></li>
+<li><p>In <span class="math inline">\(\mathbb{Z}[\sqrt{-5}]\)</span>, proof <span class="math inline">\((6) = (2, 1+\sqrt{-5})^2(3, 1+\sqrt{-5})(3, 1-\sqrt{-5})\)</span> is a factorization of <span class="math inline">\((6)\)</span> into a product of prime ideals.</p>
+<ol type="1">
+<li><p><span class="math inline">\((2, 1+\sqrt{-5})\)</span> is prime means:</p>
+<p><span class="math inline">\(\forall a, b\in \mathbb{Z},\)</span> if <span class="math inline">\((2a+(1+\sqrt{-5})b)\ |\ (cd),\ c, d \in \mathbb{Z}[\sqrt{-5}]\)</span></p>
+<p>then <span class="math inline">\(c \in (2, 1+\sqrt{-5})\)</span> or <span class="math inline">\(d \in (2, 1+\sqrt{-5})\)</span>.</p>
+<p>Let <span class="math inline">\(c = c_0 + c_1\sqrt{-5}, d = d_0 + d_1\sqrt{-5}\)</span>, then we have</p>
+<p><span class="math inline">\(2(2a^2 + 3b^2+2ab)\ |\ (c_0^2+5c_1^2)(d_0^2+5d_1^2)\)</span></p>
+<p><span class="math inline">\(2\)</span> is prime, which means <span class="math inline">\((c_0^2 + 5c_1^2) \in (2)\)</span> or <span class="math inline">\((d_0^2 + 5d_1^2) \in (2)\)</span></p>
+<p>so <span class="math inline">\((2, 1+\sqrt{-5})\)</span> is prime.</p></li>
+<li><p><span class="math inline">\((3, 1+\sqrt{-5})\)</span> is prime means:</p>
+<p><span class="math inline">\(\forall a, b\in \mathbb{Z},\)</span> if <span class="math inline">\((3a+(1+\sqrt{-5})b)\ |\ (cd),\ c, d \in \mathbb{Z}[\sqrt{-5}]\)</span></p>
+<p>then <span class="math inline">\(c \in (3, 1+\sqrt{-5})\)</span> or <span class="math inline">\(d \in (3, 1+\sqrt{-5})\)</span>.</p>
+<p>Let <span class="math inline">\(c = c_0 + c_1\sqrt{-5}, d = d_0 + d_1\sqrt{-5}\)</span>, then we have</p>
+<p><span class="math inline">\(3(3a^2 + 2b^2+2ab)\ | \ (c_0^2+5c_1^2)(d_0^2+5d_1^2)\)</span></p>
+<p><span class="math inline">\(3\)</span> is prime, which means <span class="math inline">\((c_0^2 + 5c_1^2) \in (3)\)</span> or <span class="math inline">\((d_0^2 + 5d_1^2) \in (3))\)</span></p>
+<p>so <span class="math inline">\((3, 1+\sqrt{-5})\)</span> is prime.</p></li>
+<li><p>In a similar way, we could also prove that <span class="math inline">\((3, 1-\sqrt{-5})\)</span> is prime.</p></li>
+</ol></li>
+</ol>
+<h3 id="commutative-algebra">Commutative Algebra</h3>
+<p>some details in this chapter would be found <a href="https://www.jmilne.org/math/xnotes/CA221.pdf">here</a>.</p>
+<h4 id="primary-concept-1">primary concept</h4>
+<blockquote>
+<p><strong>quotient ring</strong></p>
+<p>use an equivalence relation <span class="math inline">\(\sim\)</span> on a ring <span class="math inline">\(R\)</span>, <span class="math inline">\(I\)</span> is a two-sided ideal in R:</p>
+<p>$a b $ if and only if <span class="math inline">\((a-b) \in I\)</span></p>
+<p><span class="math inline">\(a \mod I\)</span> is the equivalence class of element <span class="math inline">\(a \in R\)</span>, <span class="math inline">\([a] = a+I:=\{a+r|r\in I\}\)</span></p>
+<p>we call <span class="math inline">\(R/I\)</span> a quotient ring which is <span class="math inline">\(\{a \mod I | a\in R\}\)</span></p>
+<p>zero-element in <span class="math inline">\(R/I\)</span> is <span class="math inline">\(I\)</span>, multiplicateive identity is <span class="math inline">\(1+I\)</span></p>
+</blockquote>
+<blockquote>
+<p><strong>Euclidean domain</strong></p>
+<p>A Euclidean domain is an integral domain which can be endowed with at least one Euclidean function.</p>
+<p>A Euclidean function on an integral domain R is a function <span class="math inline">\(f: R\backslash\{0\} \rightarrow \{a\ | \ a \geq 0\}\)</span> which satisfies:</p>
+<p><span class="math inline">\(\forall a, b \in R, b \neq 0\)</span>, there exist <span class="math inline">\(q, r \in R,\quad a = b q + r\)</span></p>
+<p>and <span class="math inline">\(r= 0\)</span> or <span class="math inline">\(f(r) &lt; f(b)\)</span></p>
+</blockquote>
+<blockquote>
+<p><strong>algebra</strong></p>
+<p>Let <span class="math inline">\(K\)</span> be a field, and let <span class="math inline">\(A\)</span> be a vector space over K, if there’s a bilinear map <span class="math inline">\(A \times A \rightarrow A\)</span> on A, then we call <span class="math inline">\(A\)</span> as <span class="math inline">\(K\)</span>-algebra, and <span class="math inline">\(K\)</span> is the base field of <span class="math inline">\(A\)</span>.</p>
+</blockquote>
+<h4 id="symbol-1">symbol</h4>
+<p><span class="math display">\[{\rm Hom}\]</span>: For two modules <span class="math inline">\(M, N\)</span> over a ring <span class="math inline">\(R\)</span>, <span class="math inline">\({\rm Hom}_R(M, N)\)</span> denotes the set of all module homomorphisms from <span class="math inline">\(M\)</span> to <span class="math inline">\(N\)</span>.</p>
+<h4 id="p17">p17</h4>
+<p>In the first one of Nakayama’s Lemma, <span class="math inline">\(\mathfrak{a}\)</span> should be an ideal contained in all maximal ideals of <span class="math inline">\(A\)</span>, this make <span class="math inline">\(1-a_1\)</span> not be in <span class="math inline">\(\mathfrak{m}\)</span>, more details could be seen <a href="http://homepage.divms.uiowa.edu/~acwood/files/notes/nakayamaslemma.pdf">here</a>.</p>
+<h4 id="p18">p18</h4>
+<p><span class="math inline">\(\mathfrak{a}^e \in S^{-1}A\)</span> means <span class="math inline">\(\{a/s \ | \ a \in \mathfrak{a}, s\in S\}\)</span></p>
+<p>For <span class="math inline">\(\mathfrak{a}\)</span> an a ideal of <span class="math inline">\(S^{-1}A\)</span>, <span class="math inline">\(\mathfrak{a} \cap A\)</span> means all integer in <span class="math inline">\(\mathfrak{a}\)</span>.</p>
+<h4 id="p19">p19</h4>
+<p>'<span class="math inline">\(\mathfrak{p}\)</span> a prime ideal in <span class="math inline">\(S^{-1}A \Rightarrow \mathfrak{p} \cap A\)</span> is a prime ideal in <span class="math inline">\(A\)</span> disjoint from <span class="math inline">\(S\)</span>’ is not clear, <span class="math inline">\(\mathfrak{p} = \{\frac{a}{b} \ | \ a\in \mathfrak{p}&#39;, b \in S\}\)</span> has to satisfies <span class="math inline">\(\mathfrak{p}&#39; \cap S = \varnothing\)</span></p>
+<p><span class="math inline">\(A_{\mathfrak{p}}\)</span> means <span class="math inline">\((A-\mathfrak{p})^{-1}A\)</span>, more details could be seen <a href="https://www.math.purdue.edu/~sbasu/teaching/fall08/557/Week3.pdf">here</a>.</p>
+<p>Conversely thinking, if there’s another genertors <span class="math inline">\(w\)</span> in <span class="math inline">\(\mathfrak{p}A_{\mathfrak{p}}\)</span>, then $w (A-)^{-1}(A-) $, it would make <span class="math inline">\(\mathfrak{p}A_{\mathfrak{p}}\)</span> and <span class="math inline">\(A\)</span> equal. We could use some examples in <span class="math inline">\(\mathbb{Z}\)</span> to help us understand.</p>
+<p>To understand <span class="math inline">\((m) + (n) = \mathbb{Z}\)</span> if and only if <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> are relatively prime. We could think back to <span class="math inline">\(GCD\)</span> on <span class="math inline">\(\mathbb{Z}\)</span>, if <span class="math inline">\(GCD(m, n) = 1\)</span>, then <span class="math inline">\(\exists\ s, t, \ sm+tn = 1\)</span>.</p>
+<h4 id="p20">p20</h4>
+<p><span class="math inline">\(\mathfrak{a} \mathfrak{b} = \{\sum_ia_ib_i\ | \ a_i\in \mathfrak{a}, b_i\in \mathfrak{b}\}, c\in \mathfrak{a}_1 \cap \mathfrak{a}_2\)</span>, which means <span class="math inline">\(a_1c+a_2c \in \mathfrak{a_1} \mathfrak{a_2}\)</span>.</p>
+<p>the detailed proof of <span class="math inline">\(A/(\mathfrak{a}_1 \cap \mathfrak{a}_2) \simeq A/\mathfrak{a}_1 \times A/ \mathfrak{a}_2\)</span> could be seen <a href="https://math.stackexchange.com/questions/1102037/the-chinese-remainder-theorem-for-rings">here</a>.</p>
+<h4 id="p21">p21</h4>
+<p><strong>doubtful point</strong>: element in <span class="math inline">\(\otimes_iM_i\)</span> should be like <span class="math inline">\((m_0, m_1, \dots)\)</span>, but why the isomorphism map be <span class="math inline">\((\sum m_i) \otimes (\sum n_j) \rightarrow \sum m_i \otimes n_j\)</span></p>
+<h4 id="p22">p22</h4>
+<p>proof for $M/aM (A/)_A M $ could be seen <a href="https://math.stackexchange.com/questions/682468/given-ring-a-ideal-i-and-a-module-m-show-that-a-i-otimes-a-m-is-is">here</a>. The point is why <span class="math inline">\(im(\mathfrak{a} \otimes_A M) \cap M = \mathfrak{a}M = \{\sum a_im_i \ | \ a_i \in \mathfrak{a}, m_i \in M\}\)</span>, firstly I think for different bilinear map <span class="math inline">\(f\)</span>, then <span class="math inline">\(\mathfrak{a} \otimes_A M\)</span> should be different. But then I realized that all the rings are isomorphic, so we could use an simple bilinear map <span class="math inline">\(f(a, b) = a \cdot b\)</span>, then we get <span class="math inline">\(im(\mathfrak{a} \otimes_A M) \cap M= \{\sum a_im_i \ | \ a_i \in \mathfrak{a}, m_i \in M\}\)</span>.</p>
+<p>For counter-example about <span class="math inline">\(M \rightarrow N\)</span> is injective but <span class="math inline">\(M \otimes_A P \rightarrow N \otimes_A P\)</span> is not.</p>
+<p>We know that <span class="math inline">\(M \otimes_A P \rightarrow N \otimes_A P = (M\rightarrow N)\otimes_AP\)</span></p>
+<p>Let <span class="math inline">\(A = \mathbb{Z}, M = \mathbb{Z}, N = m\mathbb{Z}, P = \mathbb{Z}/ m\mathbb{Z}\)</span>, then <span class="math inline">\(M \rightarrow N\)</span> s injective, and <span class="math inline">\(M \otimes_A P \rightarrow N \otimes_A P\)</span> is a zero map.</p>
+<h4 id="p23">p23</h4>
+<p>the reason of using <span class="math inline">\(m \rightarrow 1\otimes m\)</span> to denote the map from <span class="math inline">\(M\)</span> to <span class="math inline">\(B \otimes_A M\)</span> is that <span class="math inline">\(B\otimes_A M \simeq \{bm\ | \ b\in B, m\in M \} \simeq \{1 \otimes m\ | \ m \in M\}\)</span></p>
+<hr>
+<p><em>Because I’m not familiar with field, so maybe compelete notes on this part later.</em></p>
+<hr>
+<h4 id="exercises-1">exercises</h4>
+<ol type="1">
+<li><p>If <span class="math inline">\(S\)</span> is saturated, we assumpt that its complement isnot a union of prime ideals, which means there’s at least one prime ideal <span class="math inline">\(I\)</span> satisfies:</p>
+<p><span class="math inline">\(\exists I_0 \subseteq S,\ I_0 \not \subset A\backslash S,\quad \ I\backslash I_0 \subseteq A\backslash S,\ I\backslash I_0\not \subset S\)</span></p>
+<p>then because of the property of being saturated , <span class="math inline">\(\exists i_0 \in I_0, i_0 \in S\)</span>, <span class="math inline">\(i_0\)</span> is prime, so <span class="math inline">\(\{1, i_0, i_0^2, \dots, i_0^n, \dots \} \subseteq S\)</span>. Let <span class="math inline">\(U\)</span> be the set of all the units, because <span class="math inline">\(1 \in S\)</span>, then <span class="math inline">\(U \subseteq S\)</span>. For all the prime ideals with one generator $(i_0), (i_1), , $ the set <span class="math inline">\(\{1, i_j, i_j^2, \dots, i_j^n, \dots \} = A\backslash U - \cup_{ k\neq j}(i_k)\)</span>.</p>
+<p>so in this case, all the elements in <span class="math inline">\(I\backslash I_0\)</span> could still be allocated to other prime ideals, the assumption is false.</p>
+<p>If complement of <span class="math inline">\(S\)</span> is a union of prime ideals, then according to above proof, S should be like <span class="math inline">\(A- \cup_{ k\notin J}(i_k) = \cup_{j\in J}\{1, i_j, i_j^2, \dots,i_j^n,\dots \} \cup U\)</span>, then <span class="math inline">\(\forall s \in S\)</span>, the form of it is <span class="math inline">\(\prod_{j\in J} i_j^{e_j}, e_j \in \mathbb{Z}\)</span>, clearly it’s saturated.</p></li>
+<li><p>According to 1, we know that <span class="math inline">\(S&#39; = S\)</span> could satisfy the need.</p>
+<p>For <span class="math inline">\(S^{-1}A = \{\frac{a}{s} \ | \ a\in A, s \in S\}\)</span>, the form of <span class="math inline">\(\frac{a}{s}\)</span> is <span class="math inline">\(\frac{a}{\prod_{j\in J} i_j^{e_j}} , e_j \in \mathbb{Z}\)</span>.</p>
+<p>so for prime ideal <span class="math inline">\(i_w \in A\)</span>, <span class="math inline">\((\frac{1}{i_w})\)</span> is still a prime ideal in <span class="math inline">\(S^{-1}A\)</span>.</p></li>
+</ol>
+<h3 id="rings-of-integers">Rings of Integers</h3>
+<h4 id="primary-concept-2">primary concept</h4>
+<blockquote>
+<p><strong>separable extension</strong></p>
+<p>for an algebraic field enxtension <span class="math inline">\(E \supseteq F\)</span> is called a separable extension if <span class="math inline">\(\forall \alpha \in E\)</span>, its minimal polybomial over <span class="math inline">\(F\)</span> is a separable polynomial (the polynomial’s roots are distinct, without multiple root).</p>
+</blockquote>
+<blockquote>
+<p><strong>dual space</strong></p>
+<p>For a vector space <span class="math inline">\(V\)</span> over a field <span class="math inline">\(F\)</span>, dual space <span class="math inline">\(V^{\or}\)</span> is the set of all linear maps from <span class="math inline">\(V\)</span> to <span class="math inline">\(F\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Kronecker delta</strong></p>
+<p><span class="math inline">\(\delta_{ij} = 0\)</span> if <span class="math inline">\(i \neq j\)</span> else <span class="math inline">\(1\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>stem field</strong></p>
+<p><span class="math inline">\(K\)</span> a field, and <span class="math inline">\(f \in K[x]\)</span> is an irreducible polynomial. The ring <span class="math inline">\(L = K[x]/(f)\)</span> is a field, with a distinguished root <span class="math inline">\(\overline x = x + (f)\)</span> of <span class="math inline">\(f\)</span>. The stem field of <span class="math inline">\(f\)</span> is the pair <span class="math inline">\((L, \overline x)\)</span>.</p>
+</blockquote>
+<h4 id="symbol-2">symbol</h4>
+<p><span class="math inline">\((k_{ij})\)</span>: sometime means a matrix <span class="math inline">\(M\)</span> satisfy <span class="math inline">\(M_{ij} = k_{ij}\)</span></p>
+<h4 id="p25">p25</h4>
+<p>symmetric polynomial means all the coefficients in the polynomial has equal status.</p>
+<h4 id="p26">p26</h4>
+<p>Cause <span class="math inline">\(h(X)\)</span> is a product of monomials, so we could take <span class="math inline">\(g(\alpha_{\sigma(1)}, \dots,\alpha_{\sigma(n))})\)</span> as <span class="math inline">\(g_i(\alpha_1, \dots, \alpha_n)\)</span>, then the coefficient polynomials would be symmetric after expanding the product.</p>
+<p>The point is: for any integral elements $ , $, <span class="math inline">\(\alpha +\beta, \alpha \beta\)</span> are still integral elements.</p>
+<p>For the first proof, the chain of thought should be:</p>
+<p>‘symmetric polynomials are polynomials of symmetric elementary polynomials’ <span class="math inline">\(\Rightarrow\)</span></p>
+<p>‘plug integral elements in any polynomial in <span class="math inline">\(A[X]\)</span> would get other integral elements.’ <span class="math inline">\(\Rightarrow\)</span></p>
+<p>then we use polynomials <span class="math inline">\(x+y / xy\)</span> to get ‘all integral elements form a ring’.</p>
+<p>At the end of the second proof, the point is <span class="math inline">\(\alpha \beta M, (\alpha \beta) M\)</span> all in <span class="math inline">\(M\)</span>.</p>
+<h4 id="p28">p28</h4>
+<p>another proof of <strong>Proposition 2.9</strong> could be seen <a href="https://proofwiki.org/wiki/Unique_Factorization_Domain_is_Integrally_Closed">here</a>. <span class="math inline">\(a, b\)</span> are not random elements in <span class="math inline">\(A\)</span>.</p>
+<h4 id="p29">p29</h4>
+<p>For proposition 2.11, firstly I’m confused about ‘some <span class="math inline">\(a_i \in A\)</span>’, if $$ is integral over A, then all <span class="math inline">\(a_i\)</span> should be in <span class="math inline">\(A\)</span>. The rest part of proof are clearly, we know all integral elements form a ring, so if all the roots are integral over <span class="math inline">\(A\)</span>, and so are all the coefficients. The proof in book has proved that if an element <span class="math inline">\(\alpha\)</span> of <span class="math inline">\(L\)</span> is integral over <span class="math inline">\(A\)</span>, then all the coefficients of its minimal polynomial over K are in <span class="math inline">\(A\)</span>.</p>
+<p>And conversely, I know ‘some’ works that if there’s no coefficient of <span class="math inline">\(\alpha\)</span> minimal polynomial over <span class="math inline">\(K\)</span> is in <span class="math inline">\(A\)</span>, then <span class="math inline">\(\alpha\)</span> would not be integral over <span class="math inline">\(A\)</span>.</p>
+<p>Also, I’m confused about proposition 2.13, any A-algebra should be a vector space, then it should be a A-module, why need to prove that.</p>
+<h4 id="p31"><span id="p31"> p31 </span></h4>
+<p>There’s an example could help us to understand the determinant of a basis of module works <a href="https://math.stackexchange.com/questions/3255768/determinant-for-a-basis-of-a-free-module">here</a>.</p>
+<p>The proof of ‘index of <span class="math inline">\(N\)</span> is <span class="math inline">\(det(a_{ij})\)</span>’ could be seen <a href="https://math.stackexchange.com/questions/920870/explain-why-the-determinant-of-a-is-the-index-of-the-subring">here</a>. We could associate it with the relation with determinant of lattice and sublattice (In <span class="math inline">\(\mathbb{Z}^n\)</span>, determinant of sublattice is multiple of determinant of lattice.).</p>
+<blockquote>
+<p><strong>trace</strong> and <strong>norm</strong></p>
+<p>Consider <span class="math inline">\(L/K\)</span> as an extension of fields of degree <span class="math inline">\(n\)</span>. The <strong>trace</strong> of <span class="math inline">\(x \in L\)</span> is the trace of the <span class="math inline">\(K\)</span>-linear endomorphism <span class="math inline">\(m_x: L\rightarrow L, m_x(y) = xy\)</span>, the <strong>norm</strong> of <span class="math inline">\(x\)</span> is <span class="math inline">\(det(m_x)\)</span>.</p>
+<p>Computational procedure (for element $ x L$, basis is <span class="math inline">\(\{e_0,\dots, e_{n-1}\}\)</span>):</p>
+<ol type="1">
+<li>calculate vector: <span class="math inline">\(\vec m_{xy} = x (e_0y_0, \dots, e_{n-1}y_{n-1})\)</span></li>
+<li>calculate matrix: <span class="math inline">\(m_x : m_x \times \vec m_{xy} = (y_0, \dots, y_{n-1})\)</span></li>
+<li>calculate trace and norm: <span class="math inline">\(Tr(x) = Tr(m_x), Nm(x) = det(m_x)\)</span></li>
+</ol>
+</blockquote>
+<p>For proposition 2.19, it build a field <span class="math inline">\(K[\beta]\)</span> in the middle to complete the proof. <span class="math inline">\(L = K[\beta]\)</span> in the proof is not the previous <span class="math inline">\(L\)</span>. For <span class="math inline">\(L/K\)</span> with basis <span class="math inline">\(\{1, \beta, \beta^2, \dots, \beta^{n-1}\}\)</span>, we could get trace and norm as follow <span class="math display">\[
+f(x) = x^n - \alpha_1x^{n-1} - \dots - \alpha_{n-1}x - \alpha_n 
+\\
+\beta = \beta_1, f(\beta_i) = 0, i = 1, 2, \dots, n-1\\
+m_x = \begin{bmatrix}
+0 &amp;\cdots  &amp; 0 &amp; \alpha_n\\
+1 &amp; \cdots &amp; 0 &amp; \alpha_{n-1}\\
+\vdots &amp; \ddots &amp; \vdots &amp; \vdots\\
+0 &amp; \cdots &amp; 1 &amp; \alpha_1
+\end{bmatrix}
+\]</span> use Vieta’s formulas, we get <span class="math inline">\(Tr(\beta) = \alpha_{1} = \sum \beta_i, Nm(\beta) =(-1)^n\alpha_n = \prod \beta_i\)</span>, and 2.19 extend it to some <span class="math inline">\(L\)</span> with degree bigger than <span class="math inline">\(n\)</span>.</p>
+<h4 id="p32">p32</h4>
+<p>In corollary 2.20, <span class="math inline">\(\sigma_i\)</span> are all homomorphisms, <span class="math inline">\(\sigma_i \beta\)</span> means <span class="math inline">\(\sigma_i(\beta)\)</span></p>
+<p>In this page, I’m confused the difference between module and extension, because in <span class="math inline">\(Tr_{B/A}\)</span>, somtimes <span class="math inline">\(B\)</span> is an extension over <span class="math inline">\(A\)</span>, sometimes <span class="math inline">\(B\)</span> is <span class="math inline">\(A\)</span>-module. The point is that we could think that if <span class="math inline">\(B\)</span> is a <span class="math inline">\(A\)</span>-module which is a 2-dims vector space, then we couldn’t define the polynomial for <span class="math inline">\(B/A\)</span>, how could we calculate <span class="math inline">\(Tr_{B/A}\)</span>.</p>
+<p>Then we could see <a href="https://math.stackexchange.com/questions/2365940/trace-operators-on-modules">here</a>, the second answer gives a construction for vector space like module, then we know the <span class="math inline">\(Tr\)</span> is just an operator, if meet its property, it could exist, in general case, it’s called the <a href="https://mathoverflow.net/questions/156264/trace-of-finitely-generated-projective-module">Hattori-Stallings trace</a>.</p>
+<h4 id="p33">p33</h4>
+<p>How to construct the isomorphism from <span class="math inline">\(V^{\or}\)</span> to <span class="math inline">\(V\)</span> could be seen <a href="https://math.stackexchange.com/questions/105490/isomorphisms-between-a-finite-dimensional-vector-space-and-its-dual">here</a>.</p>
+<p>If got any more question about discriminant, you may get the answer <a href="http://math.stanford.edu/~conrad/676Page/handouts/discexist.pdf">here</a>.</p>
+<h4 id="p35">p35</h4>
+<p>For corollary 2.30, I think we could know the basis <span class="math inline">\(\{\beta_1, \dots, \beta_m\}\)</span> of <span class="math inline">\(L\)</span> could all in <span class="math inline">\(O_L\)</span>, so the subring of <span class="math inline">\(L\)</span> which is finitely generated as a <span class="math inline">\(\mathbb{Z}\)</span>-module is also generated by basis in <span class="math inline">\(O_L\)</span>, clearly <span class="math inline">\(O_L\)</span> is the largest subring.</p>
+<h4 id="p36">p36</h4>
+<p>In Remark 2.33, <span class="math inline">\(Tr(\beta \beta_i) \in A , i=1, \dots, m\)</span> means that a ‘dual’ basis <span class="math inline">\(\{\beta_1&#39;, \dots, \beta_m&#39;\}\)</span> is in <span class="math inline">\(C^*\)</span>, then we know the conclusion from 2.29.</p>
+<h4 id="p39">p39</h4>
+<p>If <span class="math inline">\(D(1, \alpha, \dots, \alpha^{m-1})\)</span> doesn’t contain any square factor, then if should be <span class="math inline">\(disc(O_K/\mathbb{Z})\)</span>, and <span class="math inline">\(|O_K| = |\mathbb{Z}[\alpha]|\)</span>, then we knwo <span class="math inline">\(O_K = \mathbb{Z}[\alpha]\)</span>.</p>
+<p>sign function here just means the plus or minus of integer.</p>
+<p>According to 2.34, we know <span class="math inline">\(D(1, \beta, \dots, \beta^{m-1}) = \prod_{1\leq i\leq j\leq m}(\beta_i-\beta_j)^2\)</span>, then we know 2.40(a).</p>
+<p>detailed proof of Stickllberger’s Theorem could be seen <a href="https://math.stackexchange.com/questions/394785/proof-of-stickelberger-s-theorem">here</a>.</p>
+<p>proof for $a^2 , 1, a $</p>
+<p>if <span class="math inline">\(\exists a\in \mathbb{Z}, a^2 \equiv 2 \mod 4\)</span>, then <span class="math inline">\(a^2 = 4k+2 = 2(2k+1)\)</span>, the right side only has one 2 factor, so there’s a contradiction.</p>
+<p>if <span class="math inline">\(\exists a \in \mathbb{Z}, a\equiv 3\mod 4\)</span>, then <span class="math inline">\(a^2-1 = 4k+2 \Rightarrow (a+1)(a-1)=2(2k+1)\)</span>, the left side has two 2 factor, but the right side only has one.</p>
+<h4 id="p41">p41</h4>
+<p>I use sagemath to do the same work as PARI do in the book.</p>
+<p><img src="/2022/01/19/Notes-on-Algebraic-Number-Theory/image-20220130113325852.png"></p>
+<figure>
+<img src="/2022/01/19/Notes-on-Algebraic-Number-Theory/image-20220130113713512.png" alt="image-20220130113713512"><figcaption aria-hidden="true">image-20220130113713512</figcaption>
+</figure>
+<h4 id="exercise">exercise</h4>
+<ol type="1">
+<li><p>To find an example, we want <span class="math inline">\(\alpha = (a+b\sqrt 5)(c+d\sqrt 5) = (e+f\sqrt 5)(g + h\sqrt 5)\)</span> with <span class="math inline">\(a \neq e, a \neq g\)</span>, so the variables should satisfy <span class="math inline">\(ac + 5bd = eg + 5hf, ad + bc = eh+ fg\)</span>.</p>
+<p>While, it’s too bother, let’s just use <span class="math inline">\(-4 = -2 \sdot 2 = (1+\sqrt 5)\sdot (1-\sqrt 5)\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f(X)\)</span> is reducible in <span class="math inline">\(K[X]\)</span>, which means <span class="math inline">\(f(X) = f_0(X)f_1(X)...fn(X)\)</span> with <span class="math inline">\(f_i(X) \in K[X]\)</span>. We know that <span class="math inline">\(f(X) \in A[X]\)</span>, so all the roots of <span class="math inline">\(f(X)\)</span> are integral over <span class="math inline">\(A\)</span>. For <span class="math inline">\(f_0(X)\)</span>, the roots of <span class="math inline">\(f_0\)</span> are all integral over A, so all the coefficients should be integral over <span class="math inline">\(A\)</span>, then they are all in <span class="math inline">\(A\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(L = K[\beta]\)</span>, <span class="math inline">\(\beta\)</span> is one root of <span class="math inline">\(f(X) \in K[X]\)</span>. From 2.34, we know that <span class="math inline">\(disc(L/K) = (-1)^{\frac{m(m-1)}{2}}\prod_i(\prod_{j\neq i} (\beta_i-\beta_j))\)</span>, <span class="math inline">\(\beta_1=\beta, \beta_2, \dots, \beta_n\)</span> are the roots of <span class="math inline">\(f(X)\)</span>, because <span class="math inline">\(L/K\)</span> is not separable, then there exists <span class="math inline">\(\beta_s =\beta_t\)</span>, <span class="math inline">\(disc(L/K) = 0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathfrak{a} \neq (2)\)</span> is clearly, <span class="math inline">\(\mathfrak{a}^2 = (4, 2+2\sqrt{-3}, -2+2\sqrt{-3})\)</span>, <span class="math inline">\(-2+2\sqrt{-3} = 2+2\sqrt{-3} - 4\)</span>, then <span class="math inline">\(\mathfrak{a}^2 = (4, 2+2\sqrt{-3}) = (2)\mathfrak{a}\)</span>.</p>
+<p>In <span class="math inline">\(\mathbb{Z}[\sqrt{-3}]\)</span>, there exists <span class="math inline">\(10 = 2 \sdot 5 = (1+\sqrt{-3})(1-\sqrt{-3})\)</span>, so it couldn’t factor uniquely.</p></li>
+<li><p>For <span class="math inline">\(\alpha \in A[\beta] \cap A[\beta ^{-1}]\)</span>, there will be two polynomials <span class="math inline">\(f(X) \in A[\beta][X]\)</span>, <span class="math inline">\(g(X)\in A[\beta^{-1}][X]\)</span>, with $f() = g() = $, and the coefficients of two polynomials are all in <span class="math inline">\(A\)</span>, we let <span class="math inline">\(deg(f) = m, deg(g) = n\)</span></p>
+<p>We set <span class="math inline">\(M = A + A\beta + \dots + A\beta^{m+n}\)</span>, then we wonder if <span class="math inline">\(\alpha \beta^k\)</span> is in <span class="math inline">\(M\)</span>.</p>
+<ol type="1">
+<li><span class="math inline">\(0 \leq k &lt; n\)</span>: <span class="math inline">\(\alpha \beta^k = \beta^kf(\beta) \in M\)</span></li>
+<li><span class="math inline">\(n\leq k \leq m+n\)</span>: <span class="math inline">\(\alpha \beta^k = \beta^{k-n} \alpha \beta^{n} \in M\)</span></li>
+</ol>
+<p>then we know that <span class="math inline">\(\alpha \beta^k \in M\)</span>, so <span class="math inline">\(\alpha M \in M\)</span>, then $$ is integral over <span class="math inline">\(A\)</span>, more details could be seen <a href="https://math.stackexchange.com/questions/1436242/show-that-ax-cap-ax-1-is-integral-over-a">here</a>.</p></li>
+<li><ol type="1">
+<li><p>All <span class="math inline">\(\alpha_i \alpha_j, i\neq j\)</span> would have factor <span class="math inline">\((1+\sqrt{10})(1-\sqrt{10}) = -9\)</span> or <span class="math inline">\((1+\sqrt{7})(1-\sqrt{7}) = -6\)</span>, they are all divisible by 3 in <span class="math inline">\(O_K\)</span>. According to 2.12, we know that if <span class="math inline">\(\frac{\alpha_i^n}{3}\)</span> is integral over <span class="math inline">\(\mathbb{Z}\)</span>, then its norm and trace should all in <span class="math inline">\(\mathbb{Z}\)</span>, the norm clearly lie in <span class="math inline">\(\mathbb{Z}\)</span>, but the trace is not. We know <span class="math inline">\(Tr(\alpha_i^n) = \sum \alpha_j^n = 4^n\)</span>, because for <span class="math inline">\(f(X) \in \mathbb{Z}[X], f(\alpha_j) = 0\)</span>, then the minimal polynomial <span class="math inline">\(f_n(X)\)</span> of <span class="math inline">\(\alpha_i^n\)</span> would satisfy <span class="math inline">\(f_n(\alpha_j^n) = 0\)</span>.</p></li>
+<li><p>If <span class="math inline">\(\overline g\)</span> is divisible by <span class="math inline">\(f\)</span> in <span class="math inline">\(F_3[X]\)</span>, then <span class="math inline">\(\overline g(\alpha) = 0\)</span> over <span class="math inline">\(F_3\)</span>, and <span class="math inline">\(g(X) = \overline g(X) + 3g&#39;(X)\)</span>, so <span class="math inline">\(g(\alpha) \equiv \overline g(\alpha) \mod 3\)</span>.</p>
+<p>if <span class="math inline">\(g(\alpha)\)</span> is divisible by 3 in <span class="math inline">\(\mathbb{Z}[\alpha]\)</span>, then <span class="math inline">\(\overline g(\alpha) = 0\)</span> in <span class="math inline">\(F_3\)</span>, because <span class="math inline">\(f\)</span> is minimal polynomial of <span class="math inline">\(\alpha\)</span>, then <span class="math inline">\(\overline g\)</span> is divisible by <span class="math inline">\(f\)</span>. The point is that whether <span class="math inline">\(f\)</span> is still minimal polynomial in <span class="math inline">\(F_3[X]\)</span>. If there’s another <span class="math inline">\(f&#39; \in F_3[X], f&#39;(\alpha) = 0\)</span> with <span class="math inline">\(deg(f&#39;) &lt; deg(f)\)</span>, then <span class="math inline">\(f&#39;(\alpha) + 3T = 0\)</span> over <span class="math inline">\(\mathbb{Z}\)</span>, <span class="math inline">\(f&#39;&#39;(X) = f&#39;(X) + 3T\)</span> become minimal polynomial, so there’s a contradicition.</p></li>
+<li><p>We know that <span class="math inline">\(f_i(\alpha) \equiv \overline f_i(\alpha) \mod 3\)</span>, then <span class="math inline">\(\overline f_i \overline f_j(\alpha) \equiv \alpha_i\alpha_j \mod 3\)</span>, from 1 we know <span class="math inline">\(\alpha_i\alpha_j \equiv 0\mod 3\)</span>, so <span class="math inline">\(\overline f | \overline f_i \overline f_j, i\neq j\)</span>, and <span class="math inline">\(\overline f\)</span> not divide <span class="math inline">\(\overline f_i^n\)</span>, because if it happens, then <span class="math inline">\(\overline f_i^n(\alpha) = 0\)</span>, which means <span class="math inline">\(\alpha_i^n \equiv 0 \mod 3\)</span>, which is a contradiction.</p></li>
+<li><p><span class="math inline">\(\overline f\)</span> has at least 4 irreducible factors on <span class="math inline">\(F_3[X]\)</span>, which means <span class="math inline">\(f\)</span> has at least 4 irreducible factors on <span class="math inline">\(\mathbb{Z}[X]\)</span>, and <span class="math inline">\(f\)</span> has degree at most 4, so <span class="math inline">\(f\)</span> just has these 4 irreducible factors, <span class="math inline">\(f\)</span> will be <span class="math inline">\(f(X) = (X-t_0)(X-t_1)(X-t_2)(X-t_3)\)</span>, we know <span class="math inline">\(f(\alpha) = 0\)</span>, so <span class="math inline">\(t_i = \alpha\)</span>, then <span class="math inline">\(X-t_i\)</span> is the minipoly of <span class="math inline">\(\alpha\)</span>, here’s a contradiction.</p></li>
+</ol></li>
+<li><p><span class="math inline">\(S^{-1}A = \{\frac{a}{s}\ |\ a\in A, s\in S \}\)</span>, <span class="math inline">\(\forall f(X) \in S^{-1}A[X]\)</span>, <span class="math inline">\(f(X)\)</span> could be written as <span class="math inline">\(\frac{\sum_{i=0}^na_i&#39;X^i}{\prod_{i=0}^ns_i}\)</span>, if <span class="math inline">\(f(x_0) = 0\)</span>, then there exists <span class="math inline">\(f&#39;(X)\)</span> with <span class="math inline">\(f&#39;(x_0) = 0\)</span> on <span class="math inline">\(A\)</span>, so <span class="math inline">\(S^{-1}B\)</span> is still integral closure of <span class="math inline">\(S^{-1}A\)</span>.</p></li>
+<li><p><span class="math inline">\(A_\mathfrak{p} = \{\frac{a}{s}\ | \ a\in A, s\in A\backslash \mathfrak{p}\}\)</span>, and <span class="math inline">\(\mathfrak{p}A_\mathfrak{p} = (A \backslash \mathfrak{p}) ^{-1} \mathfrak{p} = \{\frac{p}{s} \ | \ p\in \mathfrak{p}, s \in A\backslash \mathfrak{p}\}\)</span>.</p>
+<p><span class="math inline">\(A_\mathfrak{p}/ \mathfrak{p}A_\mathfrak{p} = \{\frac{a}{s} \ | \ a\in A/\mathfrak{p}A, s\in A/\mathfrak{p} \}\)</span>，then <span class="math inline">\(\forall p \in A_\mathfrak{p}/\mathfrak{p}A_\mathfrak{p}\)</span> can be written in the form <span class="math inline">\(p = \frac{a}{b}, a, b\in A\)</span>.</p>
+<p>​</p></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Learning Notes</category>
+      </categories>
+      <tags>
+        <tag>Algebraic Number Theory</tag>
       </tags>
   </entry>
   <entry>
