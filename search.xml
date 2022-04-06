@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Attacks_on_Rainbow</title>
+    <title>Attacks on Rainbow</title>
     <url>/2022/04/06/Attacks-on-Rainbow/</url>
     <content><![CDATA[<h2 id="attacks-on-rainbow">Attacks on Rainbow</h2>
 <p><a href="https://eprint.iacr.org/2020/1343.pdf">paper1</a></p>
@@ -9,7 +9,7 @@
 <h3 id="uov">UOV</h3>
 <h4 id="mqp">MQP</h4>
 <p>Multivariate Qudratic Problem.</p>
-<p>For $P : ^n_q ^m_q $, known $t ^m_q $, want <span class="math inline">\(s \in \mathbb{F}^n_q , P(s) = t\)</span>.</p>
+<p>For <span class="math inline">\(P: \mathbb{F}_q^n \rightarrow \mathbb{F}_q^m\)</span>, known $t ^m_q $, want <span class="math inline">\(s \in \mathbb{F}^n_q , P(s) = t\)</span>.</p>
 <p>We often use <span class="math inline">\(F_4/F_5\)</span> or <span class="math inline">\(XL\)</span> these kind of Grobner-basis-like algorithm.</p>
 <h4 id="mrp">MRP</h4>
 <p>MinRank Problem.</p>
