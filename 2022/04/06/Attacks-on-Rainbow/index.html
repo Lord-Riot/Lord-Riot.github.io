@@ -27,11 +27,13 @@
 <meta property="og:site_name" content="Lord Riot&#39;s Blog">
 <meta property="og:description" content="之前就注意到2.14那篇Rainbow新攻击的paper，最近总算是抽出来时间从头理了一遍，还是比较有意思的，笔记依然是注释性的，只是对于论文部分细节的解释和补充。其中第一篇论文可以作为了解UOV、Rainbow加密体系的入门阅读，第二篇则为提出新攻击的文章。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lord-riot.github.io/2022/04/06/Attacks-on-Rainbow/image-20220411210404794.png">
 <meta property="article:published_time" content="2022-04-06T08:48:05.000Z">
-<meta property="article:modified_time" content="2022-04-08T07:51:17.669Z">
+<meta property="article:modified_time" content="2022-04-12T16:37:04.587Z">
 <meta property="article:author" content="Lord Riot">
 <meta property="article:tag" content="Way to Crypto">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lord-riot.github.io/2022/04/06/Attacks-on-Rainbow/image-20220411210404794.png">
 
 <link rel="canonical" href="https://lord-riot.github.io/2022/04/06/Attacks-on-Rainbow/">
 
@@ -224,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-08 15:51:17" itemprop="dateModified" datetime="2022-04-08T15:51:17+08:00">2022-04-08</time>
+                <time title="修改时间：2022-04-13 00:37:04" itemprop="dateModified" datetime="2022-04-13T00:37:04+08:00">2022-04-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,6 +254,26 @@
 <p><a target="_blank" rel="noopener" href="https://eprint.iacr.org/2020/1343.pdf">paper1</a></p>
 <p><a target="_blank" rel="noopener" href="https://eprint.iacr.org/2022/214.pdf">paper2</a></p>
 <h3 id="uov">UOV</h3>
+<h4 id="signature">Signature</h4>
+<p><span class="math display">\[
+P : \mathbb{F}^n_q \rightarrow \mathbb{F}^m_q\\
+Sign(M) = s, P(s) = H(M|| salt)
+\]</span></p>
+<p><span class="math inline">\(P\)</span> is a multivariate quadratic map</p>
+<p><span class="math inline">\(P = (p_1(x_1, x_2, \dots, x_n), \dots, p_m(x_1, x_2, \dots, x_n))\)</span></p>
+<p><span class="math inline">\(p_1(x_1, \dots, x_n) = \sum_{i=1}^n \sum_{j=i}^{n-m} \alpha_{i, j} x_i x_j\)</span></p>
+<h4 id="trapdoor">Trapdoor</h4>
+<p><span class="math display">\[
+P : \mathbb{F}^n_q \rightarrow \mathbb{F}^m_q\\
+\forall \vec o \in O, P(\vec o) = 0, dim(O) = m
+\]</span></p>
+<p>If we know <span class="math inline">\(O\)</span>, then we could know any <span class="math inline">\(\vec t\)</span>, we could find <span class="math inline">\(\vec s\)</span> which satisfy <span class="math inline">\(P(\vec s) = \vec t\)</span>.</p>
+<ol type="1">
+<li>choose random vector <span class="math inline">\(\vec v\in \mathbb{F}_q^n\)</span></li>
+<li>build equation <span class="math inline">\(P(\vec v + \vec o) = P(\vec s)\)</span>, then <span class="math inline">\(P(\vec v + \vec o) = P(\vec v) + P(\vec o) + P&#39;(\vec v, \vec o)\)</span></li>
+<li><span class="math inline">\(P(\vec v)\)</span> is fixed and <span class="math inline">\(P(\vec o) = 0\)</span>, so we just need to solve <span class="math inline">\(P&#39;(\vec v, \vec o)\)</span> which is linear function of <span class="math inline">\(\vec o\)</span>.</li>
+<li>If there’s a solution, then we find a correct <span class="math inline">\(\vec s = \vec v + \vec o\)</span>, else we choose another random vector and try again.</li>
+</ol>
 <h4 id="mqp">MQP</h4>
 <p>Multivariate Qudratic Problem.</p>
 <p>For <span class="math inline">\(P: \mathbb{F}_q^n \rightarrow \mathbb{F}_q^m\)</span>, known $t ^m_q $, want <span class="math inline">\(s \in \mathbb{F}^n_q , P(s) = t\)</span>.</p>
@@ -273,6 +295,14 @@
 <h5 id="intersection-attack">Intersection attack</h5>
 <p>extension of Kipnis-Shamir attack.</p>
 <h4 id="rainbow">Rainbow</h4>
+<p><img src="/2022/04/06/Attacks-on-Rainbow/image-20220411210404794.png"></p>
+<h4 id="trapdoor-1">Trapdoor</h4>
+<p>The trapdoor of Rainbow is <span class="math inline">\(O_1, O_2, W\)</span>，given <span class="math inline">\(\vec t\)</span>, we want a <span class="math inline">\(\vec s\)</span> which lets <span class="math inline">\(P(\vec s) = \vec t\)</span></p>
+<ol type="1">
+<li><p>choose random vector <span class="math inline">\(\vec v \in \mathbb{F}_q^n\)</span>, and find a <span class="math inline">\(\vec o_1 \in O_1\)</span> which satisfies <span class="math inline">\(\forall \vec o_2 \in O_2, P(\vec v + \vec o_1 + \vec o_2) + W = \vec t + W\)</span>, which equals <span class="math inline">\(P(\vec v) + P(\vec o_1) + P&#39;(\vec v, \vec o_1) + W = \vec t+W\)</span>, <span class="math inline">\(P(\vec v)\)</span> is fixed and <span class="math inline">\(P(\vec o_1) \in W\)</span>.</p>
+<p>So we just need to solve a linear equations <span class="math inline">\(P&#39;(\vec v, \vec o_1) = \vec t\)</span> on <span class="math inline">\(\mathbb{F}_q^m/ W\)</span>, go to the second step if we find a solution, else we find another <span class="math inline">\(\vec v\)</span> and try again.</p></li>
+<li><p>If we got the solution <span class="math inline">\(\vec o_1\)</span>, then we could use the equation <span class="math inline">\(P(\vec v + \vec o_1 + \vec o_2) = \vec t\)</span>, which equals <span class="math inline">\(P(\vec v + \vec o_1) - t + P(\vec o_2) + P&#39;(\vec v + \vec o_1, \vec o_2) = 0\)</span>， it’s a linear equation, if there’s a solution, then we got a <span class="math inline">\(\vec s\)</span>, else we go back to the first step.</p></li>
+</ol>
 <p>In the first step of calculating trapdoor information, I’m confused that how could we calculate <span class="math inline">\(P(\overline o_1), \overline o_1 \in O_1/O_2\)</span>, <span class="math inline">\(\overline o_1 = \{\vec o_1 + \vec o_2 \ | \ \vec o_2 \in O_2 \}, \vec o_1 \in O_1\)</span>.</p>
 <p>Then I connect the context, I think it means that we want <span class="math inline">\(\vec o_1 \in O_1\)</span> which lets <span class="math inline">\(\forall \ \vec o_2 \in O_2\)</span>, <span class="math inline">\(P(\vec v + \vec o_1 + \vec o_2) + W = \vec t + W\)</span>.</p>
 <p>The number of constraints is <span class="math inline">\(m - dim W\)</span> because this system lies on <span class="math inline">\(F^m_q/W\)</span>.</p>
@@ -295,7 +325,7 @@
 <p>​ Then we get <span class="math inline">\(m-1\)</span> homogeneous equations like $p_1(By)a_i -p_i(By) a_1 = 0 $ in <span class="math inline">\(n-m-1\)</span> variables, the complexity has been reduced by this transform.</p></li>
 <li><p>use <span class="math inline">\(\vec o\)</span> to complete the attack</p>
 <p><span class="math inline">\(V\)</span> as a change of variables here means, for a vector <span class="math inline">\(\vec x = \vec w + \vec x&#39;, \vec w \in W\)</span>, then <span class="math inline">\(V(\vec x) = V(\vec w&#39;) + V(\vec x&#39;)\)</span>, the first <span class="math inline">\(m-o_2\)</span> of <span class="math inline">\(V(w&#39;)\)</span> are zeros.</p>
-<p><span class="math inline">\(U\)</span> as a change of variables here means, for a vector <span class="math inline">\((x_0, x_1, \dots, x_n) \in \mathbb{F}_q^n\)</span>, let <span class="math inline">\(\hat x_0 = (x_0, x_1, \dots, x_{n-o_2}, 0, 0, \dots, 0), \hat x_1 = (0, 0, \dots, 0, x_{n-o_2+1}&#39;\)</span>, then <span class="math inline">\(U(x) = \hat x_0 + \hat x_1\)</span>, and <span class="math inline">\(\hat x_1\)</span> is in <span class="math inline">\(O_2\)</span>.</p>
+<p><span class="math inline">\(U\)</span> as a change of variables here means, for a vector <span class="math inline">\((x_0, x_1, \dots, x_n) \in \mathbb{F}_q^n\)</span>, let <span class="math inline">\(\hat x_0 = (x_0&#39;, x_1&#39;, \dots, x_{n-o_2}&#39;, 0, 0, \dots, 0), \hat x_1 = (0, 0, \dots, 0, x_{n-o_2+1}&#39;, \dots, x_{}&#39;)\)</span>, then <span class="math inline">\(U(x) = \hat x_0 + \hat x_1\)</span>, and <span class="math inline">\(\hat x_1\)</span> is in <span class="math inline">\(O_2\)</span>.</p>
 <blockquote>
 <p>In general, <span class="math inline">\(V^{-1}\)</span> and <span class="math inline">\(U\)</span> are similar to nullity matrices for <span class="math inline">\(W\)</span> and <span class="math inline">\(O_2\)</span>.</p>
 </blockquote>
@@ -397,7 +427,7 @@ P&#39;(e_n, b_i)
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#attacks-on-rainbow"><span class="nav-number">1.</span> <span class="nav-text">Attacks on Rainbow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uov"><span class="nav-number">1.1.</span> <span class="nav-text">UOV</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mqp"><span class="nav-number">1.1.1.</span> <span class="nav-text">MQP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mrp"><span class="nav-number">1.1.2.</span> <span class="nav-text">MRP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#wiedemanns-algorihtm"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Wiedemann’s Algorihtm</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#xl-algorithm"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">XL Algorithm</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#uov-attacks"><span class="nav-number">1.1.3.</span> <span class="nav-text">UOV Attacks</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#reconciliation-attack"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Reconciliation attack</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#kipnis-shamir-attack"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">Kipnis-Shamir attack</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#intersection-attack"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">Intersection attack</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rainbow"><span class="nav-number">1.1.4.</span> <span class="nav-text">Rainbow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#previous-rainbow-attacks"><span class="nav-number">1.1.5.</span> <span class="nav-text">Previous Rainbow Attacks</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#uov-attack"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">UOV attack</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#minrankhighrank-attack"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">MinRank&#x2F;HighRank attack</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rainbow-band-separation-attack"><span class="nav-number">1.1.5.3.</span> <span class="nav-text">Rainbow band separation attack</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#new-attack"><span class="nav-number">1.1.6.</span> <span class="nav-text">New Attack</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#simple-attack"><span class="nav-number">1.1.6.1.</span> <span class="nav-text">Simple Attack</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#combination-with-rectangular-minrank-attack"><span class="nav-number">1.1.6.2.</span> <span class="nav-text">Combination with rectangular MinRank attack</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#attacks-on-rainbow"><span class="nav-number">1.</span> <span class="nav-text">Attacks on Rainbow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uov"><span class="nav-number">1.1.</span> <span class="nav-text">UOV</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#signature"><span class="nav-number">1.1.1.</span> <span class="nav-text">Signature</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#trapdoor"><span class="nav-number">1.1.2.</span> <span class="nav-text">Trapdoor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mqp"><span class="nav-number">1.1.3.</span> <span class="nav-text">MQP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mrp"><span class="nav-number">1.1.4.</span> <span class="nav-text">MRP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#wiedemanns-algorihtm"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">Wiedemann’s Algorihtm</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#xl-algorithm"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">XL Algorithm</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#uov-attacks"><span class="nav-number">1.1.5.</span> <span class="nav-text">UOV Attacks</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#reconciliation-attack"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">Reconciliation attack</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#kipnis-shamir-attack"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">Kipnis-Shamir attack</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#intersection-attack"><span class="nav-number">1.1.5.3.</span> <span class="nav-text">Intersection attack</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rainbow"><span class="nav-number">1.1.6.</span> <span class="nav-text">Rainbow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#trapdoor-1"><span class="nav-number">1.1.7.</span> <span class="nav-text">Trapdoor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#previous-rainbow-attacks"><span class="nav-number">1.1.8.</span> <span class="nav-text">Previous Rainbow Attacks</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#uov-attack"><span class="nav-number">1.1.8.1.</span> <span class="nav-text">UOV attack</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#minrankhighrank-attack"><span class="nav-number">1.1.8.2.</span> <span class="nav-text">MinRank&#x2F;HighRank attack</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rainbow-band-separation-attack"><span class="nav-number">1.1.8.3.</span> <span class="nav-text">Rainbow band separation attack</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#new-attack"><span class="nav-number">1.1.9.</span> <span class="nav-text">New Attack</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#simple-attack"><span class="nav-number">1.1.9.1.</span> <span class="nav-text">Simple Attack</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#combination-with-rectangular-minrank-attack"><span class="nav-number">1.1.9.2.</span> <span class="nav-text">Combination with rectangular MinRank attack</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
