@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lord-riot.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="虎符CTF2022部分赛题复现，因为是赛题复现，就用中文写了orz，持续更新ing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="摸鱼Writeup-3">
+<meta property="og:url" content="https://lord-riot.github.io/2022/05/04/%E6%91%B8%E9%B1%BCWriteup-3/index.html">
+<meta property="og:site_name" content="Lord Riot&#39;s Blog">
+<meta property="og:description" content="虎符CTF2022部分赛题复现，因为是赛题复现，就用中文写了orz，持续更新ing">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-04T06:46:33.000Z">
+<meta property="article:modified_time" content="2022-05-10T15:13:34.711Z">
+<meta property="article:author" content="Lord Riot">
+<meta property="article:tag" content="Crypto in CTF">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://lord-riot.github.io/2022/05/04/%E6%91%B8%E9%B1%BCWriteup-3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>摸鱼Writeup-3 | Lord Riot's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lord Riot's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lord-riot.github.io/2022/05/04/%E6%91%B8%E9%B1%BCWriteup-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Lord-Riot/Lord-Riot.github.io/master/images/avatar.jpg">
+      <meta itemprop="name" content="Lord Riot">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lord Riot's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          摸鱼Writeup-3
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-04 14:46:33" itemprop="dateCreated datePublished" datetime="2022-05-04T14:46:33+08:00">2022-05-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-10 23:13:34" itemprop="dateModified" datetime="2022-05-10T23:13:34+08:00">2022-05-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Crypto-in-CTF/" itemprop="url" rel="index"><span itemprop="name">Crypto in CTF</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">虎符CTF2022部分赛题复现，因为是赛题复现，就用中文写了orz，持续更新ing</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="hcdsa">HCDSA</h4>
+<p>​ writeup中提到题中超椭曲线的阶可以通过这篇<a target="_blank" rel="noopener" href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/211979CB954028EF8899B3FB49930091/S000497270003207Xa.pdf/div-class-title-lattice-basis-reduction-jacobi-sums-and-hyperelliptic-cryptosystems-div.pdf">paper</a>中提到的算法来计算，读这篇paper后发现这是一个利用格基规约寻找Ideal上生成元的方法，思路是以往没见过的。</p>
+<blockquote>
+<p>论文中一些公式的应用都是源自其他论文的结论，笔者尚未有时间全部梳理，故只讨论论文中涉及的部分</p>
+</blockquote>
+<p>​ 对于<span class="math inline">\(\mathbb{F}_p\)</span> 上的超椭 <span class="math inline">\(E:Y^2 + Y = X^n\)</span>，即<span class="math inline">\(h(X) = 1, f(X) = X^n\)</span>，论文中讨论的情况为p较大，但n很小。设<span class="math inline">\(\zeta = e^{\frac{2\pi i}{n}}\)</span>，即为复数域<span class="math inline">\(C\)</span>上的1的一个n次根，根据一个确定的<span class="math inline">\(\mathbb{F}_p\)</span>上非零非n次根元素<span class="math inline">\(\alpha\)</span>可以定义一个multiplicative map <span class="math inline">\(\mathcal{X}(\alpha) = \zeta\)</span>，multiplicative map即为具有<span class="math inline">\(\mathcal{X}(ab) = \mathcal{X}(a)\mathcal{X}(b)\)</span>性质的映射。<span class="math inline">\(\mathbb{F}_p\)</span> 上的元素可以表示为<span class="math inline">\(\alpha^k\)</span>，即映射为<span class="math inline">\(\zeta^k\)</span>。可以将这个映射推广到<span class="math inline">\(\mathbb{F}_p\)</span>上，从而可以定义基于此映射的Jacobi sum <span class="math inline">\(J(\mathcal{X}, \mathcal{X}) = \sum_{y\in \mathbb{F}_p}\mathcal{X}(y)\mathcal{X}(1-y)\)</span>。</p>
+<p>​ 定义数域<span class="math inline">\(K= Q(\zeta)\)</span>，即<span class="math inline">\(K\)</span>为<span class="math inline">\(Q\)</span>基于<span class="math inline">\(\zeta\)</span>的代数扩张，可知<span class="math inline">\(K\)</span>的自同构群的一组基为<span class="math inline">\(\sigma_i(\zeta) = \zeta^i, i = 1, 2, \dots, n-1\)</span>。设<span class="math inline">\(T, N\)</span>分别为<span class="math inline">\(K/Q\)</span>扩张上的trace和norm，通过这篇<a target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007/3-540-58691-1_39">paper</a>(sci-hub上并没有资源，很尴尬)，结合trace和norm的定义，得到曲线<span class="math inline">\(E\)</span>上点的个数<span class="math inline">\(M = p+1+T_{K/Q}(J(\mathcal{X}, \mathcal{X}))\)</span>，通过zeta函数的转换得到曲线Jacobian上点的个数<span class="math inline">\(N = N_{K/Q}(J(\mathcal{X}, \mathcal{X})+1)\)</span>，论文中该给出了求原曲线经过<span class="math inline">\(i, j\)</span>扭曲后的阶。</p>
+<p>​ 可以看到现在的关键即是求解<span class="math inline">\(J(\mathcal{X}, \mathcal{X})\)</span>，求解了<span class="math inline">\(J(\mathcal{X}, \mathcal{X})\)</span>即可计算出<span class="math inline">\(N\)</span> 即得到原曲线的阶。考虑由<span class="math inline">\(p, \alpha^{\frac{p-1}{n}}\)</span> 生成的<span class="math inline">\(\mathbb{Z}[\zeta]\)</span> 上的素理想<span class="math inline">\(P\)</span>，<span class="math inline">\(n&lt;23\)</span>时(包含了论文中的情况)，<span class="math inline">\(P\)</span>是principal的，即可以只由一个生成元生成，假设得到了<span class="math inline">\(P\)</span>的一个生成元为<span class="math inline">\(\beta\)</span>，则可以计算出<span class="math inline">\(J(\mathcal{X}, \mathcal{X})\)</span>。</p>
+<p>​ 由<span class="math inline">\(\hat J = \prod_{i=1}^g \sigma_i^{-1}(\beta)\)</span> 生成的理想与由<span class="math inline">\(J(\mathcal{X}, \mathcal{X})\)</span>生成的理想是相同的，所以考虑如何通过$J <span class="math inline">\(求得\)</span>J(, )$。存在 <span class="math inline">\(r\in \{-1, 1\}, s \in Z\)</span> 使得 <span class="math inline">\(r\zeta^s\hat J = J(\mathcal{X}, \mathcal{X})\)</span>，将<span class="math inline">\(\hat J\)</span> 表示为<span class="math inline">\(\zeta\)</span> 多项式的形式 <span class="math inline">\(\sum_{j=0}^{n-2}a_j\zeta^j\)</span>。对于<span class="math inline">\(J(\mathcal{X}, \mathcal{X})\)</span>，有<span class="math inline">\(J(\mathcal{X}, \mathcal{X}) \equiv -1 \mod (\zeta -1)^2\)</span>，将<span class="math inline">\(r\zeta^s\hat J = J(\mathcal{X}, \mathcal{X})\)</span>代入，则有 <span class="math display">\[
+r\zeta^s\hat J \equiv r(1+s(\zeta-1))\sum_{j=0}^{n-2}a_j(1+j(\zeta-1))\\
+\equiv r(\sum_{j=0}^{n-2}a_j + (s\sum_{j=0}^{n-2}a_j+\sum_{j=0}^{n-2}ja_j)(\zeta-1))\mod (\zeta-1)^2
+\]</span> ​ 可以求出<span class="math inline">\(r \equiv -\sum_{j=0}^{n-2}a_j \mod n, s \equiv r \sum_{j=0}^{n-2}ja_j \mod n\)</span>，由此只要知道了<span class="math inline">\(\beta\)</span>，可以计算出<span class="math inline">\(\hat J\)</span>，也就可以得到<span class="math inline">\(J(\mathcal{X}, \mathcal{X})\)</span>。</p>
+<p>​ 接下来讨论如何求出Ideal <span class="math inline">\(P\)</span>的生成元<span class="math inline">\(\beta\)</span>。<span class="math inline">\(Z(\zeta)\)</span>中的元素可以看作生成元<span class="math inline">\(\zeta\)</span>的多项式<span class="math inline">\(x_{2g}\zeta^{2g} + \dots + x_1\zeta\)</span>，将<span class="math inline">\(x_{2j-1}, x_{2j}\)</span>映射为复数<span class="math inline">\(x_{2j-1} + ix_{2j}\)</span>，则可以通过此法将<span class="math inline">\(P\)</span>嵌入到<span class="math inline">\(\mathbb{C}^g\)</span>上，再按照顺序展开为<span class="math inline">\((x_1, x_2, \dots, x_{2g})\)</span>，由此映射到了<span class="math inline">\(R^{2g}\)</span>上，构造了一个行列式维<span class="math inline">\(2^{-g}p\sqrt{D}\)</span>的格<span class="math inline">\(L_P\)</span>，其为<span class="math inline">\(Z(\zeta)\)</span>映射到<span class="math inline">\(R^{2g}\)</span>上格的子格。通过对格<span class="math inline">\(L_P\)</span>进行LLL，根据规约后的结果<span class="math inline">\(\vec x = (x_1, x_2, \dots, x_{2g})\)</span>，可以计算其在<span class="math inline">\(K/Q\)</span>上的norm，如果为<span class="math inline">\(p\)</span>，则为<span class="math inline">\(P\)</span>的一个生成元，即可计算出<span class="math inline">\(\beta\)</span>，如果为<span class="math inline">\(c\cdot p\)</span>，则爆破norm为<span class="math inline">\(c\)</span>的所有<span class="math inline">\(y\)</span>，寻找生成元<span class="math inline">\(x/y\)</span>。也是因为这个原因，当<span class="math inline">\(n\)</span>较大时，需要爆破的<span class="math inline">\(y\)</span>过多，所以无法使用此方法来寻找生成元，不过论文中提到，规约后的向量其实相当一部分的norm均为<span class="math inline">\(p\)</span>，实际的表现比想象中要好得多。</p>
+<p>​ 梳理一下算法流程：</p>
+<ol type="1">
+<li>使用Ideal <span class="math inline">\(P\)</span>的基<span class="math inline">\(\{p, \zeta-a, \zeta^2-a_2, \dots, \zeta^{n-2}-a_{n-2}\}\)</span> 构造格<span class="math inline">\(L_P\)</span></li>
+<li>对格<span class="math inline">\(L_P\)</span>进行规约，检测短向量的norm是否为<span class="math inline">\(p\)</span>，为<span class="math inline">\(p\)</span>则其对应<span class="math inline">\(Z(\zeta)\)</span>中元素即为Ideal <span class="math inline">\(P\)</span>的一个生成元<span class="math inline">\(\beta\)</span>，若短向量norm为<span class="math inline">\(c\cdot p\)</span>，则爆破所有norm为<span class="math inline">\(c\)</span>的<span class="math inline">\(y\)</span>，通过<span class="math inline">\(x/y\)</span>寻找生成元。</li>
+<li>得到生成元后，可以计算出<span class="math inline">\(\hat J\)</span>，将<span class="math inline">\(\hat J\)</span>展开为<span class="math inline">\(\zeta\)</span>的多项式，得到<span class="math inline">\(\hat J = \sum_{j=0}^{n-2}a_j\zeta^j\)</span>，求出<span class="math inline">\(r \equiv -\sum_{j=0}^{n-2}a_j \mod n, s \equiv r \sum_{j=0}^{n-2}ja_j \mod n\)</span>，即得到$ J(, ) = r^sJ $</li>
+<li>将<span class="math inline">\(J(\mathcal{X}, \mathcal{X})\)</span>代入原曲线的Jacobian上点数量的公式<span class="math inline">\(N = N_{K/Q}(J(\mathcal{X}, \mathcal{X})+1)\)</span>，即得到了原曲线的阶。</li>
+</ol>
+<p>​ 构造格<span class="math inline">\(L_P\)</span>规约时注意，我一开始使用sage的CC作为复数域，但是其精度过低，之后使用欧拉公式转换到RR上进行运算，再使用一个放大因子即可。然而在最后使用<span class="math inline">\(\hat J\)</span> 求$J(, ) <span class="math inline">\(的过程中，我发现\)</span>s r _{j=0}^{n-2}ja_j n$ 这个式子并不正确，需要爆破一下<span class="math inline">\(1, \dots, n-1\)</span>内的整数来确定<span class="math inline">\(s\)</span>的值。</p>
+<p>具体求阶部分代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sage.all <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lattice_reduction_get_order</span>(<span class="params">_p, _n, check_G=None, check_O=None</span>):</span></span><br><span class="line">    <span class="keyword">assert</span> isPrime(_p) <span class="keyword">and</span> (_p<span class="number">-1</span>) % _n == <span class="number">0</span></span><br><span class="line">    <span class="comment"># generate K</span></span><br><span class="line">    PRQ = PolynomialRing(QQ, <span class="string">&#x27;y&#x27;</span>)</span><br><span class="line">    y = PRQ.gens()[<span class="number">0</span>]</span><br><span class="line">    K = QQ.extension((y**_n<span class="number">-1</span>).factor()[<span class="number">-1</span>][<span class="number">0</span>], <span class="string">&#x27;z&#x27;</span>)</span><br><span class="line">    z = K.gens()[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># generate alpha, a</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        alpha = randrange(<span class="number">1</span>, _p<span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">if</span> pow(alpha, _n, _p) != <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    a = int(pow(alpha, (_p<span class="number">-1</span>)//_n, _p))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># build P lattice</span></span><br><span class="line">    MUL = <span class="number">10</span>**<span class="number">400</span></span><br><span class="line">    LP = Matrix(ZZ, _n<span class="number">-1</span>, _n<span class="number">-1</span>)</span><br><span class="line">    LP[<span class="number">0</span>] = vector(ZZ, [<span class="number">0</span> <span class="keyword">if</span> i % <span class="number">2</span> <span class="keyword">else</span> _p*MUL <span class="keyword">for</span> i <span class="keyword">in</span> range(_n<span class="number">-1</span>)])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, _n<span class="number">-1</span>):</span><br><span class="line">        tmp_vec = []</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, (_n+<span class="number">1</span>)//<span class="number">2</span>):</span><br><span class="line">            tmp_vec.append(RR((<span class="number">2</span>/_n * i * j * pi).cos() * MUL).round() - int(pow(a, i, _p)) * MUL)</span><br><span class="line">            tmp_vec.append(RR((<span class="number">2</span>/_n * i * j * pi).sin() * MUL).round())</span><br><span class="line">        LP[i] = vector(ZZ, tmp_vec)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># reduce the lattice</span></span><br><span class="line">    LPL = LP.LLL()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># get beta coefficients of Z-basis, then get beta</span></span><br><span class="line">    coefficients = LP.transpose().solve_right(LPL[<span class="number">0</span>])</span><br><span class="line">    tmp = _p * coefficients[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, _n<span class="number">-1</span>):</span><br><span class="line">        tmp -= int(pow(a, i, _p)) * coefficients[i]</span><br><span class="line">    beta = K([tmp] + coefficients[<span class="number">1</span>:].list())</span><br><span class="line">    <span class="keyword">assert</span> beta.norm() == _p</span><br><span class="line"></span><br><span class="line">    <span class="comment"># calculate J(X, X)</span></span><br><span class="line">    sigma = K.automorphisms()</span><br><span class="line">    J_hat = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range((_n<span class="number">-1</span>)//<span class="number">2</span>):</span><br><span class="line">        J_hat *= sigma[i].preimage(beta)</span><br><span class="line">    coefficients = J_hat.polynomial().coefficients()</span><br><span class="line">    r = -int(sum(coefficients)) % _n</span><br><span class="line">    <span class="keyword">if</span> r != <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">assert</span> r == _n - <span class="number">1</span></span><br><span class="line">        r = <span class="number">-1</span></span><br><span class="line">    s = int(r * sum([coefficients[j] * j <span class="keyword">for</span> j <span class="keyword">in</span> range(len(coefficients))])) % _n</span><br><span class="line"></span><br><span class="line">    <span class="comment"># get order</span></span><br><span class="line">    <span class="keyword">if</span> check_G:</span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> range(<span class="number">1</span>, _n):</span><br><span class="line">            J_X_X = r * z**s * J_hat</span><br><span class="line">            _q = int((J_X_X+<span class="number">1</span>).norm())</span><br><span class="line">            <span class="keyword">if</span> _q * check_G == check_O:</span><br><span class="line">                <span class="keyword">return</span> _q</span><br><span class="line">    J_X_X = r * z ** s * J_hat</span><br><span class="line">    <span class="keyword">return</span> int((J_X_X+<span class="number">1</span>).norm())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p = <span class="number">109912987917332562152579558699996713895127464171381146718513726836854765335393</span></span><br><span class="line">PRp = PolynomialRing(GF(p), <span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">x = PRp.gens()[<span class="number">0</span>]</span><br><span class="line">C2 = HyperellipticCurve(<span class="number">114514</span> * x**<span class="number">7</span>, <span class="number">1</span>)</span><br><span class="line">J2 = C2.jacobian()</span><br><span class="line">G = [x - <span class="number">1195618977299087187547891775318892467576479852329251168026008209153499647043</span>, <span class="number">61722058527536369025641486069921773295057337558818637400938099789108164705978</span>]</span><br><span class="line">G = J2(*G)</span><br><span class="line">q = lattice_reduction_get_order(p, <span class="number">7</span>, G, J2(<span class="number">0</span>))</span><br><span class="line"><span class="keyword">assert</span> q * G == J2(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Crypto-in-CTF/" rel="tag"># Crypto in CTF</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/06/Attacks-on-Rainbow/" rel="prev" title="Notes on Rainbow New Attack">
+      <i class="fa fa-chevron-left"></i> Notes on Rainbow New Attack
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#hcdsa"><span class="nav-number">1.</span> <span class="nav-text">HCDSA</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lord Riot"
+      src="https://raw.githubusercontent.com/Lord-Riot/Lord-Riot.github.io/master/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Lord Riot</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Lord-Riot" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Lord-Riot" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lordriotglacier@gmail.com" title="E-Mail → mailto:lordriotglacier@gmail.com" rel="noopener" target="_blank"><i class="fab fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=2079541692&site=qq&menu=yes" title="QQ → http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;2079541692&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.duanyufi.com/" title="https:&#x2F;&#x2F;blog.duanyufi.com&#x2F;" rel="noopener" target="_blank">duanyufei@Dubhe</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://retr0.vip/" title="http:&#x2F;&#x2F;retr0.vip&#x2F;" rel="noopener" target="_blank">Retr0@Dubhe</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://vergissmeinnichtz.github.io/" title="https:&#x2F;&#x2F;vergissmeinnichtz.github.io&#x2F;" rel="noopener" target="_blank">Ver@Dubhe</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://sisselcbp.github.io/" title="https:&#x2F;&#x2F;sisselcbp.github.io&#x2F;" rel="noopener" target="_blank">Sissel@Dubhe</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.ieki.xyz/" title="https:&#x2F;&#x2F;blog.ieki.xyz" rel="noopener" target="_blank">Eki@Dubhe</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://xiaoxiaorenwu.github.io/" title="https:&#x2F;&#x2F;xiaoxiaorenwu.github.io&#x2F;" rel="noopener" target="_blank">xxrw@Dubhe</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+    
+
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lord Riot</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
